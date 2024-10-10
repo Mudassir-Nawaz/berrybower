@@ -1,0 +1,9 @@
+title: "New Hugo Website" # Website name
+baseURL: "https://example.com/" # Website URL
+
+############################
+## ADVANCED
+############################
+
+build:
+  writeStats: true

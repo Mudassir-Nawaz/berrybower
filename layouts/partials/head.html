@@ -1,0 +1,43 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>
+  {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Page.Title }} - {{ .Site.Title
+  }}{{ end }}
+</title>
+
+{{/* styles */}} {{ partialCached "css.html" . }} {{/* theme toggle function
+*/}}
+<script>
+  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+
+  // Whenever the user explicitly chooses light mode
+  function setLightMode() {
+    localStorage.theme = "light";
+    document.documentElement.classList.remove("dark");
+  }
+
+  // Whenever the user explicitly chooses dark mode
+  function setDarkMode() {
+    localStorage.theme = "dark";
+    document.documentElement.classList.add("dark");
+  }
+
+  // Whenever the user explicitly chooses to respect the OS preference
+  function setSystemMode() {
+    localStorage.removeItem("theme");
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
+</script>

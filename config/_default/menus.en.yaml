@@ -1,0 +1,27 @@
+main:
+  - name: "Home"
+    url: "/"
+    weight: 1
+  - name: "Solutions"
+    weight: 2
+  - name: "Web"
+    url: "/"
+    parent: "Solutions"
+    weight: 1
+  - name: "App"
+    url: "/"
+    parent: "Solutions"
+    weight: 2
+  - name: "Desktop"
+    url: "/"
+    parent: "Solutions"
+    weight: 3
+  - name: "Resources"
+    url: "resources/"
+    weight: 3
+  - name: "Pricing"
+    url: "pricing/"
+    weight: 4
+  - name: "Pricing"
+    url: "pricing/"
+    weight: 5

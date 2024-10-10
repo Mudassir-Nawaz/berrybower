@@ -1,0 +1,266 @@
+{{ define "main" }} {{/* hero section */}}
+<section class="h-full w-full bg-slate-950">
+  <div class="lg:h-[610px] relative flex justify-center items-center">
+    <div class="absolute w-full h-full">
+      <div
+        class="bg-[url(/images/dev/top-shadow.png)] w-full h-full bg-no-repeat bg-top-center absolute"
+      ></div>
+      <div
+        class="bg-[url(/images/dev/dot-bg.png)] w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50"
+      ></div>
+      <div
+        class="bg-[url(/images/dev/dark-shadow.png)] w-full h-full bg-no-repeat bg-top-center absolute opacity-50"
+      ></div>
+    </div>
+
+    <div class="container px-5 sm:px-10 lg:px-16 z-40 mx-auto my-20">
+      <div
+        class="flex flex-col justify-center items-center gap-7 lg:gap-14 lg:flex-row"
+      >
+        <div class="lg:w-1/2">
+          <div
+            class="hidden lg:block rotate-45 size-60 bg-slate-950 opacity-50 absolute top-40 left-36 -z-10"
+          ></div>
+          <div class="space-y-3 z-50">
+            <h3
+              class="font-poppins font-bold text-3xl lg:text-5xl text-white main-heading break-words"
+            >
+              Stay Ahead of Exploited <span>Vulnerabilities</span> with
+              Intelligent Prioritization
+            </h3>
+            <p class="text-slate-300 font-poppins text-xl">
+              At VulneraWise, we believe that smart vulnerability management is
+              the key to a secure future.
+            </p>
+            <div>
+              <a
+                href="#"
+                class="text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 transition-all border-gradient-primary font-poppins"
+              >
+                <span
+                  class="after:content-[url(/images/dev/right-arrow.png)] after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]"
+                  >Schedule Demo</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="lg:w-1/2" data-tilt>
+          <img src="/images/hero.png" alt="{{ .Site.Title }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="container px-5 sm:px-10 lg:px-16 mx-auto flex flex-col lg:flex-row justify-between gap-5 lg:gap-0 py-10 -mt-[6rem]"
+  >
+    <h3
+      class="font-poppins font-bold text-3xl lg:text-5xl text-white lg:w-1/3 main-heading"
+    >
+      Next-gen exploit intelligence.
+    </h3>
+    <div
+      class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-1 lg:rotate-12 lg:py-5 bg-style"
+    ></div>
+    <p class="text-slate-400 font-poppins text-lg lg:w-1/2">
+      Our mission is to empower security teams with the data, tools, and
+      insights they need to stay ahead of emerging exploits and protect their
+      organization’s digital assets.
+    </p>
+  </div>
+</section>
+{{/* end hero */}} {{/* cards section */}}
+<section class="w-full h-full bg-slate-950">
+  <div class="container mx-auto px-5 sm:px-10 lg:px-16 py-10">
+    <div class="space-y-5 lg:space-y-10">
+      <div
+        class="rounded-3xl flex justify-center items-center bg-blue overflow-hidden"
+      >
+        <div
+          class="flex flex-col lg:flex-row gap-5 lg:gap-0 justify-between relative"
+        >
+          <img
+            src="/images/dev/services-layer.png"
+            alt=""
+            class="w-full h-full absolute left-0 top-0"
+          />
+          <div class="space-y-3 lg:w-1/2 p-5 md:p-14 relative">
+            <img
+              src="/images/dev/services-circles.png"
+              alt=""
+              class="w-full h-full absolute top-0 left-0"
+            />
+            <h3
+              class="font-poppins font-bold text-3xl lg:text-[42px] text-slate-400 main-heading"
+            >
+              Exploit & <span>Vulnerability</span> Intelligence
+            </h3>
+            <p class="font-poppins text-lg lg:text-xl text-slate-400">
+              Identify, respond, and act on real-time exploit intelligence.
+              VulneraWise continuously monitors and updates you on
+              vulnerabilities actively targeted by malicious actors, providing
+              critical insights to keep your organization ahead of potential
+              breaches.
+            </p>
+          </div>
+          <div class="lg:w-1/2">
+            <img src="/images/service-1.png" alt="{{ .Site.Title}} services" />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="rounded-3xl flex justify-center items-center bg-blue overflow-hidden"
+      >
+        <div
+          class="flex flex-col lg:flex-row-reverse gap-5 lg:gap-0 justify-between relative"
+        >
+          <img
+            src="/images/dev/services-layer.png"
+            alt=""
+            class="w-full h-full absolute left-0 top-0 transform scale-x-[-1]"
+          />
+          <div class="space-y-3 lg:w-1/2 p-5 md:p-14 relative">
+            <img
+              src="/images/dev/services-circles.png"
+              alt=""
+              class="w-full h-full absolute top-0 right-0 transform scale-x-[-1]"
+            />
+            <h3
+              class="font-poppins font-bold text-[42px] text-slate-400 main-heading"
+            >
+              Exploit & <span>Vulnerability</span> Intelligence
+            </h3>
+            <p class="font-poppins text-lg lg:text-xl text-slate-400">
+              Identify, respond, and act on real-time exploit intelligence.
+              VulneraWise continuously monitors and updates you on
+              vulnerabilities actively targeted by malicious actors, providing
+              critical insights to keep your organization ahead of potential
+              breaches.
+            </p>
+          </div>
+          <div class="lg:w-1/2">
+            <img src="/images/service-1.png" alt="{{ .Site.Title}} services" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{/* end cards */}} {{/* news section */}}
+<section class="w-full h-full bg-slate-950">
+  <div class="container lg:max-w-full mx-auto px-5 sm:px-10 lg:px-0 py-10">
+    <div class="swiper mySwiper">
+      <div class="lg:container lg:mx-auto lg:px-16 md:flex md:justify-between">
+        <h3
+          class="font-poppins font-semibold text-3xl lg:text-5xl text-slate-200 main-heading"
+        >
+          Latest Vulnerabilities
+        </h3>
+        <div class="hidden md:flex gap-3">
+          <div
+            class="p-4 border-gradient-primary rounded-full after:rounded-full hover:bg-gradient-primary cursor-pointer transition-colors swiper-button-prev"
+          >
+            <img src="/images/dev/prev.png" alt="" />
+          </div>
+          <div
+            class="p-4 border-gradient-primary rounded-full after:rounded-full hover:bg-gradient-primary cursor-pointer transition-colors swiper-button-next"
+          >
+            <img src="/images/dev/next.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="my-5 swiper-wrapper lg:gap-3">
+        <div
+          class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 swiper-slide h-full lg:max-w-[400px] lg:ml-28 relative overflow-hidden w-full"
+          data-tilt
+        >
+          <div
+            class="bg-[url('/images/dev/box-lines.png')] w-full h-full absolute top-0 left-0"
+          ></div>
+          <div class="space-y-5">
+            <div class="spacy-y-2">
+              <h4 class="text-off-white font-poppins font-semibold text-2xl">
+                CVE-2024-8957
+              </h4>
+              <p class="text-slate-500 font-poppins text-lg">
+                OS Command Injection
+              </p>
+            </div>
+            <div class="space-y-2">
+              <p class="font-poppins text-style uppercase">AFFECTING</p>
+              <ul
+                class="space-y-2 text-off-white font-poppins text-[15px] list-disc list-inside"
+              >
+                <li>PTZOptics PT30X-SDI before 6.3.40</li>
+                <li>PTZOptics PT30X-NDI-xx-G2 before 6.3.40</li>
+                <li>
+                  Other white-label AV equipment based on ValueHD Corporation
+                  PTZ Camera Firmware
+                </li>
+              </ul>
+            </div>
+            <div class="flex flex-wrap gap-y-2 justify-between">
+              <p class="text-white font-poppins">September 17th 2024</p>
+              <div
+                class="border border-warning px-2 text-warning rounded-full font-poppins"
+              >
+                High
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-10 md:hidden">
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+{{/* end news */}} {{/* blog section */}}
+<section class="w-full h-full bg-slate-950">
+  <div class="container mx-auto px-5 sm:px-10 lg:px-16 py-10">
+    <div class="flex flex-wrap gap-y-4 gap-2 justify-between">
+      <h3
+        class="font-poppins font-semibold text-3xl lg:text-5xl text-slate-200"
+      >
+        Our Blog
+      </h3>
+      <div>
+        <a
+          href="#"
+          class="text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 hover:scale-105 transition-all border-gradient-primary font-poppins"
+          >View all Blog posts</a
+        >
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
+        <a href="" class="space-y-3">
+          <img
+            src="/images/why_intellegence_is_must.png"
+            alt="{{ .Site.Title }}"
+            class="rounded-t-xl"
+          />
+          <div>
+            <span
+              class="px-3 font-medium py-1 bg-style text-slate-950 rounded-lg font-poppins"
+              >Article</span
+            >
+          </div>
+          <h3 class="font-poppins font-semibold text-2xl text-white">
+            Why Real-Time Exploit Intelligence is a Must in Today’s
+            Cybersecurity Landscape
+          </h3>
+          <p class="font-poppins text-[16px] text-gray-400">
+            The Hidden Dangers of Unprioritized Vulnerabilities” highlights the
+            critical risks businesses face when they fail to properly prioritize
+            security vulnerabilities.
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="sm:-mt-40">
+    <img src="/images/dev/bottom_layer.png" alt="" />
+  </div>
+</section>
+{{/* end blog */}} {{ end }}
