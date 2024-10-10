@@ -6,7 +6,7 @@ resources.Get "plugins/tilt/tilt.min.js"}} {{ $main := resources.Get
 {{ end }} {{ else }} {{ $opts := dict "minify" true }} {{ with $js | js.Build
 $opts | fingerprint }}
 <script
-  src="{{ .RelPermaliink }}"
+  src="{{ .RelPermalink }}"
   integrity="{{ .Data.Integrity }}"
   crossorigin="anonymous"
 ></script>
