@@ -1,52 +1,61 @@
-{{ define "main" }} {{/* hero section */}}
+{{ define "main" }}
+{{ .Title }}
+{{/* hero section */}}
+{{ with .Params.hero_section }}
+{{ if .enable }}
 <section class="h-full w-full bg-slate-950">
-  <div class="lg:h-[610px] relative flex justify-center items-center">
+  <div class="lg:h-[610px] relative flex justify-center items-center swiper heroSwiper">
     <div class="absolute w-full h-full">
       <div
-        class="bg-[url(/images/dev/top-shadow.png)] w-full h-full bg-no-repeat bg-top-center absolute"
+        style="background-image: url('{{ "images/dev/top-shadow.png" | relURL }}');"
+        class="w-full h-full bg-no-repeat bg-top-center absolute"
       ></div>
       <div
-        class="bg-[url(/images/dev/dot-bg.png)] w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50"
+      style="background-image: url('{{ "images/dev/dot-bg.png" | relURL }}');"
+        class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50"
       ></div>
       <div
-        class="bg-[url(/images/dev/dark-shadow.png)] w-full h-full bg-no-repeat bg-top-center absolute opacity-50"
+        style="background-image: url('{{ "images/dev/dark-shadow.png" | relURL }}')"
+        class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50"
       ></div>
     </div>
 
-    <div class="container px-5 sm:px-10 lg:px-16 z-40 mx-auto my-20">
-      <div
-        class="flex flex-col justify-center items-center gap-7 lg:gap-14 lg:flex-row"
-      >
-        <div class="lg:w-1/2">
-          <div
-            class="hidden lg:block rotate-45 size-60 bg-slate-950 opacity-50 absolute top-40 left-36 -z-10"
-          ></div>
-          <div class="space-y-3 z-50">
-            <h3
-              class="font-poppins font-bold text-3xl lg:text-5xl text-white main-heading break-words"
-            >
-              Stay Ahead of Exploited <span>Vulnerabilities</span> with
-              Intelligent Prioritization
-            </h3>
-            <p class="text-slate-300 font-poppins text-xl">
-              At VulneraWise, we believe that smart vulnerability management is
-              the key to a secure future.
-            </p>
-            <div>
-              <a
-                href="#"
-                class="text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 transition-all border-gradient-primary font-poppins"
+    <div class="container z-40 mx-auto my-20 swiper-wrapper">
+      <div class="swiper-slide">
+        <div
+          class="flex flex-col justify-center items-center gap-7 lg:flex-row px-5 sm:px-10 lg:px-16"
+        >
+          <div class="lg:w-1/2">
+            <div
+              class="hidden lg:block rotate-45 size-60 bg-slate-950 opacity-50 absolute top-40 left-36 -z-10"
+            ></div>
+            <div class="space-y-3 z-50 animate__animated animate__bounceInLeft">
+              <h3
+                class="font-poppins font-bold text-3xl lg:text-5xl text-white main-heading break-words"
               >
-                <span
-                  class="after:content-[url(/images/dev/right-arrow.png)] after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]"
-                  >Schedule Demo</span
+                Stay Ahead of Exploited <span>Vulnerabilities</span> with
+                Intelligent Prioritization
+              </h3>
+              <p class="text-slate-300 font-poppins text-xl">
+                At VulneraWise, we believe that smart vulnerability management is
+                the key to a secure future.
+              </p>
+              <div>
+                <a
+                  href="#"
+                  class="text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 transition-all border-gradient-primary font-poppins"
                 >
-              </a>
+                  <span
+                    class="after-right-arrow after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]"
+                    >Schedule Demo</span
+                  >
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="lg:w-1/2" data-tilt>
-          <img src="/images/hero.png" alt="{{ .Site.Title }}" />
+          <div class="lg:w-1/2 mx-auto animated animate__animated animate__bounceInRight">
+            <img src='{{ "images/hero.png"  | relURL }}' alt="{{ .Site.Title }}" />
+          </div>
         </div>
       </div>
     </div>
@@ -69,7 +78,11 @@
     </p>
   </div>
 </section>
-{{/* end hero */}} {{/* cards section */}}
+{{ end }}
+{{ end }}
+{{/* end hero */}}
+
+{{/* cards section */}}
 <section class="w-full h-full bg-slate-950">
   <div class="container mx-auto px-5 sm:px-10 lg:px-16 py-10">
     <div class="space-y-5 lg:space-y-10">
@@ -80,13 +93,13 @@
           class="flex flex-col lg:flex-row gap-5 lg:gap-0 justify-between relative"
         >
           <img
-            src="/images/dev/services-layer.png"
+            src='{{ "images/dev/services-layer.png"  | relURL }}'
             alt=""
             class="w-full h-full absolute left-0 top-0"
           />
           <div class="space-y-3 lg:w-1/2 p-5 md:p-14 relative">
             <img
-              src="/images/dev/services-circles.png"
+              src='{{ "images/dev/services-circles.png"  | relURL }}'
               alt=""
               class="w-full h-full absolute top-0 left-0"
             />
@@ -104,7 +117,7 @@
             </p>
           </div>
           <div class="lg:w-1/2">
-            <img src="/images/service-1.png" alt="{{ .Site.Title}} services" />
+            <img src='{{ "images/service-1.png"  | relURL }}' alt="{{ .Site.Title}} services" />
           </div>
         </div>
       </div>
@@ -116,13 +129,13 @@
           class="flex flex-col lg:flex-row-reverse gap-5 lg:gap-0 justify-between relative"
         >
           <img
-            src="/images/dev/services-layer.png"
+            src='{{ "images/dev/services-layer.png"  | relURL }}'
             alt=""
             class="w-full h-full absolute left-0 top-0 transform scale-x-[-1]"
           />
           <div class="space-y-3 lg:w-1/2 p-5 md:p-14 relative">
             <img
-              src="/images/dev/services-circles.png"
+              src='{{ "images/dev/services-circles.png"  | relURL }}'
               alt=""
               class="w-full h-full absolute top-0 right-0 transform scale-x-[-1]"
             />
@@ -140,7 +153,7 @@
             </p>
           </div>
           <div class="lg:w-1/2">
-            <img src="/images/service-1.png" alt="{{ .Site.Title}} services" />
+            <img src='{{ "images/service-1.png"  | relURL }}' alt="{{ .Site.Title}} services" />
           </div>
         </div>
       </div>
@@ -161,22 +174,22 @@
           <div
             class="p-4 border-gradient-primary rounded-full after:rounded-full hover:bg-gradient-primary cursor-pointer transition-colors swiper-button-prev"
           >
-            <img src="/images/dev/prev.png" alt="" />
+            <img src='{{ "images/dev/prev.png"  | relURL }}' alt="{{ site.Title }}" />
           </div>
           <div
             class="p-4 border-gradient-primary rounded-full after:rounded-full hover:bg-gradient-primary cursor-pointer transition-colors swiper-button-next"
           >
-            <img src="/images/dev/next.png" alt="" />
+            <img src='{{ "images/dev/next.png"  | relURL }}' alt="{{ site.Title }}" />
           </div>
         </div>
       </div>
       <div class="my-5 swiper-wrapper lg:gap-3">
         <div
-          class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 swiper-slide h-full lg:max-w-[400px] lg:ml-28 relative overflow-hidden w-full"
-          data-tilt
+          class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 swiper-slide h-full lg:max-w-[400px] lg:ml-28 relative overflow-hidden w-full animated"
         >
           <div
-            class="bg-[url('/images/dev/box-lines.png')] w-full h-full absolute top-0 left-0"
+            style="background-image: url('{{ "images/dev/box-lines.png" | relURL }}');"
+            class="w-full h-full absolute top-0 left-0"
           ></div>
           <div class="space-y-5">
             <div class="spacy-y-2">
@@ -236,8 +249,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
         <a href="" class="space-y-3">
           <img
-            src="/images/why_intellegence_is_must.png"
-            alt="{{ .Site.Title }}"
+            src='{{ "images/why_intellegence_is_must.png" | relURL }}'
+            alt="{{ site.Title }} {{ .Page.Title }}"
             class="rounded-t-xl"
           />
           <div>
@@ -260,7 +273,7 @@
     </div>
   </div>
   <div class="sm:-mt-40">
-    <img src="/images/dev/bottom_layer.png" alt="" />
+    <img src='{{ "images/dev/bottom_layer.png" | relURL }}' alt="" />
   </div>
 </section>
 {{/* end blog */}} {{ end }}

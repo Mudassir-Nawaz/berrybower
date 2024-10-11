@@ -1,60 +1,35 @@
-<footer class="pt-10 bg-blue">
-  <div
-    class="container mx-auto px-5 sm:px-10 lg:px-24 divide-slate-700 divide-y"
-  >
+<footer class="pt-10 bg-blue relative overflow-hidden">
+  <img src='{{ "images/dev/footer_layer.png" | relURL }}' alt="" class="absolute right-0 top-0 z-0" />
+  <div class="container mx-auto px-5 sm:px-10 lg:px-24 divide-slate-700 divide-y">
     <div class="flex flex-col md:flex-row gap-y-5 gap-x-28 py-5">
-      <div class="md:w-1/4">
+      <div class="md:w-1/4 z-20">
         <div class="space-y-3">
           <a href="">
-            <img
-              src="/images/logo-dark.png"
-              alt=""
-              class="max-w-[17rem] md:max-w-full"
-            />
+            <img src='{{ "images/logo-dark.png" | relURL }}' alt="" class="max-w-[17rem] md:max-w-full" />
           </a>
           <p class="font-poppins text-[16px] text-slate-400">
             VulneraWise: Intelligence for tomorrow’s threats
           </p>
-          <div
-            class="rounded-full p-2 flex justify-between bg-slate-800 max-w-[17rem] md:max-w-full"
-          >
-            <input
-              type="text"
-              placeholder="Your Email"
-              class="bg-transparent font-poppins text-[#697586] pl-3 focus:outline-none w-10/12"
-            />
+          <div class="rounded-full p-2 flex justify-between bg-slate-800 max-w-[17rem] md:max-w-full">
+            <input type="text" placeholder="Your Email"
+              class="bg-transparent font-poppins text-[#697586] pl-3 focus:outline-none w-10/12" />
             <a href="" class="p-2 bg-style rounded-full w-2/12">
-              <img src="/images/dev/send.png" alt="" />
+              <img src='{{ "images/dev/send.png" | relURL }}' alt="" />
             </a>
           </div>
         </div>
       </div>
-      <div class="md:w-2/4 flex flex-wrap gap-5 justify-between">
+      <div class="md:w-2/4 flex flex-wrap gap-5 justify-between z-20">
         <ul class="space-y-2">
           <li>
-            <a
-              href=""
-              class="font-poppins text-[16px] text-slate-400 hover-main-gradient transition-colors"
-              >Home</a
-            >
+            <a href="" class="font-poppins text-[16px] text-slate-400 hover-main-gradient transition-colors">Home</a>
           </li>
         </ul>
-        <div class="relative">
-          <img
-            src="/images/dev/footer_layer.png"
-            alt=""
-            class="w-full h-full absolute right-0 top-0"
-          />
+        <div>
           <ul class="space-y-2">
-            <span class="text-style font-poppins text-lg font-medium"
-              >Solutions</span
-            >
+            <span class="text-style font-poppins text-lg font-medium">Solutions</span>
             <li>
-              <a
-                href=""
-                class="font-poppins text-[16px] text-slate-400 hover-main-gradient transition-colors"
-                >Home</a
-              >
+              <a href="" class="font-poppins text-[16px] text-slate-400 hover-main-gradient transition-colors">Home</a>
             </li>
           </ul>
         </div>
@@ -64,19 +39,14 @@
       <p class="text-[16px] font-poppins text-slate-400">
         © 2024 All Rights Reserved VulneraWise.
       </p>
-      <div class="flex flex-wrap gap-2">
-        <a
-          href=""
-          class="p-2 bg-slate-700 rounded-full hover:scale-125 transition-transform"
-        >
-          <img src="/images/dev/github_icon.png" alt="" />
+      <div class="flex flex-wrap gap-2 z-20">
+        <a href="" class="p-2 bg-slate-700 rounded-full hover:scale-125 transition-transform flex justify-center items-center">
+          <img src='{{ "images/dev/github_icon.png" | relURL }}' alt="" />
         </a>
-        <div>
-          <a
-            href="#"
-            class="hidden lg:block rounded-3xl font-medium text-sm px-5 py-2 hover:scale-105 transition-all font-poppins bg-style after:content-[url(/images/dev/right-arrow.png)] after:relative after:top-[3px] after:left-[5px] hover:after:left-[7px]"
-            >Schedule Demo</a
-          >
+        <div class="hover:scale-105 transition-transform flex justify-center items-center">
+          <a href="#"
+            class="rounded-3xl font-medium text-sm px-5 py-2 font-poppins bg-style after-right-arrow after:relative after:top-[3px] after:left-[5px]">Schedule
+            Demo</a>
         </div>
       </div>
     </div>

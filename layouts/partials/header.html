@@ -4,9 +4,9 @@
 >
   <nav class="px-2 py-3 lg:py-5 container mx-auto">
     <div class="flex flex-wrap justify-between items-center">
-      <a href="/" class="flex items-center">
+      <a href="{{ .Site.BaseURL | safeURL }}" class="flex items-center">
         <img
-          src="/images/logo-dark.png"
+          src='{{ "images/logo-dark.png" | relURL }}'
           class="mr-3 h-6 sm:h-7"
           alt="{{ .Site.Title }} Logo"
         />
@@ -19,7 +19,7 @@
         >
         <a
           href="#"
-          class="hidden lg:block rounded-3xl font-medium text-sm px-5 py-3 hover:scale-105 transition-all font-poppins bg-style after:content-[url(/images/dev/right-arrow.png)] after:relative after:top-[3px] after:left-[5px] hover:after:left-[7px]"
+          class="hidden lg:block rounded-3xl font-medium text-sm px-5 py-3 hover:scale-105 transition-all font-poppins bg-style after-right-arrow after:relative after:top-[3px] after:left-[5px]"
           >Schedule Demo</a
         >
         <button
@@ -69,7 +69,7 @@
           <div class="group relative inline-block text-left w-full">
             <button
               id="dropdown-button"
-              class="py-2 px-4 text-white hover-main-gradient rounded lg:bg-transparent lg:text-primary-700 lg:p-0 font-poppins after:content-[url(/images/dev/dd-header.png)] w-full flex text-start after:absolute after:right-3 lg:after:right-0 lg:after:static lg:after:ml-1 group-hover:after:translate-y-[2px] transition-transform duration-500"
+              class="py-2 px-4 text-white hover-main-gradient rounded lg:bg-transparent lg:text-primary-700 lg:p-0 font-poppins after-down-arrow w-full flex text-start after:absolute after:right-3 lg:after:right-0 lg:after:static lg:after:ml-1 transition-transform duration-500"
             >
               {{ .Name }}
             </button>
@@ -113,7 +113,7 @@
           <li class="w-full">
             <a
               href="#"
-              class="lg:hidden rounded-3xl font-medium text-sm block text-center w-full py-3 hover:scale-105 transition-all font-poppins bg-style after:content-[url(/images/dev/right-arrow.png)] after:relative after:top-[3px] after:left-[5px] hover:after:left-[7px]"
+              class="lg:hidden rounded-3xl font-medium text-sm block text-center w-full py-3 hover:scale-105 transition-all font-poppins bg-style after-right-arrow after:relative after:top-[3px] after:left-[5px] hover:after:left-[7px]"
               >Get started</a
             >
           </li>

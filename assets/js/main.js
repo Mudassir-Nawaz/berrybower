@@ -1,3 +1,5 @@
+const { Autoplay } = require("swiper/modules");
+
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownButton = document.getElementById("dropdown-button");
   const dropdownMenu = document.getElementById("dropdown-menu");
@@ -83,4 +85,18 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
   });
+
+  var heroSwiper = new Swiper(".heroSwiper", {
+    loop: true,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2000,
+    },
+  });
+
+  // tilt.js init
+  VanillaTilt.init(document.querySelectorAll(".animated"), {
+		max: 10,
+		speed: 100
+	});
 });
