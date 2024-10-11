@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     breakpoints: {
       768: {
         slidesPerView: 2,
+        spaceBetween: 10,
       },
       1024: {
         slidesPerView: 3,
@@ -88,15 +89,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var heroSwiper = new Swiper(".heroSwiper", {
     loop: true,
-    centeredSlides: true,
     autoplay: {
-      delay: 2000,
+      delay: 5000,
     },
   });
 
   // tilt.js init
   VanillaTilt.init(document.querySelectorAll(".animated"), {
-		max: 10,
-		speed: 100
-	});
+    max: 5,
+    speed: 50,
+    glare: true,
+    "max-glare": 0.2,
+    reset: true,
+  });
+
+  // aos.js init
+  AOS.init();
 });

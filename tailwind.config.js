@@ -13,7 +13,8 @@ module.exports = {
       'transparent': 'transparent',
       'blue': '#091826',
       'off-white': '#F4F4F4',
-      'warning': '#F59E0B'
+      'warning': '#F59E0B',
+      'danger': '#F43F5E'
     },
     backgroundPosition: {
       'top-center': 'top center',

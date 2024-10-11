@@ -85,7 +85,7 @@
               >
                 {{ range .Children }}
                 <a
-                  href="{{ .URL }}"
+                  href="{{ .URL | absURL }}"
                   class="w-full lg:w-auto text-white block px-4 py-1 mb-1 text-sm rounded-md hover-main-gradient"
                   role="menuitem"
                   >{{ .Name }}</a

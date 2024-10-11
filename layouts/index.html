@@ -1,228 +1,137 @@
 {{ define "main" }}
-{{ .Title }}
 {{/* hero section */}}
 {{ with .Params.hero_section }}
 {{ if .enable }}
 <section class="h-full w-full bg-slate-950">
   <div class="lg:h-[610px] relative flex justify-center items-center swiper heroSwiper">
     <div class="absolute w-full h-full">
-      <div
-        style="background-image: url('{{ "images/dev/top-shadow.png" | relURL }}');"
-        class="w-full h-full bg-no-repeat bg-top-center absolute"
-      ></div>
-      <div
-      style="background-image: url('{{ "images/dev/dot-bg.png" | relURL }}');"
-        class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50"
-      ></div>
-      <div
-        style="background-image: url('{{ "images/dev/dark-shadow.png" | relURL }}')"
-        class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50"
-      ></div>
+      <div style="background-image: url('{{ "images/dev/top-shadow.png" | relURL }}');"
+        class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
+      <div style="background-image: url('{{ "images/dev/dot-bg.png" | relURL }}');"
+        class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50"></div>
+      <div style="background-image: url('{{ "images/dev/dark-shadow.png" | relURL }}')"
+        class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50"></div>
     </div>
 
-    <div class="container z-40 mx-auto my-20 swiper-wrapper">
+    <div class="container z-40 mx-auto my-20 lg:mb-0 lg:mt-32 swiper-wrapper">
+      {{ range .slides }}
       <div class="swiper-slide">
-        <div
-          class="flex flex-col justify-center items-center gap-7 lg:flex-row px-5 sm:px-10 lg:px-16"
-        >
+        <div class="flex flex-col justify-center items-center gap-7 lg:flex-row px-5 sm:px-10 lg:px-16">
           <div class="lg:w-1/2">
-            <div
-              class="hidden lg:block rotate-45 size-60 bg-slate-950 opacity-50 absolute top-40 left-36 -z-10"
-            ></div>
-            <div class="space-y-3 z-50 animate__animated animate__bounceInLeft">
-              <h3
-                class="font-poppins font-bold text-3xl lg:text-5xl text-white main-heading break-words"
-              >
-                Stay Ahead of Exploited <span>Vulnerabilities</span> with
-                Intelligent Prioritization
+            <div class="hidden lg:block rotate-45 size-60 bg-slate-950 opacity-50 absolute top-40 left-36 -z-10"></div>
+            <div class="space-y-3 z-50" data-aos="zoom-in">
+              <h3 class="font-poppins font-bold text-3xl lg:text-5xl text-white main-heading break-words">
+                {{ .title | safeHTML }}
               </h3>
               <p class="text-slate-300 font-poppins text-xl">
-                At VulneraWise, we believe that smart vulnerability management is
-                the key to a secure future.
+                {{ .details | markdownify }}
               </p>
+              {{ with .button }}
               <div>
-                <a
-                  href="#"
-                  class="text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 transition-all border-gradient-primary font-poppins"
-                >
+                <a href="{{ .url | relURL }}"
+                  class="text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 transition-all border-gradient-primary font-poppins">
                   <span
-                    class="after-right-arrow after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]"
-                    >Schedule Demo</span
-                  >
+                    class="after-right-arrow after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
+                    .label }}</span>
                 </a>
               </div>
+              {{ end }}
             </div>
           </div>
-          <div class="lg:w-1/2 mx-auto animated animate__animated animate__bounceInRight">
-            <img src='{{ "images/hero.png"  | relURL }}' alt="{{ .Site.Title }}" />
+          <div class="lg:w-1/2 mx-auto flex justify-center items-center" data-aos="zoom-in">
+            <img src='{{ .image  | relURL }}' alt="{{ .Site.Title }} - {{ .title | markdownify }}"
+              class="{{ if .small_image }}w-3/4{{ end }} animated" />
           </div>
         </div>
       </div>
+      {{ end }}
     </div>
   </div>
+  {{ with .mission }}
   <div
-    class="container px-5 sm:px-10 lg:px-16 mx-auto flex flex-col lg:flex-row justify-between gap-5 lg:gap-0 py-10 -mt-[6rem]"
-  >
-    <h3
-      class="font-poppins font-bold text-3xl lg:text-5xl text-white lg:w-1/3 main-heading"
-    >
-      Next-gen exploit intelligence.
+    class="container px-5 sm:px-10 lg:px-16 mx-auto flex flex-col lg:flex-row justify-between gap-5 lg:gap-0 py-10 -mt-24 lg:-mt-0"
+    data-aos="zoom-in">
+    <h3 class="font-poppins font-bold text-3xl lg:text-5xl text-white lg:w-1/3 main-heading">
+      {{ .title | safeHTML }}
     </h3>
-    <div
-      class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-1 lg:rotate-12 lg:py-5 bg-style"
-    ></div>
+    {{ with .details }}
+    <div class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-1 lg:rotate-12 lg:py-5 bg-style"></div>
+    {{ end }}
     <p class="text-slate-400 font-poppins text-lg lg:w-1/2">
-      Our mission is to empower security teams with the data, tools, and
-      insights they need to stay ahead of emerging exploits and protect their
-      organization’s digital assets.
+      {{ .details | markdownify }}
     </p>
   </div>
+  {{ end }}
 </section>
 {{ end }}
 {{ end }}
 {{/* end hero */}}
 
-{{/* cards section */}}
+{{/* news section */}}
+{{ with .Params.news_section }}
+{{ if .enable }}
 <section class="w-full h-full bg-slate-950">
-  <div class="container mx-auto px-5 sm:px-10 lg:px-16 py-10">
-    <div class="space-y-5 lg:space-y-10">
-      <div
-        class="rounded-3xl flex justify-center items-center bg-blue overflow-hidden"
-      >
-        <div
-          class="flex flex-col lg:flex-row gap-5 lg:gap-0 justify-between relative"
-        >
-          <img
-            src='{{ "images/dev/services-layer.png"  | relURL }}'
-            alt=""
-            class="w-full h-full absolute left-0 top-0"
-          />
-          <div class="space-y-3 lg:w-1/2 p-5 md:p-14 relative">
-            <img
-              src='{{ "images/dev/services-circles.png"  | relURL }}'
-              alt=""
-              class="w-full h-full absolute top-0 left-0"
-            />
-            <h3
-              class="font-poppins font-bold text-3xl lg:text-[42px] text-slate-400 main-heading"
-            >
-              Exploit & <span>Vulnerability</span> Intelligence
-            </h3>
-            <p class="font-poppins text-lg lg:text-xl text-slate-400">
-              Identify, respond, and act on real-time exploit intelligence.
-              VulneraWise continuously monitors and updates you on
-              vulnerabilities actively targeted by malicious actors, providing
-              critical insights to keep your organization ahead of potential
-              breaches.
-            </p>
-          </div>
-          <div class="lg:w-1/2">
-            <img src='{{ "images/service-1.png"  | relURL }}' alt="{{ .Site.Title}} services" />
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="rounded-3xl flex justify-center items-center bg-blue overflow-hidden"
-      >
-        <div
-          class="flex flex-col lg:flex-row-reverse gap-5 lg:gap-0 justify-between relative"
-        >
-          <img
-            src='{{ "images/dev/services-layer.png"  | relURL }}'
-            alt=""
-            class="w-full h-full absolute left-0 top-0 transform scale-x-[-1]"
-          />
-          <div class="space-y-3 lg:w-1/2 p-5 md:p-14 relative">
-            <img
-              src='{{ "images/dev/services-circles.png"  | relURL }}'
-              alt=""
-              class="w-full h-full absolute top-0 right-0 transform scale-x-[-1]"
-            />
-            <h3
-              class="font-poppins font-bold text-[42px] text-slate-400 main-heading"
-            >
-              Exploit & <span>Vulnerability</span> Intelligence
-            </h3>
-            <p class="font-poppins text-lg lg:text-xl text-slate-400">
-              Identify, respond, and act on real-time exploit intelligence.
-              VulneraWise continuously monitors and updates you on
-              vulnerabilities actively targeted by malicious actors, providing
-              critical insights to keep your organization ahead of potential
-              breaches.
-            </p>
-          </div>
-          <div class="lg:w-1/2">
-            <img src='{{ "images/service-1.png"  | relURL }}' alt="{{ .Site.Title}} services" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{{/* end cards */}} {{/* news section */}}
-<section class="w-full h-full bg-slate-950">
-  <div class="container lg:max-w-full mx-auto px-5 sm:px-10 lg:px-0 py-10">
+  <div class="container lg:max-w-full mx-auto px-5 sm:px-10 lg:px-0 pb-10 lg:pt-10">
     <div class="swiper mySwiper">
-      <div class="lg:container lg:mx-auto lg:px-16 md:flex md:justify-between">
-        <h3
-          class="font-poppins font-semibold text-3xl lg:text-5xl text-slate-200 main-heading"
-        >
+      <div class="lg:container lg:mx-auto lg:px-16 md:flex md:justify-between" data-aos="zoom-in">
+        <h3 class="font-poppins font-semibold text-3xl lg:text-5xl text-slate-200 main-heading">
           Latest Vulnerabilities
         </h3>
         <div class="hidden md:flex gap-3">
           <div
-            class="p-4 border-gradient-primary rounded-full after:rounded-full hover:bg-gradient-primary cursor-pointer transition-colors swiper-button-prev"
-          >
+            class="p-4 border-gradient-primary rounded-full after:rounded-full hover:bg-gradient-primary cursor-pointer transition-colors swiper-button-prev">
             <img src='{{ "images/dev/prev.png"  | relURL }}' alt="{{ site.Title }}" />
           </div>
           <div
-            class="p-4 border-gradient-primary rounded-full after:rounded-full hover:bg-gradient-primary cursor-pointer transition-colors swiper-button-next"
-          >
+            class="p-4 border-gradient-primary rounded-full after:rounded-full hover:bg-gradient-primary cursor-pointer transition-colors swiper-button-next">
             <img src='{{ "images/dev/next.png"  | relURL }}' alt="{{ site.Title }}" />
           </div>
         </div>
       </div>
       <div class="my-5 swiper-wrapper lg:gap-3">
+        {{ with .cards }}
+        {{ range $i, $p := . }}
         <div
-          class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 swiper-slide h-full lg:max-w-[400px] lg:ml-28 relative overflow-hidden w-full animated"
-        >
-          <div
-            style="background-image: url('{{ "images/dev/box-lines.png" | relURL }}');"
-            class="w-full h-full absolute top-0 left-0"
-          ></div>
+          class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 swiper-slide h-full lg:max-w-[390px] {{ if eq $i 0 }}lg:ml-28{{ end }} relative overflow-hidden animated"
+          data-aos="zoom-in">
+          <div style="background-image: url('{{ " images/dev/box-lines.png" | relURL }}');"
+            class="w-full h-full absolute top-0 left-0"></div>
           <div class="space-y-5">
             <div class="spacy-y-2">
               <h4 class="text-off-white font-poppins font-semibold text-2xl">
-                CVE-2024-8957
+                {{ $p.title | markdownify }}
               </h4>
               <p class="text-slate-500 font-poppins text-lg">
-                OS Command Injection
+                {{ $p.subtitle | markdownify }}
               </p>
             </div>
+            {{ with $p.affecting }}
             <div class="space-y-2">
               <p class="font-poppins text-style uppercase">AFFECTING</p>
-              <ul
-                class="space-y-2 text-off-white font-poppins text-[15px] list-disc list-inside"
-              >
-                <li>PTZOptics PT30X-SDI before 6.3.40</li>
-                <li>PTZOptics PT30X-NDI-xx-G2 before 6.3.40</li>
-                <li>
-                  Other white-label AV equipment based on ValueHD Corporation
-                  PTZ Camera Firmware
-                </li>
+              <ul class="space-y-2 text-off-white font-poppins text-[15px] list-disc list-inside">
+                {{ range . }}
+                <li>{{ . | markdownify }}</li>
+                {{ end }}
               </ul>
             </div>
+            {{ end }}
             <div class="flex flex-wrap gap-y-2 justify-between">
-              <p class="text-white font-poppins">September 17th 2024</p>
-              <div
-                class="border border-warning px-2 text-warning rounded-full font-poppins"
-              >
+              <p class="text-white font-poppins">{{ $p.date }}</p>
+              {{ if eq $p.type "high" }}
+              <div class="border border-warning px-2 text-warning rounded-full font-poppins">
                 High
               </div>
+              {{ end }}
+              {{ if eq $p.type "critical" }}
+              <div class="border border-danger px-2 text-danger rounded-full font-poppins">
+                Critical
+              </div>
+              {{ end }}
             </div>
           </div>
         </div>
+        {{ end }}
+        {{ end }}
       </div>
       <div class="mt-10 md:hidden">
         <div class="swiper-pagination"></div>
@@ -230,50 +139,82 @@
     </div>
   </div>
 </section>
-{{/* end news */}} {{/* blog section */}}
+{{ end }}
+{{ end }}
+{{/* end news */}}
+
+{{/* cards section */}}
+{{ with .Params.services_section }}
+{{ if .enable }}
+<section class="w-full h-full bg-slate-950">
+  <div class="container mx-auto px-5 sm:px-10 lg:px-16 py-10 pt-0">
+    <div class="space-y-5 lg:space-y-10">
+      {{ range $i, $p := .cards }}
+      <div class="rounded-3xl flex justify-center items-center bg-blue overflow-hidden" data-aos="zoom-in">
+        <div
+          class="flex flex-col {{ if not (modBool $i 2) }}lg:flex-row-reverse{{ else }}lg:flex-row{{ end }} gap-5 lg:gap-0 justify-between relative">
+          <img src='{{ "images/dev/services-layer.png"  | relURL }}' alt=""
+            class="w-full h-full absolute left-0 top-0 {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
+          <div class="space-y-3 lg:w-1/2 p-5 md:p-14 relative">
+            <img src='{{ "images/dev/services-circles.png"  | relURL }}' alt=""
+              class="w-full h-full absolute top-0 left-0 {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
+            <h3 class="font-poppins font-bold text-3xl lg:text-[42px] text-slate-400 main-heading">
+              {{ $p.title | safeHTML }}
+            </h3>
+            <p class="font-poppins text-lg lg:text-xl text-slate-400">
+              {{ $p.details | markdownify }}
+            </p>
+          </div>
+          <div
+            class="lg:w-1/2 h-40 lg:h-full bg-contain bg-no-repeat {{ if not (modBool $i 2) }}bg-left{{ else }}bg-right{{ end }} lg:bg-none"
+            style="background-image:url('{{ $p.image | relURL }}')">
+            <img src='{{ $p.image  | relURL }}' alt="{{ $.Site.Title}} {{ .title | markdownify }}"
+              class="hidden lg:block" />
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+{{/* end cards */}} {{/* blog section */}}
+{{ with .Params.blog_section }}
+{{ if .enable }}
 <section class="w-full h-full bg-slate-950">
   <div class="container mx-auto px-5 sm:px-10 lg:px-16 py-10">
-    <div class="flex flex-wrap gap-y-4 gap-2 justify-between">
-      <h3
-        class="font-poppins font-semibold text-3xl lg:text-5xl text-slate-200"
-      >
+    <div class="flex flex-wrap gap-y-4 gap-2 justify-between" data-aos="zoom-in">
+      <h3 class="font-poppins font-semibold text-3xl lg:text-5xl text-slate-200">
         Our Blog
       </h3>
       <div>
-        <a
-          href="#"
-          class="text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 hover:scale-105 transition-all border-gradient-primary font-poppins"
-          >View all Blog posts</a
-        >
+        <a href="#"
+          class="text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 hover:scale-105 transition-all border-gradient-primary font-poppins">View
+          all Blog posts</a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
-        <a href="" class="space-y-3">
-          <img
-            src='{{ "images/why_intellegence_is_must.png" | relURL }}'
-            alt="{{ site.Title }} {{ .Page.Title }}"
-            class="rounded-t-xl"
-          />
-          <div>
-            <span
-              class="px-3 font-medium py-1 bg-style text-slate-950 rounded-lg font-poppins"
-              >Article</span
-            >
-          </div>
-          <h3 class="font-poppins font-semibold text-2xl text-white">
-            Why Real-Time Exploit Intelligence is a Must in Today’s
-            Cybersecurity Landscape
-          </h3>
-          <p class="font-poppins text-[16px] text-gray-400">
-            The Hidden Dangers of Unprioritized Vulnerabilities” highlights the
-            critical risks businesses face when they fail to properly prioritize
-            security vulnerabilities.
-          </p>
-        </a>
-      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
+      {{ range .cards }}
+      <a href="" class="space-y-3" data-aos="zoom-in">
+        <img src='{{ .image | relURL }}' alt="{{ site.Title }} {{ .Page.Title }}" class="rounded-t-xl" />
+        <div>
+          <span class="px-3 font-medium py-1 bg-style text-slate-950 rounded-lg font-poppins">{{ .label }}</span>
+        </div>
+        <h3 class="font-poppins font-semibold text-2xl text-white">
+          {{ .title | safeHTML | truncate 50 }}
+        </h3>
+        <p class="font-poppins text-[16px] text-gray-400">
+          {{ .details | safeHTML | truncate 140 }}
+        </p>
+      </a>
+      {{ end }}
     </div>
   </div>
   <div class="sm:-mt-40">
     <img src='{{ "images/dev/bottom_layer.png" | relURL }}' alt="" />
   </div>
 </section>
+{{ end }}
+{{ end }}
 {{/* end blog */}} {{ end }}

@@ -1,5 +1,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+{{ $aos := resources.Get "plugins/aos/aos.js" }} {{ $aos := $aos | minify }}
+<script src="{{ $aos.RelPermalink }}"></script>
+
 <title>
   {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Page.Title }} - {{ .Site.Title
   }}{{ end }}
@@ -42,7 +46,7 @@
   }
 </script>
 
-{{/*  top styles  */}}
+{{/* top styles */}}
 <style>
   .after-right-arrow::after {
     content: url('{{ "images/dev/right-arrow.png" | relURL }}');
