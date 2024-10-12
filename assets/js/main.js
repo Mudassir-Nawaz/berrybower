@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // menu function
+  // Menu function
   menuToggle.addEventListener("click", function () {
     // Toggle the 'show' class on the mobile menu
     mobileMenu.classList.toggle("hidden");
@@ -41,10 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
     openIcon.classList.toggle("hidden");
     closeIcon.classList.toggle("hidden");
 
+    // Check the display of the mobile menu and update header style
     if (window.getComputedStyle(mobileMenu).display === "block") {
-      header.style.backdropFilter = "blue(16px)";
+      header.style.backdropFilter = "blur(16px)";
     } else {
-      header.style.backdropFilter = "none";
+      // Only remove the backdrop filter if the scroll position is not greater than 50
+      if (window.scrollY <= 50) {
+        header.style.backdropFilter = "none";
+      } else {
+        // Keep the blur if scrolled more than 50
+        updateHeaderStyle();
+      }
     }
   });
 
