@@ -8,6 +8,7 @@ hero_section:
     - title: "Stay Ahead of Exploited <span>Vulnerabilities</span> with Intelligent Prioritization"
       details: "At VulneraWise, we believe that smart vulnerability management is the key to a secure future."
       image: "images/monitor.png"
+      small_image: true
       button:
         label: "Schedule Demo"
         url: /
@@ -20,7 +21,6 @@ hero_section:
     - title: "Identify current global exploitations of <span>vulnerabilities.</span>"
       details: "Stay informed on real-time global exploits targeting vulnerabilities right now."
       image: "images/globe_n.png"
-      small_image: true
       button:
         label: "Schedule Demo"
         url: /
