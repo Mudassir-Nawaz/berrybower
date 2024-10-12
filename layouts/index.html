@@ -205,7 +205,7 @@
       {{ range .cards }}
       <a href="" class="space-y-3">
         {{/*  <img src='{{ .image | relURL }}' alt="{{ site.Title }} {{ .Page.Title }}" class="rounded-t-xl object-cover" />  */}}
-        <div style="background-image: url('{{ .image | relURL }}');" class="bg-no-repeat bg-cover rounded-t-xl h-72 w-full"></div>
+        <div style="background-image: url('{{ .image | relURL }}');" class="bg-no-repeat bg-cover rounded-xl h-64 w-full"></div>
         <div>
           <span class="px-3 font-medium py-1 bg-style text-slate-950 rounded-lg font-poppins">{{ .label }}</span>
         </div>
