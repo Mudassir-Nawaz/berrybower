@@ -1,6 +1,6 @@
 {{ $styles := resources.Get "css/main.css" }} {{ $styles = $styles | css.PostCSS
 (dict "config" "postcss.config.js") }} {{ if hugo.IsProduction }} {{ $styles =
-$styles | resources.PostProcess }} {{ else }} {{ $styles
+$styles | minify | fingerprint | resources.PostProcess }} {{ else }} {{ $styles
 = $styles | resources.ExecuteAsTemplate (printf "css/index.dev.%v.css"
 now.UnixMilli) .}} {{ end }}
 <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
