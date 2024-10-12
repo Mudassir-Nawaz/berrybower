@@ -20,7 +20,7 @@
     <div class="container z-40 mx-auto my-20 lg:mb-0 lg:mt-32 swiper-wrapper">
       {{ range .slides }}
       <div class="swiper-slide">
-        <div class="flex flex-col justify-center items-center gap-7 lg:gap-14 lg:flex-row px-5 sm:px-10 lg:px-16">
+        <div class="flex flex-col justify-center items-center gap-7 lg:gap-0 lg:flex-row px-5 sm:px-10 lg:px-16 xl:px-0 xl:max-w-6xl 2xl:max-w-[90rem] xl:mx-auto">
           <div class="lg:w-1/2">
             <div class="hidden lg:block rotate-45 size-60 bg-white dark:bg-slate-950 opacity-50 absolute top-40 left-36 -z-10"></div>
             <div class="space-y-3 z-50" data-aos="zoom-in">
@@ -44,7 +44,7 @@
           </div>
           <div class="lg:w-1/2 mx-auto flex justify-center items-center" data-aos="zoom-in">
             <img src='{{ .image  | relURL }}' alt="{{ .Site.Title }} - {{ .title | markdownify }}"
-              class="{{ if .small_image }}w-3/4{{ end }} animated" />
+              class="md:shrink-0 {{ if .small_image }}sm:w-3/4 xl:w-11/12{{ end }} xl:w-3/4 animated" />
           </div>
         </div>
       </div>
@@ -204,12 +204,13 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5" data-aos="zoom-in">
       {{ range .cards }}
       <a href="" class="space-y-3">
-        <img src='{{ .image | relURL }}' alt="{{ site.Title }} {{ .Page.Title }}" class="rounded-t-xl" />
+        {{/*  <img src='{{ .image | relURL }}' alt="{{ site.Title }} {{ .Page.Title }}" class="rounded-t-xl object-cover" />  */}}
+        <div style="background-image: url('{{ .image | relURL }}');" class="bg-no-repeat bg-cover rounded-t-xl h-72 w-full"></div>
         <div>
           <span class="px-3 font-medium py-1 bg-style text-slate-950 rounded-lg font-poppins">{{ .label }}</span>
         </div>
         <h3 class="font-poppins font-semibold text-2xl text-black dark:text-white">
-          {{ .title | safeHTML | truncate 50 }}
+          {{ .title | safeHTML | truncate 55 }}
         </h3>
         <p class="font-poppins text-[16px] text-slate-700 dark:text-gray-400">
           {{ .details | safeHTML | truncate 140 }}

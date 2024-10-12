@@ -91,9 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var heroSwiper = new Swiper(".heroSwiper", {
     loop: true,
-    autoplay: {
-      delay: 5000,
-    },
+    // autoplay: {
+    //   delay: 5000,
+    // },
   });
 
   // tilt.js init
