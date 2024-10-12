@@ -92,8 +92,7 @@
         {{ with .cards }}
         {{ range $i, $p := . }}
         <div
-          class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 swiper-slide h-full lg:max-w-[390px] {{ if eq $i 0 }}lg:ml-28{{ end }} relative overflow-hidden animated"
-          data-aos="zoom-in">
+          class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 swiper-slide h-full lg:max-w-[390px] {{ if eq $i 0 }}lg:ml-28{{ end }} relative overflow-hidden animated">
           <div style="background-image: url('{{ " images/dev/box-lines.png" | relURL }}');"
             class="w-full h-full absolute top-0 left-0"></div>
           <div class="space-y-5">
