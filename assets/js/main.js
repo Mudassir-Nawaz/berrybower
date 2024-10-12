@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dropdownButton = document.getElementById("dropdown-button");
   const dropdownMenu = document.getElementById("dropdown-menu");
   const menuToggle = document.querySelector(
-    '[data-collapse-toggle="mobile-menu-2"]',
+    '[data-collapse-toggle="mobile-menu-2"]'
   );
   const mobileMenu = document.getElementById("mobile-menu-2");
   const header = document.getElementById("header");
@@ -42,27 +42,29 @@ document.addEventListener("DOMContentLoaded", function () {
     closeIcon.classList.toggle("hidden");
 
     if (window.getComputedStyle(mobileMenu).display === "block") {
-      header.classList.add("bg-slate-950");
+      header.style.backdropFilter = "blue(16px)";
     } else {
-      header.classList.remove("bg-slate-950");
+      header.style.backdropFilter = "none";
     }
   });
 
-  // header background on scroll
-  window.addEventListener("scroll", function () {
-    const body = document.body;
+  // Function to update the header style based on scroll position
+  function updateHeaderStyle() {
     const header = document.querySelector("header");
-    const nav = document.querySelector("nav");
-    const navUl = document.querySelector("nav ul");
 
-    // header background change
+    // Apply blur if scrolled more than 50 pixels
     if (window.scrollY > 50) {
-      header.classList.add("bg-slate-950");
+      header.style.backdropFilter = "blur(16px)";
+    } else {
+      header.style.backdropFilter = "none";
     }
-    if (window.scrollY < 50) {
-      header.classList.remove("bg-slate-950");
-    }
-  });
+  }
+
+  // Event listener for scroll
+  window.addEventListener("scroll", updateHeaderStyle);
+
+  // Check scroll position on page load
+  window.addEventListener("load", updateHeaderStyle);
 
   // swiper config
   var swiper = new Swiper(".mySwiper", {

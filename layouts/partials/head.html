@@ -13,23 +13,37 @@
 */}}
 <script>
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
+  function applyTheme() {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }
 
-  // Whenever the user explicitly chooses light mode
+  // Apply the theme on load
+  applyTheme();
+
+  // Toggle theme based on current state
+  function changeTheme() {
+    if (localStorage.theme === "dark") {
+      setLightMode();
+    } else {
+      setDarkMode();
+    }
+  }
+
+  // Set light mode
   function setLightMode() {
     localStorage.theme = "light";
     document.documentElement.classList.remove("dark");
   }
 
-  // Whenever the user explicitly chooses dark mode
+  // Set dark mode
   function setDarkMode() {
     localStorage.theme = "dark";
     document.documentElement.classList.add("dark");
@@ -38,21 +52,32 @@
   // Whenever the user explicitly chooses to respect the OS preference
   function setSystemMode() {
     localStorage.removeItem("theme");
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    applyTheme();
   }
+
+  // Add an event listener for changes in the user's OS preference
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', applyTheme);
 </script>
 
 {{/* top styles */}}
 <style>
   .after-right-arrow::after {
-    content: url('{{ "images/dev/right-arrow.png" | relURL }}');
+    content: url('{{ "images/dev/dark_right_arrow.png" | relURL }}');
+  }
+
+  .after-right-arrow-transparent::after {
+    content: url('{{ "images/dev/dark_right_arrow.png" | relURL }}');
+  }
+  
+  .after-right-arrow-transparent-dark:where(.dark, .dark *)::after {
+    content: url('{{ "images/dev/light_right_arrow.png" | relURL }}');
   }
 
   .after-down-arrow::after {
-    content: url('{{ "images/dev/dd-header.png" | relURL }}');
+    content: url('{{ "images/dev/light_arrow_down.png" | relURL }}');
+  }
+  
+  .after-down-arrow-dark:where(.dark, .dark *)::after {
+   content: url('{{ "images/dev/dark_arrow_down.png" | relURL }}');
   }
 </style>

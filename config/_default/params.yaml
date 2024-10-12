@@ -1,0 +1,5 @@
+light_logo: "images/dark_logo.png"
+dark_logo: "images/light_logo.png"
+
+newsletter: 
+  enable: true

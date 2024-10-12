@@ -49,3 +49,11 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.swiper-pagination-bullet {
+  background-color: black !important;
+}
+
+.swiper-pagination-bullet:where(.dark, .dark *) {
+  background-color: white !important;
+}
