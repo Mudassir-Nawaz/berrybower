@@ -8,7 +8,7 @@ hero_section:
     details: "At VulneraWise, we believe that smart vulnerability management is the key to a secure future."
     button:
         label: "Schedule Demo"
-        url: /
+        url: "our-vision/"
     ########### EV Intelligence Content ###########
     ev_intelligence:
         title: "<span>Exploit & Vulnerability Intelligence</span>"
@@ -16,7 +16,7 @@ hero_section:
         details: "In an ever-changing threat landscape, timing is everything. VulneraWise delivers real-time updates on the vulnerabilities actively targeted by malicious actors. By integrating data from sources like Exploit Prediction Scoring System (EPSS) and Common Vulnerability Scoring System (CVSS) amongst others and applying our intelligence, our tool provides you with critical insights, allowing your security teams to identify and mitigate threats faster than ever before."
         button:
             label: "Schedule Demo"
-            url: /
+            url: "our-vision/"
 
 
 ########### EV Intelligence Boxes ###########
@@ -40,7 +40,7 @@ cv_priority:
     details: "Not all vulnerabilities are equal. With VulneraWise, you can identify which vulnerabilities require immediate attention based on both severity and the likelihood of exploitation mapped on your infrastructure. By focusing remediation efforts on high-risk vulnerabilities, we help you optimize your resources and improve your organization’s security posture. "
     button:
         label: "Schedule Deom"
-        url: /
+        url: "our-vision/"
     boxes:
         - icon: "images/turn.png"
           title: "Context-Driven Prioritization"

@@ -4,18 +4,10 @@ main:
     weight: 1
   - name: "Solutions"
     weight: 2
-  - name: "Web"
-    url: "/"
-    parent: "Solutions"
-    weight: 1
   - name: "Page"
     url: "solutions/"
     parent: "Solutions"
-    weight: 2
-  - name: "Desktop"
-    url: "/"
-    parent: "Solutions"
-    weight: 3
+    weight: 1
   - name: "Resources"
     url: "resources/"
     weight: 3

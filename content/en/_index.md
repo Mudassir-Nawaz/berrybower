@@ -11,19 +11,19 @@ hero_section:
       small_image: true
       button:
         label: "Schedule Demo"
-        url: /
+        url: "our-vision/"
     - title: "Prioritize what's critical for you with relevant <span>real-time</span> insights."
       details: "Focus on the most urgent risks with real-time, actionable insights tailored to your needs."
       image: "images/meter_n.png"
       button:
         label: "Schedule Demo"
-        url: /
+        url: "our-vision/"
     - title: "Identify current global exploitations of <span>vulnerabilities.</span>"
       details: "Stay informed on real-time global exploits targeting vulnerabilities right now."
       image: "images/globe_n.png"
       button:
         label: "Schedule Demo"
-        url: /
+        url: "our-vision/"
 
   mission:
     title: "Next-gen exploit intelligence<span>.</span>"

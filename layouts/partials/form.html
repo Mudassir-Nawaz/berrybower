@@ -1,0 +1,81 @@
+<form action="" class="w-full space-y-5 relative z-30 sm:pb-20 lg:pb-0">
+    <div class="grid grid-col-1 md:grid-cols-2 gap-5">
+        <div>
+            <label
+                for="firstName"
+                class="after:content-['*'] after:ml-0.5 after:text-red-500 font-poppins text-lg text-slate-700 dark:text-slate-300">
+                    First Name
+            </label>
+            <input
+                type="text"
+                placeholder="First Name"
+                id="firstName"
+                class="py-2 pl-5 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
+        </div>
+        <div>
+            <label
+                for="lastName"
+                class="after:content-['*'] after:ml-0.5 after:text-red-500 font-poppins text-lg text-slate-700 dark:text-slate-300">
+                    Last Name
+            </label>
+            <input
+                type="text"
+                placeholder="Last Name"
+                id="lastName"
+                class="py-2 pl-5 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
+        </div>
+    </div>
+    <div>
+        <label
+            for="companyName"
+            class="after:content-['*'] after:ml-0.5 after:text-red-500 font-poppins text-lg text-slate-700 dark:text-slate-300">
+                Company Name
+        </label>
+        <input
+            type="text"
+            placeholder="Company Name"
+            id="companyName"
+            class="py-2 pl-5 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
+    </div>
+    <div>
+        <label
+            for="email"
+            class="after:content-['*'] after:ml-0.5 after:text-red-500 font-poppins text-lg text-slate-700 dark:text-slate-300">
+                Email
+        </label>
+        <input
+            type="email"
+            placeholder="your@company.com"
+            id="email"
+            class="py-2 pl-3 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
+    </div>
+    <div>
+        <label
+            for="message"
+            class="after:content-['*'] after:ml-0.5 after:text-red-500 font-poppins text-lg text-slate-700 dark:text-slate-300">
+                Message
+        </label>
+        <textarea
+            name="your message"
+            id="message"
+            placeholder="Leave us a message..."
+            rows="6"
+            class="py-2 pl-3 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
+        </textarea>
+    </div>
+    <div>
+        <input type="checkbox" id="policies" class="bg-transparent">
+        <label
+            for="policies"
+            class="font-poppins text-lg text-slate-700 dark:text-slate-300">
+            You agree to our friendly <a href='{{ "policies/" | relURL }}' class="underline">privacy policy</a>.
+        </label>
+    </div>
+    <div>
+        <a
+            href=""
+            class="rounded-full bg-gradient-primary font-poppins block text-white text-lg py-3 text-center hover:scale-105 transition-transform duration-300">
+            Send Message
+        </a>
+    </div>
+</form>
