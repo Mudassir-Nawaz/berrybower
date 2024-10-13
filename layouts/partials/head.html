@@ -57,6 +57,34 @@
 
   // Add an event listener for changes in the user's OS preference
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', applyTheme);
+
+  // Tabs function
+  function showTab(tabId) {
+    const tabs = document.querySelectorAll(".tab");
+    const links = document.querySelectorAll(".tab-link");
+
+    // Hide all tabs
+    tabs.forEach((tab) => {
+      tab.classList.add("hidden");
+    });
+
+    // Reset all links
+    links.forEach((link) => {
+      link.classList.remove("bg-style");
+      link.classList.add("text-black", "dark:text-white", "bg-transparent");
+    });
+
+    // Show the selected tab
+    document.getElementById(tabId).classList.remove("hidden");
+    const activeLink = document.querySelector(`[data-tab="${tabId}"]`);
+    activeLink.classList.add("text-black", "bg-style");
+    activeLink.classList.remove("bg-transparent", "text-white", "dark:text-white");
+  }
+
+  // Initialize the first tab on page load
+  window.onload = function () {
+    showTab("monthlyBilling");
+  };
 </script>
 
 {{/* top styles */}}

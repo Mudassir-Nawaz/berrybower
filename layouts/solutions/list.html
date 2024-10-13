@@ -5,17 +5,17 @@
 <section class="h-full w-full bg-white dark:bg-slate-950">
     <div class="lg:h-[610px] relative flex justify-center items-center">
         <div class="absolute w-full h-full">
-            <div style="background-image: url('{{ " images/dev/top_shadow.png" | relURL }}');"
+            <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
                 class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
-            <div style="background-image: url('{{ " images/dev/dark_doted_layer.png" | relURL }}');"
+            <div style="background-image: url('{{ "images/dev/dark_doted_layer.png" | relURL }}');"
                 class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block">
             </div>
-            <div style="background-image: url('{{ " images/dev/doted_layer.png" | relURL }}');"
+            <div style="background-image: url('{{ "images/dev/doted_layer.png" | relURL }}');"
                 class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 dark:hidden">
             </div>
-            <div style="background-image: url('{{ " images/dev/dark_shadow.png" | relURL }}')"
+            <div style="background-image: url('{{ "images/dev/dark_shadow.png" | relURL }}')"
                 class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block"></div>
-            <div style="background-image: url('{{ " images/dev/light_shadow.png" | relURL }}')"
+            <div style="background-image: url('{{ "images/dev/light_shadow.png" | relURL }}')"
                 class="w-full h-full bg-no-repeat bg-top-center absolute opacity-20 dark:hidden"></div>
         </div>
 
@@ -35,21 +35,26 @@
                             {{ .details | markdownify }}
                         </p>
                         {{ with .button }}
-                        <a href="{{ .url | relURL }}"
-                            class="text-black dark:text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 transition-all border-gradient-primary font-poppins">
-                            <span
-                                class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
-                                .label }}</span>
-                        </a>
+                        <div
+                            class="hover:bg-gradient-primary rounded-3xl after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-40 text-center">
+                            <a href="{{ .url | relURL }}"
+                                class="text-black dark:text-white font-medium text-sm font-poppins relative z-10">
+                                <span
+                                    class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
+                                    .label }}</span>
+                            </a>
+                        </div>
                         {{ end }}
                     </div>
                 </div>
-{{ end }}
-{{ end }}
+                {{ end }}
+                {{ end }}
                 <div class="w-full lg:w-1/2 mx-auto" data-aos="zoom-in">
                     <div class="animated">
-                        <img src='{{ "images/dev/light_editor_header.png" | relURL }}' alt="" class="dark:hidden w-full">
-                        <img src='{{ "images/dev/dark_editor_header.png" | relURL }}' alt="" class="hidden dark:block w-full">
+                        <img src='{{ "images/dev/light_editor_header.png" | relURL }}' alt=""
+                            class="dark:hidden w-full">
+                        <img src='{{ "images/dev/dark_editor_header.png" | relURL }}' alt=""
+                            class="hidden dark:block w-full">
                         <div class="h-96 overflow-scroll bg-blue">
                             {{ .Content }}
                         </div>
@@ -70,12 +75,15 @@
                     {{ .subtitle | markdownify }}
                 </h3>
                 {{ with .button }}
-                <a href="{{ .url | relURL }}"
-                    class="text-black dark:text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 transition-all border-gradient-primary font-poppins">
-                    <span
-                        class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
-                        .label }}</span>
-                </a>
+                <div
+                    class="hover:bg-gradient-primary rounded-3xl after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-40 text-center">
+                    <a href="{{ .url | relURL }}"
+                        class="text-black dark:text-white font-medium text-sm font-poppins relative z-10">
+                        <span
+                            class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
+                            .label }}</span>
+                    </a>
+                </div>
                 {{ end }}
             </div>
             {{ with .details }}
@@ -98,7 +106,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-content-between" data-aos="zoom-in">
             {{ range . }}
             <div class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 relative overflow-hidden animated">
-                <div style="background-image: url('{{ " images/dev/dark_box_lines.png" | relURL }}');"
+                <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
                     class="w-full h-full absolute top-0 left-0 z-0"></div>
                 <div class="space-y-3 z-30 relative">
                     <img src='{{ .icon | relURL }}' alt="">
@@ -131,12 +139,15 @@
                         {{ .subtitle | markdownify }}
                     </h3>
                     {{ with .button }}
-                    <a href="{{ .url | relURL }}"
-                        class="text-black dark:text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 transition-all border-gradient-primary font-poppins">
-                        <span
-                            class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
-                            .label }}</span>
-                    </a>
+                    <div
+                        class="hover:bg-gradient-primary rounded-3xl after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-40 text-center">
+                        <a href="{{ .url | relURL }}"
+                            class="text-black dark:text-white font-medium text-sm font-poppins relative z-10">
+                            <span
+                                class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
+                                .label }}</span>
+                        </a>
+                    </div>
                     {{ end }}
                 </div>
                 {{ with .details }}
@@ -153,7 +164,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 place-content-between mt-10 lg:mt-20" data-aos="zoom-in">
             {{ range . }}
             <div class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 relative overflow-hidden animated">
-                <div style="background-image: url('{{ " images/dev/dark_box_lines.png" | relURL }}');"
+                <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
                     class="w-full h-full absolute top-0 left-0 z-0"></div>
                 <div class="space-y-3 z-30 relative">
                     <img src='{{ .icon | relURL }}' alt="">
