@@ -7,3 +7,9 @@ baseURL: "https://mudassir-nawaz.github.io/berrybower/" # Website URL
 
 build:
   writeStats: true
+
+markup:
+  highlight:
+    style: rrt
+    noClasses: false
+    lineNos: true

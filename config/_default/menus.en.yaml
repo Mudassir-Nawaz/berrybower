@@ -8,8 +8,8 @@ main:
     url: "/"
     parent: "Solutions"
     weight: 1
-  - name: "App"
-    url: "/"
+  - name: "Page"
+    url: "solutions/"
     parent: "Solutions"
     weight: 2
   - name: "Desktop"
