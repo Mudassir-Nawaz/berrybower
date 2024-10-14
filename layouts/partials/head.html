@@ -57,7 +57,11 @@
 
   // Add an event listener for changes in the user's OS preference
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', applyTheme);
-
+</script>
+{{ $current := .RelPermalink }}
+{{ $pricing := "our-vision/" | relURL }}
+{{ if eq $pricing $current }}
+<script>
   // Tabs function
   function showTab(tabId) {
     const tabs = document.querySelectorAll(".tab");
@@ -86,6 +90,7 @@
     showTab("monthlyBilling");
   };
 </script>
+{{ end }}
 
 {{/* top styles */}}
 <style>

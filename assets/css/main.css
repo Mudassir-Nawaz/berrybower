@@ -68,6 +68,19 @@
   background-color: white !important;
 }
 
+.sidebar-container li>div {
+  height: 0;
+}
+
+.sidebar-container li.open>div {
+  height: auto;
+  padding-top: .25rem;
+}
+
+.sidebar-container li.open>a>.hextra-sidebar-collapsible-button {
+  transform: rotate(90deg);
+}
+
 code {
   font-family: "Roboto Mono", monospace;
 }

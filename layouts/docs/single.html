@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="h-full w-full bg-white dark:bg-slate-950">
+  <div class="lg:container px-5 sm:px-0 lg:px-16 mx-auto">
+    <div class='mx-auto flex pt-20'>
+      {{ partial "sidebar.html" (dict "context" .) }}
+      {{ partial "toc.html" . }}
+      <article
+        class="w-full break-words flex min-h-[calc(100vh-var(--navbar-height))] min-w-0 justify-center pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+        <main>
+          <div class="prose prose-slate dark:prose-invert prose-pre:whitespace-pre-wrap prose-pre:break-words prose-pre:px-0">
+            {{ if .Title }}<h1>{{ .Title }}</h1>{{ end }}
+            {{ .Content }}
+          </div>
+        </main>
+      </article>
+    </div>
+  </div>
+</section>
+{{ end }}
