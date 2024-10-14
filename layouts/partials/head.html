@@ -59,7 +59,7 @@
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', applyTheme);
 </script>
 {{ $current := .RelPermalink }}
-{{ $pricing := "our-vision/" | relURL }}
+{{ $pricing := "pricing/" | relURL }}
 {{ if eq $pricing $current }}
 <script>
   // Tabs function
