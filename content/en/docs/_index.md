@@ -1,10 +1,10 @@
 ---
 linkTitle: "Documentation"
-title: Introduction
+title: Documentation
 ---
 
 {{< cards >}}
-{{< card link="getting-started" title="Getting Started" subtitle="Edit content/en/getting-started.md to see changes" >}}
-{{< card link="dummy" title="Test Docs 1" subtitle="Edit content/en/dummy/ to see changes" >}}
-{{< card link="new" title="Test Docs 2" subtitle="Edit content/en/new/ to see changes" >}}
+{{< card link="getting-started" title="Getting Started" subtitle="Edit content/en/getting-started/ to see changes" >}}
+{{< card link="api" title="API" subtitle="Edit content/en/api/ to see changes" >}}
+{{< card link="products" title="Products" subtitle="Edit content/en/products/ to see changes" >}}
 {{< /cards >}}

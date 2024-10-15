@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors');
+const theme = require('tailwindcss/defaultTheme');
 const bgPositions = require('tailwindcss/defaultTheme')
 module.exports = {
   darkMode: 'selector',
@@ -29,12 +30,25 @@ module.exports = {
       'top': 'top',
     },
     fontFamily: {
-      poppins: ['Poppins', 'sans-serif']
+      poppins: ['Poppins', 'sans-serif'],
+      'roboto-mono': ['Roboto Mono', 'monospace']
     },
     extend: {
       backgroundImage: {
         'gradient-primary': 'linear-gradient(to right, #FFCF71, #2376DD)',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            '*:not(span)': {
+              fontFamily: theme('fontFamily.poppins').join(", "),
+            },
+            'span': {
+              fontFamily: theme('fontFamily.roboto-mono').join(", "),
+            }
+          },
+        },
+      }),
     },
   },
   plugins: [

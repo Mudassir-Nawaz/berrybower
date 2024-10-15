@@ -29,7 +29,7 @@ footer:
     url: "about/"
     weight: 3
   - name: "Contact"
-    url: "contact/"
+    url: "our-vision/"
     weight: 4
   - name: "Privacy Policy"
     url: "policies/"
@@ -48,7 +48,7 @@ solutions:
 
 resources:
   - name: "API"
-    url: "api/"
+    url: "docs/api/"
     weight: 1
   - name: "Documentation"
     url: "docs/"
