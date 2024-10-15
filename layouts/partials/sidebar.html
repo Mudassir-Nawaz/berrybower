@@ -3,6 +3,8 @@
 {{- $disableSidebar := .disableSidebar | default false -}}
 {{- $displayPlaceholder := .displayPlaceholder | default false -}}
 
+{{- $sidebarClass := cond $disableSidebar (cond $displayPlaceholder "md:hidden xl:block" "md:hidden") "md:sticky" -}}
+
 {{- $navRoot := cond (eq site.Home.Type "docs") site.Home $context.FirstSection -}}
 {{- $pageURL := $context.RelPermalink -}}
 
@@ -13,12 +15,12 @@
 {{- end -}}
 
 
-<div class="mobile-menu-overlay [transition:background-color_1.5s_ease] fixed inset-0 z-10 hidden"></div>
-<aside class="sidebar-container flex flex-col print:hidden md:top-16 md:shrink-0 md:w-64 md:self-start max-md:[transform:translate3d(0,-100%,0)]">
-  <div class="hextra-scrollbar overflow-y-auto overflow-x-hidden p-4 grow md:h-[calc(100vh-var(--navbar-height)-var(--menu-height))]">
+<div class="mobile-menu-overlay [transition:background-color_1.5s_ease] fixed inset-0 z-10 hidden opacity-50"></div>
+<aside class="sidebar-container sm:max-w-64 flex flex-col print:hidden md:shrink-0 md:w-64 md:self-start max-md:[transform:translate3d(-100%,0,0)] {{ $sidebarClass }}">
+  <div class="hextra-scrollbar overflow-y-auto pt-28 md:pt-0 overflow-x-hidden p-4 grow md:h-[calc(100vh-var(--navbar-height)-var(--menu-height))]">
     <ul class="flex flex-col gap-1 md:hidden">
       <!-- Nav -->
-      {{ template "sidebar-main" (dict "context" site.Home "pageURL" $pageURL "page" $context "toc" true) -}}
+      {{ template "sidebar-main" (dict "context" $navRoot "page" $context  "pageURL" $pageURL) }}
       {{ template "sidebar-footer" }}
     </ul>
 

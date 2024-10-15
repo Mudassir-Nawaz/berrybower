@@ -1,5 +1,3 @@
-const { Autoplay } = require("swiper/modules");
-
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownButton = document.getElementById("dropdown-button");
   const dropdownMenu = document.getElementById("dropdown-menu");
@@ -8,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const mobileMenu = document.getElementById("mobile-menu-2");
   const header = document.getElementById("header");
+  const sidebarContainer = document.querySelector('.sidebar-container');
+  const sidebarToggle  = document.querySelector('.open-sidebar');
+  const overlay = document.querySelector('.mobile-menu-overlay');
   let isDropdownOpen = false;
 
   // dropdown function
@@ -150,4 +151,41 @@ document.addEventListener("DOMContentLoaded", function () {
       top: yDistance - yOffset
     });
   };
+
+  const overlayClasses = ['fixed', 'inset-0', 'z-10', 'bg-white', 'dark:bg-slate-950', 'opacity-50'];
+  overlay.classList.add('bg-transparent');
+  overlay.classList.remove("hidden", ...overlayClasses);
+
+  function toggleSidebar() {
+    sidebarContainer.classList.toggle('max-md:[transform:translate3d(-100%,0,0)]');
+    sidebarContainer.classList.toggle('max-md:[transform:translate3d(0,0,0)]');
+
+    // When the menu is open, we want to prevent the body from scrolling
+    document.body.classList.toggle('overflow-hidden');
+    document.body.classList.toggle('md:overflow-auto');
+  };
+
+  sidebarToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleSidebar();
+
+    if (overlay.classList.contains('bg-transparent')) {
+      // Show the overlay
+      overlay.classList.add(...overlayClasses);
+      overlay.classList.remove('bg-transparent');
+    } else {
+      // Hide the overlay
+      overlay.classList.remove(...overlayClasses);
+      overlay.classList.add('bg-transparent');
+    };
+  });
+
+  overlay.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleSidebar();
+
+    // Hide the overlay
+    overlay.classList.remove(...overlayClasses);
+    overlay.classList.add('bg-transparent');
+  });
 });
