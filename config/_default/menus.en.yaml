@@ -9,8 +9,15 @@ main:
     parent: "Solutions"
     weight: 1
   - name: "Resources"
-    url: "resources/"
     weight: 3
+  - name: "Documentation"
+    url: "docs/"
+    parent: "Resources"
+    weight: 1
+  - name: "API"
+    url: "docs/api/"
+    parent: "Resources"
+    weight: 2
   - name: "Pricing"
     url: "pricing/"
     weight: 4
