@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const dropdownButton = document.getElementById("dropdown-button");
-  const dropdownMenu = document.getElementById("dropdown-menu");
   const menuToggle = document.querySelector(
     '[data-collapse-toggle="mobile-menu-2"]'
   );
@@ -9,27 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const sidebarContainer = document.querySelector('.sidebar-container');
   const sidebarToggle  = document.querySelector('.open-sidebar');
   const overlay = document.querySelector('.mobile-menu-overlay');
-  let isDropdownOpen = false;
-
-  // dropdown function
-  function toggleDropdown() {
-    isDropdownOpen = !isDropdownOpen;
-    if (isDropdownOpen) {
-      dropdownMenu.classList.remove("hidden");
-    } else {
-      dropdownMenu.classList.add("hidden");
-    }
-  }
-  dropdownButton.addEventListener("click", toggleDropdown);
-  window.addEventListener("click", (event) => {
-    if (
-      !dropdownButton.contains(event.target) &&
-      !dropdownMenu.contains(event.target)
-    ) {
-      dropdownMenu.classList.add("hidden");
-      isDropdownOpen = false;
-    }
-  });
 
   // Menu function
   menuToggle.addEventListener("click", function () {
