@@ -7,12 +7,12 @@
       <a href="{{ .Site.BaseURL | safeURL }}" class="flex items-center">
         <img
           src='{{ .Site.Params.light_logo | relURL }}'
-          class="mr-3 h-6 sm:h-7 dark:hidden"
+          class="mr-3 h-6 sm:h-8 dark:hidden"
           alt="{{ .Site.Title }} Logo"
         />
         <img
           src='{{ .Site.Params.dark_logo | relURL }}'
-          class="mr-3 h-6 sm:h-7 hidden dark:block"
+          class="mr-3 h-6 sm:h-8 hidden dark:block"
           alt="{{ .Site.Title }} Logo"
         />
       </a>
@@ -24,7 +24,7 @@
         {{ with .Site.Params.header_login_btn }}
         <a
           href="{{ .url | relURL }}"
-          class="hidden lg:block text-black dark:text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 hover:scale-105 transition-all mr-2 border-gradient-primary font-poppins"
+          class="hidden lg:block text-black dark:text-white hover:bg-style hover:text-black hover:after:p-0 rounded-3xl after:rounded-3xl font-medium text-sm px-5 py-3 hover:scale-105 transition-all mr-2 border-gradient-primary font-poppins"
           >{{ .label }}</a
         >
         {{ end }}
@@ -76,13 +76,15 @@
         <ul
           class="flex flex-col mt-4 lg:flex-row lg:space-x-8 lg:mt-0 justify-center items-center"
         >
-          {{ $current := . }} {{ range site.Menus.main }} {{ $menu := .URL |
-          relLangURL }} {{ $page := $current.RelPermalink | relLangURL }} {{
-          $active := eq $menu $page }} {{ if .HasChildren }}
+          {{ $current := . }} {{ range site.Menus.main }}
+          {{ $menu := .URL | absURL }}
+          {{ $page := $current.RelPermalink | absURL }}
+          {{ $active := eq $menu $page }}
+          {{ if .HasChildren }}
           <div class="group relative inline-block text-left w-full">
             <button
               id="dropdown-button"
-              class="py-2 px-4 text-black dark:text-white hover-main-gradient rounded lg:bg-transparent lg:text-primary-700 lg:p-0 font-poppins after-down-arrow after-down-arrow-dark w-full flex text-start after:absolute after:right-3 lg:after:right-0 lg:after:static lg:after:ml-1 transition-transform duration-500"
+              class="py-2 px-4 text-main font-normal dark:text-slate-100 hover:text-slate-950 dark:hover:text-white rounded lg:bg-transparent lg:text-primary-700 lg:p-0 font-poppins after-down-arrow after-down-arrow-dark w-full flex text-start after:absolute after:right-3 lg:after:right-0 lg:after:static lg:after:ml-1 transition-transform duration-500 tracking-wider"
             >
               {{ .Name }}
             </button>
@@ -97,9 +99,12 @@
                 aria-labelledby="dropdown-button"
               >
                 {{ range .Children }}
+                {{ $menu := .URL | absURL }}
+                {{ $page := $current.RelPermalink | absURL }}
+                {{ $active := eq $menu $page }}
                 <a
                   href="{{ .URL | absURL }}"
-                  class="w-full lg:w-auto text-white block px-4 py-1 mb-1 text-sm rounded-md hover-main-gradient"
+                  class="w-full lg:w-auto text-slate-100 hover:text-slate-300 transition-colors block px-4 py-1 mb-1 text-sm rounded-md tracking-wider {{ if $active }}font-bold{{ else }}font-normal{{ end }}"
                   role="menuitem"
                   >{{ .Name }}</a
                 >
@@ -111,7 +116,7 @@
           <li class="w-full">
             <a
               href="{{ .URL | absURL }}"
-              class="{{ if $active }}font-medium{{ else }}font-normal{{end }} block py-2 px-4 text-black dark:text-white hover-main-gradient rounded lg:bg-transparent lg:text-primary-700 lg:p-0 font-poppins"
+              class="{{ if $active }}font-bold{{ else }}font-normal{{ end }} block py-2 px-4 text-slate-950 hover:text-slate-800 dark:text-slate-100 dark:hover:text-slate-300 transition-colors rounded lg:bg-transparent lg:text-primary-700 lg:p-0 font-poppins tracking-wider"
               >{{ .Name }}</a
             >
           </li>

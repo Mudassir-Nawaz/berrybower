@@ -2,12 +2,11 @@
 {{/* hero section */}}
 {{ with .Params.hero_section }}
 {{ if .enable }}
-<section class="h-full w-full bg-white dark:bg-slate-950">
-  <div class="lg:h-[610px] relative flex justify-center items-center swiper heroSwiper">
+<section class="h-full w-full bg-slate-100 dark:bg-main">
+  <div class="relative flex justify-center items-center swiper heroSwiper">
     <div class="absolute w-full h-full">
-      <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
-        class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
-      <div style="background-image: url('{{ "images/dev/dark_doted_layer.png" | relURL }}');"
+      {{ $dark_doted := "images/dev/dark_doted_layer.png" | relURL }}
+      <div style="background-image: linear-gradient(to bottom, transparent, #05101a 100%), url('{{ $dark_doted }}');"
         class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block">
       </div>
       <div style="background-image: url('{{ "images/dev/doted_layer.png" | relURL }}');"
@@ -16,32 +15,36 @@
         class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block"></div>
       <div style="background-image: url('{{ "images/dev/light_shadow.png" | relURL }}')"
         class="w-full h-full bg-no-repeat bg-top-center absolute opacity-20 dark:hidden"></div>
+      <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
+        class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
     </div>
 
-    <div class="container z-40 mx-auto mt-20 lg:mt-48 swiper-wrapper">
+    <div class="swiper-wrapper relative z-30 lg:h-[610px] 2xl:h-[700px] ">
       {{ range .slides }}
-      <div class="swiper-slide">
+      <div class="swiper-slide {{ if .top_space }}mt-40{{ else }}mt-32{{ end }} h-full">
         <div
-          class="flex flex-col justify-center items-center gap-7 lg:gap-0 lg:flex-row px-5 sm:px-10 lg:px-16 xl:px-0 xl:max-w-6xl 2xl:max-w-[90rem] xl:mx-auto">
+          class="flex flex-col h-full justify-center items-center gap-7 lg:gap-16 lg:flex-row px-5 sm:px-10 lg:px-16 xl:px-0 xl:max-w-6xl 2xl:max-w-[90rem] xl:mx-auto">
           <div class="lg:w-1/2">
             <div
-              class="hidden lg:block rotate-45 size-60 bg-white dark:bg-slate-950 opacity-50 absolute top-40 left-36 -z-10">
+              class="hidden lg:block rotate-45 size-60 bg-slate-100 dark:bg-main opacity-50 absolute top-32 left-36 -z-10">
             </div>
             <div class="space-y-3 z-50" data-aos="zoom-in">
               <h3
                 class="font-poppins font-bold text-3xl lg:text-5xl text-slate-950 dark:text-white main-heading break-words">
                 {{ .title | safeHTML }}
               </h3>
-              <p class="text-slate-700 dark:text-slate-300 font-poppins text-xl pb-5">
+              <p class="text-slate-700 dark:text-slate-300 font-poppins text-xl">
                 {{ .details | markdownify }}
               </p>
               {{ with .button }}
-              <div class="hover:bg-gradient-primary rounded-3xl after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-40 text-center">
+              <div class="rounded-3xl hover:bg-style hover:after:p-0 group after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-44 text-center">
                 <a href="{{ .url | relURL }}"
-                  class="text-black dark:text-white font-medium text-sm font-poppins relative z-10">
-                  <span
-                    class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
-                    .label }}</span>
+                  class="text-black dark:text-white group-hover:text-black font-medium text-sm font-poppins relative z-10">
+                  <span class="flex justify-center items-center gap-2">
+                  {{ .label }}
+                  <img src='{{ "images/dev/dark_right_arrow.png" | relURL  }}' alt="" class="dark:hidden group-hover:block">
+                  <img src='{{ "images/dev/light_right_arrow.png" | relURL  }}' alt="" class="hidden dark:block group-hover:hidden">
+                  </span>
                 </a>
               </div>
               {{ end }}
@@ -49,27 +52,41 @@
           </div>
           <div class="lg:w-1/2 mx-auto flex justify-center items-center" data-aos="zoom-in">
             <img src='{{ .image  | relURL }}' alt="{{ .Site.Title }} - {{ .title | markdownify }}"
-              class="md:shrink-0 {{ if .small_image }}sm:w-3/4 xl:w-11/12{{ end }} xl:w-3/4 animated" />
+              class="md:shrink-0 {{ if .big_image }}w-[120%]{{ else }}xl:w-5/6{{ end }} animated" />
           </div>
         </div>
       </div>
       {{ end }}
     </div>
-  </div>
-  {{ with .mission }}
-  <div class="container px-5 sm:px-10 lg:px-16 mx-auto flex flex-col lg:flex-row justify-between gap-5 lg:gap-0 py-10"
-    data-aos="zoom-in">
-    <h3 class="font-poppins font-bold text-3xl lg:text-5xl text-black dark:text-white lg:w-1/3 main-heading">
-      {{ .title | safeHTML }}
-    </h3>
-    {{ with .details }}
-    <div class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-1 lg:rotate-12 lg:py-5 bg-slate-800 dark:bg-style"></div>
+    {{ with .mission }}
+    <div
+      style="background: linear-gradient(to bottom, transparent, #05101a 100%)"
+      class="hidden dark:flex container mx-auto px-5 sm:px-10 lg:px-16 flex-col lg:flex-row justify-between gap-5 lg:gap-0 py-20">
+      <h3 class="font-poppins font-bold text-3xl lg:text-5xl text-black dark:text-white lg:w-1/3">
+        {{ .title | safeHTML }}
+      </h3>
+      {{ with .details }}
+      <div class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-[.5] lg:rotate-12 bg-slate-800 dark:bg-style"></div>
+      {{ end }}
+      <p class="text-slate-700 dark:text-slate-400 font-poppins text-lg lg:w-1/2">
+        {{ .details | markdownify }}
+      </p>
+    </div>
+    <div
+      style="background: linear-gradient(to bottom, transparent, #f8fafc 100%)"
+      class="dark:hidden container mx-auto px-5 sm:px-10 lg:px-16 flex flex-col lg:flex-row justify-between gap-5 lg:gap-0 py-20">
+      <h3 class="font-poppins font-bold text-3xl lg:text-5xl text-black dark:text-white lg:w-1/3">
+        {{ .title | safeHTML }}
+      </h3>
+      {{ with .details }}
+      <div class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-[.5] lg:rotate-12 bg-slate-800 dark:bg-style"></div>
+      {{ end }}
+      <p class="text-slate-700 dark:text-slate-400 font-poppins text-lg lg:w-1/2">
+        {{ .details | markdownify }}
+      </p>
+    </div>
     {{ end }}
-    <p class="text-slate-700 dark:text-slate-400 font-poppins text-lg lg:w-1/2">
-      {{ .details | markdownify }}
-    </p>
   </div>
-  {{ end }}
 </section>
 {{ end }}
 {{ end }}
@@ -78,11 +95,11 @@
 {{/* news section */}}
 {{ with .Params.news_section }}
 {{ if .enable }}
-<section class="w-full h-full bg-white dark:bg-slate-950">
-  <div class="container lg:max-w-full mx-auto px-5 sm:px-10 lg:px-0 pb-10 lg:pt-10">
+<section class="w-full h-full bg-slate-100 dark:bg-main">
+  <div class="container lg:max-w-full mx-auto px-5 sm:px-10 lg:px-0 lg:py-20">
     <div class="swiper mySwiper">
-      <div class="lg:container lg:mx-auto lg:px-16 md:flex md:justify-between" data-aos="zoom-in">
-        <h3 class="font-poppins font-semibold text-3xl lg:text-5xl text-black dark:text-slate-200 main-heading">
+      <div class="lg:container lg:mx-auto lg:px-16 md:flex md:justify-between">
+        <h3 class="font-poppins font-semibold text-3xl lg:text-[46px] text-black dark:text-slate-200 main-heading">
           Latest Vulnerabilities
         </h3>
         <div class="hidden md:flex gap-3">
@@ -98,12 +115,12 @@
           </div>
         </div>
       </div>
-      <div class="my-5 swiper-wrapper lg:gap-3" data-aos="zoom-in">
-        <div class="hidden lg:block min-w-[10%] opacity-0"></div>
+      <div class="my-5 swiper-wrapper lg:gap-3">
+        <div class="hidden lg:block min-w-[calc(7%)] min-[1100px]:min-w-[calc(10%)] min-[1200px]:min-w-[calc(15%)] xl:min-w-[calc(5%)] min-[1400px]:min-w-[calc(10%)] min-[1500px]:min-w-[calc(12%)] 2xl:min-w-[calc(5%)] min-[1600px]:min-w-[calc(7%)] min-[1700px]:min-w-[calc(10%)] min-[1800px]:min-w-[calc(12%)] min-[1900px]:min-w-[calc(15%)] min-[2000px]:min-w-[calc(18%)] min-[2300px]:min-w-[calc(20%)] min-[2500px]:min-w-[calc(23%)]"></div>
         {{ with .cards }}
         {{ range $i, $p := . }}
         <div
-          class="rounded-3xl p-5 sm:p-10 bg-white dark:bg-blue border dark:border-slate-800 swiper-slide h-full lg:max-w-[390px] relative overflow-hidden animated">
+          class="rounded-3xl p-5 sm:p-10 bg-white dark:bg-blue border dark:border-slate-800 swiper-slide h-full lg:max-w-[calc(29%)] min-[1100]:max-w-[calc(27%)] xl:max-w-[calc(30%)] relative overflow-hidden animated">
           <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
             class="w-full h-full absolute top-0 left-0 hidden dark:block"></div>
           <div style="background-image: url('{{ "images/dev/light_box_lines.png" | relURL }}');"
@@ -158,31 +175,32 @@
 {{/* cards section */}}
 {{ with .Params.services_section }}
 {{ if .enable }}
-<section class="w-full h-full bg-white dark:bg-slate-950">
+<section class="w-full h-full bg-slate-100 dark:bg-main">
   <div class="container mx-auto px-5 sm:px-10 lg:px-16 py-10 pt-0">
     <div class="space-y-5 lg:space-y-10">
       {{ range $i, $p := .cards }}
-      <div class="rounded-3xl flex justify-center items-center shadow-lg bg-white dark:bg-blue overflow-hidden"
-        data-aos="zoom-in">
+      <div class="rounded-3xl flex justify-center items-center shadow-lg bg-white dark:bg-blue overflow-hidden">
         <div
           class="flex flex-col {{ if not (modBool $i 2) }}lg:flex-row-reverse{{ else }}lg:flex-row{{ end }} gap-5 lg:gap-0 justify-between relative">
           <img src='{{ "images/dev/services-layer.png"  | relURL }}' alt=""
-            class="w-full h-full absolute left-0 top-0 {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
-          <div class="space-y-3 lg:w-1/2 p-5 md:p-14 relative">
+            class="w-full h-full absolute {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
+          <div class="lg:w-1/2 p-5 md:p-14 relative">
             <img src='{{ "images/dev/services-circles.png"  | relURL }}' alt=""
               class="w-full h-full absolute top-0 left-0 {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
-            <h3 class="font-poppins font-bold text-3xl lg:text-[42px] text-black dark:text-slate-400 main-heading">
-              {{ $p.title | safeHTML }}
-            </h3>
-            <p class="font-poppins text-lg lg:text-xl text-slate-700 dark:text-slate-400">
-              {{ $p.details | markdownify }}
-            </p>
+            <div class="space-y-5 relative z-20">
+              <h3 class="font-poppins font-bold text-3xl lg:text-[42px] text-black dark:text-slate-400 main-heading">
+                {{ $p.title | safeHTML }}
+              </h3>
+              <p class="font-poppins text-lg lg:text-xl text-slate-700 dark:text-slate-400">
+                {{ $p.details | markdownify }}
+              </p>
+            </div>
           </div>
           <div
-            class="lg:w-1/2 h-40 lg:h-full bg-contain bg-no-repeat {{ if not (modBool $i 2) }}bg-left{{ else }}bg-right{{ end }} lg:bg-none"
+            class="lg:w-1/2 h-40 lg:h-[26rem] bg-contain lg:bg-cover bg-no-repeat filter grayscale {{ if not (modBool $i 2) }}bg-left{{ else }}bg-right{{ end }} lg:bg-none"
             style="background-image:url('{{ $p.image | relURL }}')">
-            <img src='{{ $p.image  | relURL }}' alt="{{ $.Site.Title}} {{ .title | markdownify }}"
-              class="hidden lg:inline-block" />
+            {{/*  <img src='{{ $p.image  | relURL }}' alt="{{ $.Site.Title}} {{ .title | markdownify }}"  */}}
+              {{/*  class="hidden lg:inline-block filter grayscale" />  */}}
           </div>
         </div>
       </div>
@@ -195,21 +213,21 @@
 {{/* end cards */}} {{/* blog section */}}
 {{ with .Params.blog_section }}
 {{ if .enable }}
-<section class="w-full h-full bg-white dark:bg-slate-950">
-  <div class="container mx-auto px-5 sm:px-10 lg:px-16 py-10">
-    <div class="flex flex-wrap gap-y-4 gap-2 justify-between" data-aos="zoom-in">
+<section class="w-full h-full bg-slate-100 dark:bg-main">
+  <div class="container mx-auto px-5 sm:px-10 lg:px-16 py-20">
+    <div class="flex flex-wrap gap-y-4 gap-2 justify-between pb-10">
       <h3 class="font-poppins font-semibold text-3xl lg:text-5xl text-black dark:text-slate-200">
         Our Blog
       </h3>
-      <div class="hover:bg-gradient-primary rounded-3xl after:rounded-3xl px-5 py-3 hover:scale-105 transition-all border-gradient-primary">
+      <div class="rounded-3xl flex justify-center items-center hover:bg-style group hover:text-black hover:after:p-0 after:rounded-3xl px-9 py-1 hover:scale-105 transition-all border-gradient-primary">
         <a href="#"
-          class="text-black dark:text-white font-medium text-sm font-poppins relative z-10">View
+          class="text-black dark:text-white font-medium group-hover:text-black text-sm font-poppins relative z-10">View
           all Blog posts</a>
       </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5" data-aos="zoom-in">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
       {{ range .cards }}
-      <a href="" class="space-y-3">
+      <a href="" class="space-y-5">
         {{/* <img src='{{ .image | relURL }}' alt="{{ site.Title }} {{ .Page.Title }}"
           class="rounded-t-xl object-cover" /> */}}
         <div style="background-image: url('{{ .image | relURL }}');"
@@ -231,7 +249,7 @@
 {{ end }}
 {{ end }}
 {{/* end blog */}}
-<div class="sm:-mt-40 bg-white dark:bg-slate-950">
+<div class="sm:-mt-52 bg-slate-100 dark:bg-main">
   <img src='{{ "images/dev/bottom_layer.png" | relURL }}' alt="" class="container mx-auto w-full" />
 </div>
 {{ end }}

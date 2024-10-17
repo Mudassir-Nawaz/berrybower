@@ -4,7 +4,12 @@ const theme = require('tailwindcss/defaultTheme');
 const bgPositions = require('tailwindcss/defaultTheme')
 module.exports = {
   darkMode: 'selector',
-  content: ["./layouts/**/*.html", "./layouts/*.html"],
+  content: [
+    "./layouts/**/*.html",
+    "./layouts/*.html",
+    "./content/**/*.md",
+    "./content/*.md"
+  ],
   theme: {
     colors: {
       ...colors,
@@ -15,7 +20,8 @@ module.exports = {
       'blue': '#091826',
       'off-white': '#F4F4F4',
       'warning': '#F59E0B',
-      'danger': '#F43F5E'
+      'danger': '#F43F5E',
+      main: '#05101A'
     },
     backgroundPosition: {
       'top-center': 'top center',

@@ -4,10 +4,14 @@ main:
     weight: 1
   - name: "Solutions"
     weight: 2
-  - name: "Page"
-    url: "solutions/"
+  - name: "Exploit and Vulnerability Intelligence"
+    url: "solutions/#exploit_&_vulnerability_intelligence"
     parent: "Solutions"
     weight: 1
+  - name: "Critical Vulnerability Prioritization"
+    url: "solutions/#critical_vulnerability_prioritization"
+    parent: "Solutions"
+    weight: 2
   - name: "Resources"
     weight: 3
   - name: "Documentation"

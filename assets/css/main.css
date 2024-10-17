@@ -58,7 +58,7 @@
   position: absolute;
   inset: 0;
   padding: 2px;
-  background: linear-gradient(to right, #ffcf71, #2376dd) border-box;
+  background: linear-gradient(to bottom right, #ffcf71, #2376dd) border-box;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);

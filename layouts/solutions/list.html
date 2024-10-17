@@ -2,12 +2,12 @@
 {{/* hero section */}}
 {{ with .Params.hero_section }}
 {{ if .enable }}
-<section class="h-full w-full bg-white dark:bg-slate-950">
-    <div class="lg:h-[610px] relative flex justify-center items-center">
+<section
+    class="h-full w-full bg-slate-100 dark:bg-main">
+    <div class="relative flex justify-center items-center">
         <div class="absolute w-full h-full">
-            <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
-                class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
-            <div style="background-image: url('{{ "images/dev/dark_doted_layer.png" | relURL }}');"
+            {{ $dark_doted := "images/dev/dark_doted_layer.png" | relURL }}
+            <div style="background-image: linear-gradient(to bottom, transparent, #05101a 100%), url('{{ $dark_doted }}');"
                 class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block">
             </div>
             <div style="background-image: url('{{ "images/dev/doted_layer.png" | relURL }}');"
@@ -17,31 +17,37 @@
                 class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block"></div>
             <div style="background-image: url('{{ "images/dev/light_shadow.png" | relURL }}')"
                 class="w-full h-full bg-no-repeat bg-top-center absolute opacity-20 dark:hidden"></div>
+            <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
+                class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
         </div>
 
         <div class="container z-40 mx-auto mt-20 lg:mt-32">
             <div
                 class="flex flex-col justify-center items-center gap-7 lg:flex-row px-5 sm:px-10 lg:px-16 xl:px-0 xl:max-w-6xl 2xl:max-w-[90rem] xl:mx-auto">
-                <div class="lg:w-1/2">
+                <div class="lg:w-1/2 xl:max-w-[35rem]">
                     <div
-                        class="hidden lg:block rotate-45 size-60 bg-white dark:bg-slate-950 opacity-50 absolute top-40 left-36 -z-10">
+                        class="hidden lg:block rotate-45 size-60 bg-slate-100 dark:bg-main opacity-50 absolute top-40 left-36 -z-10">
                     </div>
                     <div class="space-y-3 z-50" data-aos="zoom-in">
                         <h1
                             class="font-poppins font-bold text-4xl lg:text-5xl text-slate-950 dark:text-white main-heading break-words">
                             {{ .title | safeHTML }}
                         </h1>
-                        <p class="text-slate-700 dark:text-slate-300 font-poppins text-xl pb-5">
+                        <p class="text-slate-700 dark:text-slate-300 font-poppins text-xl">
                             {{ .details | markdownify }}
                         </p>
                         {{ with .button }}
                         <div
-                            class="hover:bg-gradient-primary rounded-3xl after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-40 text-center">
+                            class="rounded-3xl hover:bg-style hover:after:p-0 group after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-44 text-center">
                             <a href="{{ .url | relURL }}"
-                                class="text-black dark:text-white font-medium text-sm font-poppins relative z-10">
-                                <span
-                                    class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
-                                    .label }}</span>
+                                class="text-black dark:text-white group-hover:text-black font-medium text-sm font-poppins relative z-10">
+                                <span class="flex justify-center items-center gap-2">
+                                    {{ .label }}
+                                    <img src='{{ "images/dev/dark_right_arrow.png" | relURL  }}' alt=""
+                                        class="dark:hidden group-hover:block">
+                                    <img src='{{ "images/dev/light_right_arrow.png" | relURL  }}' alt=""
+                                        class="hidden dark:block group-hover:hidden">
+                                </span>
                             </a>
                         </div>
                         {{ end }}
@@ -55,53 +61,101 @@
                             class="dark:hidden w-full">
                         <img src='{{ "images/dev/dark_editor_header.png" | relURL }}' alt=""
                             class="hidden dark:block w-full">
-                        <div class="h-96 overflow-scroll bg-blue">
+                        <div class="h-96 overflow-y-scroll bg-blue">
                             {{ .Content }}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    {{ with .Params.hero_section.ev_intelligence }}
-    <div class="container px-5 sm:px-10 lg:px-16 mx-auto py-10" data-aos="zoom-in">
-        <h2
-            class="font-poppins font-bold text-4xl lg:text-5xl text-black dark:text-white main-heading lg:text-center mb-5 lg:mb-10">
-            {{
-            .title | safeHTML }}</h2>
-        <div class="flex flex-col lg:flex-row justify-between gap-5 lg:gap-0">
-            <div class="lg:w-1/3">
-                <h3 class="font-poppins font-bold text-2xl lg:text-4xl text-black dark:text-white mb-7">
-                    {{ .subtitle | markdownify }}
-                </h3>
-                {{ with .button }}
-                <div
-                    class="hover:bg-gradient-primary rounded-3xl after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-40 text-center">
-                    <a href="{{ .url | relURL }}"
-                        class="text-black dark:text-white font-medium text-sm font-poppins relative z-10">
-                        <span
-                            class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
-                            .label }}</span>
-                    </a>
+            {{ with .Params.hero_section.ev_intelligence }}
+            <div
+                id='{{ .title | plainify | replaceRE " " "_" | lower }}'
+                class="pt-20 lg:pt-40 hidden dark:block bg-main px-5 sm:px-10 lg:px-16"
+                style="background: linear-gradient(to bottom, transparent, #05101a 100%)"
+                data-aos="zoom-in">
+                <h2
+                    class="font-poppins font-bold text-4xl lg:text-5xl text-black dark:text-white main-heading lg:text-center mb-5 lg:mb-10">
+                    {{
+                    .title | safeHTML }}</h2>
+                <div class="flex flex-col lg:flex-row justify-between gap-5 lg:gap-0">
+                    <div class="lg:w-1/3">
+                        <h3 class="font-poppins font-bold text-2xl lg:text-4xl text-black dark:text-white mb-7">
+                            {{ .subtitle | markdownify }}
+                        </h3>
+                        {{ with .button }}
+                        <div
+                            class="rounded-3xl hover:bg-style hover:after:p-0 group after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-44 text-center">
+                            <a href="{{ .url | relURL }}"
+                                class="text-black dark:text-white group-hover:text-black font-medium text-sm font-poppins relative z-10">
+                                <span class="flex justify-center items-center gap-2">
+                                    {{ .label }}
+                                    <img src='{{ "images/dev/dark_right_arrow.png" | relURL  }}' alt=""
+                                        class="dark:hidden group-hover:block">
+                                    <img src='{{ "images/dev/light_right_arrow.png" | relURL  }}' alt=""
+                                        class="hidden dark:block group-hover:hidden">
+                                </span>
+                            </a>
+                        </div>
+                        {{ end }}
+                    </div>
+                    {{ with .details }}
+                    <div class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-1 lg:rotate-12 lg:py-5 bg-slate-800 dark:bg-style">
+                    </div>
+                    {{ end }}
+                    <p class="text-slate-700 dark:text-slate-400 font-poppins text-lg lg:w-1/2">
+                        {{ .details | markdownify }}
+                    </p>
                 </div>
-                {{ end }}
             </div>
-            {{ with .details }}
-            <div class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-1 lg:rotate-12 lg:py-5 bg-slate-800 dark:bg-style">
+
+            <div
+                id='{{ .title | plainify | replaceRE " " "_" | lower }}'
+                class="pt-20 lg:pt-40 dark:hidden bg-main px-5 sm:px-10 lg:px-16"
+                style="background: linear-gradient(to bottom, transparent, #f1f5f9 100%)"
+                data-aos="zoom-in">
+                <h2
+                    class="font-poppins font-bold text-4xl lg:text-5xl text-black dark:text-white main-heading lg:text-center mb-5 lg:mb-10">
+                    {{
+                    .title | safeHTML }}</h2>
+                <div class="flex flex-col lg:flex-row justify-between gap-5 lg:gap-0">
+                    <div class="lg:w-1/3">
+                        <h3 class="font-poppins font-bold text-2xl lg:text-4xl text-black dark:text-white mb-7">
+                            {{ .subtitle | markdownify }}
+                        </h3>
+                        {{ with .button }}
+                        <div
+                            class="rounded-3xl hover:bg-style hover:after:p-0 group after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-44 text-center">
+                            <a href="{{ .url | relURL }}"
+                                class="text-black dark:text-white group-hover:text-black font-medium text-sm font-poppins relative z-10">
+                                <span class="flex justify-center items-center gap-2">
+                                    {{ .label }}
+                                    <img src='{{ "images/dev/dark_right_arrow.png" | relURL  }}' alt=""
+                                        class="dark:hidden group-hover:block">
+                                    <img src='{{ "images/dev/light_right_arrow.png" | relURL  }}' alt=""
+                                        class="hidden dark:block group-hover:hidden">
+                                </span>
+                            </a>
+                        </div>
+                        {{ end }}
+                    </div>
+                    {{ with .details }}
+                    <div class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-1 lg:rotate-12 lg:py-5 bg-slate-800 dark:bg-style">
+                    </div>
+                    {{ end }}
+                    <p class="text-slate-700 dark:text-slate-400 font-poppins text-lg lg:w-1/2">
+                        {{ .details | markdownify }}
+                    </p>
+                </div>
             </div>
             {{ end }}
-            <p class="text-slate-700 dark:text-slate-400 font-poppins text-lg lg:w-1/2">
-                {{ .details | markdownify }}
-            </p>
         </div>
     </div>
-    {{ end }}
 </section>
 {{/* end hero */}}
 
 {{/* cards section */}}
 {{ with .Params.ev_intelligence_boxes }}
-<section class="py-10 bg-white dark:bg-slate-950">
+<section class="py-20 bg-slate-100 dark:bg-main">
     <div class="container mx-auto px-5 sm:px-10 lg:px-16">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-content-between" data-aos="zoom-in">
             {{ range . }}
@@ -126,9 +180,9 @@
 {{/* cv_priority section */}}
 {{ with .Params.cv_priority }}
 {{ if .enable }}
-<section class="bg-white dark:bg-slate-950">
+<section class="bg-slate-100 dark:bg-main">
     <div class="container mx-auto px-5 sm:px-10 lg:px-16 pt-10 lg:pt-20">
-        <div data-aos="zoom-in">
+        <div data-aos="zoom-in" id='{{ .title | plainify | replaceRE " " "_" | lower }}'>
             <h2
                 class="font-poppins font-bold text-4xl lg:text-5xl text-black dark:text-white main-heading lg:text-center mb-5 lg:mb-10">
                 {{
@@ -139,16 +193,20 @@
                         {{ .subtitle | markdownify }}
                     </h3>
                     {{ with .button }}
-                    <div
-                        class="hover:bg-gradient-primary rounded-3xl after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-40 text-center">
-                        <a href="{{ .url | relURL }}"
-                            class="text-black dark:text-white font-medium text-sm font-poppins relative z-10">
-                            <span
-                                class="after-right-arrow-transparent after-right-arrow-transparent-dark after:relative after:top-[3px] after:left-[7px] after:mr-[10px] group-hover:after:left-[10px]">{{
-                                .label }}</span>
-                        </a>
-                    </div>
-                    {{ end }}
+                        <div
+                            class="rounded-3xl hover:bg-style hover:after:p-0 group after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-44 text-center">
+                            <a href="{{ .url | relURL }}"
+                                class="text-black dark:text-white group-hover:text-black font-medium text-sm font-poppins relative z-10">
+                                <span class="flex justify-center items-center gap-2">
+                                    {{ .label }}
+                                    <img src='{{ "images/dev/dark_right_arrow.png" | relURL  }}' alt=""
+                                        class="dark:hidden group-hover:block">
+                                    <img src='{{ "images/dev/light_right_arrow.png" | relURL  }}' alt=""
+                                        class="hidden dark:block group-hover:hidden">
+                                </span>
+                            </a>
+                        </div>
+                        {{ end }}
                 </div>
                 {{ with .details }}
                 <div
@@ -182,7 +240,7 @@
 {{ end }}
 {{ end }}
 {{/* end sv_priority */}}
-<div class="sm:-mt-40 bg-white dark:bg-slate-950">
+<div class="sm:-mt-40 bg-slate-100 dark:bg-main">
     <img src='{{ "images/dev/bottom_layer.png" | relURL }}' alt="" class="container mx-auto w-full">
 </div>
 {{ end }}

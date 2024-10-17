@@ -8,13 +8,14 @@ hero_section:
     - title: "Stay Ahead of Exploited <span>Vulnerabilities</span> with Intelligent Prioritization"
       details: "At VulneraWise, we believe that smart vulnerability management is the key to a secure future."
       image: "images/monitor.png"
-      small_image: true
+      big_image: true
       button:
         label: "Schedule Demo"
         url: "our-vision/"
     - title: "Prioritize what's critical for you with relevant <span>real-time</span> insights."
       details: "Focus on the most urgent risks with real-time, actionable insights tailored to your needs."
       image: "images/meter_n.png"
+      top_space: true
       button:
         label: "Schedule Demo"
         url: "our-vision/"
@@ -26,7 +27,7 @@ hero_section:
         url: "our-vision/"
 
   mission:
-    title: "Next-gen exploit intelligence<span>.</span>"
+    title: "Next-gen exploit intelligence<span class='text-style'>.</span>"
     details: "Our mission is to empower security teams with the data, tools, and insights they need to stay ahead of emerging exploits and protect their organization’s digital assets."
 
 ########### News Section ###########

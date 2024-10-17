@@ -9,6 +9,7 @@
             <input
                 type="text"
                 placeholder="First Name"
+                required
                 id="firstName"
                 class="py-2 pl-5 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
         </div>
@@ -21,6 +22,7 @@
             <input
                 type="text"
                 placeholder="Last Name"
+                required
                 id="lastName"
                 class="py-2 pl-5 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
         </div>
@@ -34,6 +36,7 @@
         <input
             type="text"
             placeholder="Company Name"
+            required
             id="companyName"
             class="py-2 pl-5 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
     </div>
@@ -46,6 +49,7 @@
         <input
             type="email"
             placeholder="your@company.com"
+            required
             id="email"
             class="py-2 pl-3 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
     </div>
@@ -58,15 +62,16 @@
         <textarea
             name="your message"
             id="message"
+            required
             placeholder="Leave us a message..."
             rows="6"
             class="py-2 pl-3 bg-gray-200 dark:bg-gray-800 text-black dark:text-white font-poppins w-full focus:outline-none rounded-lg mt-2">
         </textarea>
     </div>
     <div>
-        <input type="checkbox" id="policies" class="bg-transparent">
+        <input type="checkbox" id="policies" class="bg-transparent" required>
         <label
-            for="policies"
+            for="policies" 
             class="font-poppins text-lg text-slate-700 dark:text-slate-300">
             You agree to our friendly <a href='{{ "policies/" | relURL }}' class="underline">privacy policy</a>.
         </label>

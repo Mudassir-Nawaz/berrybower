@@ -1,5 +1,5 @@
 light_logo: "images/dark_logo.png" ##### Header and Footer logo for light theme
-dark_logo: "images/light_logo.png" ##### Header and Footer logo for dark theme
+dark_logo: "images/vulnw-logo-white.png" ##### Header and Footer logo for dark theme
 
 header_login_btn: ##### Header login button
   label: "Login"

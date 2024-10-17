@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
-  const overlayClasses = ['fixed', 'inset-0', 'z-10', 'bg-white', 'dark:bg-slate-950', 'opacity-50'];
+  const overlayClasses = ['fixed', 'inset-0', 'z-10', 'bg-slate-50', 'dark:bg-main', 'opacity-50'];
   overlay.classList.add('bg-transparent');
   overlay.classList.remove("hidden", ...overlayClasses);
 
