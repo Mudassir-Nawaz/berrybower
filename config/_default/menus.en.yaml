@@ -51,10 +51,10 @@ footer:
 
 solutions:
   - name: "Exploit and Vulnerability Intelligence"
-    url: "ev-intelligence/"
+    url: "solutions/#exploit_&_vulnerability_intelligence"
     weight: 1
   - name: "Critical Vulnerability Prioritization"
-    url: "cv-priority"
+    url: "solutions/#critical_vulnerability_prioritization"
     weight: 2
 
 resources:

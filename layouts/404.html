@@ -1,0 +1,41 @@
+{{ define "main" }}
+{{/* hero section */}}
+<section
+    class="h-full w-full bg-white dark:bg-main">
+    <div class="py-20 relative flex justify-center items-center">
+        <div class="absolute w-full h-full">
+            {{ $dark_doted := "images/dev/dark_doted_layer.png" | relURL }}
+            <div style="background-image: linear-gradient(to bottom, transparent, transparent), url('{{ $dark_doted }}');"
+                class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block">
+            </div>
+            <div style="background-image: url('{{ "images/dev/doted_layer.png" | relURL }}');"
+                class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 dark:hidden">
+            </div>
+            <div style="background-image: url('{{ "images/dev/dark_shadow.png" | relURL }}')"
+                class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block"></div>
+            <div style="background-image: url('{{ "images/dev/light_shadow.png" | relURL }}')"
+                class="w-full h-full bg-no-repeat bg-top-center absolute opacity-20 dark:hidden"></div>
+            <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
+                class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
+        </div>
+        <div class="container z-40 mx-auto sm:mt-20 px-5 sm:px-10 lg:px-16">
+            <div class="lg:max-w-4xl space-y-5 text-center mx-auto flex flex-col justify-center items-center" data-aos="zoom-in">
+                <h1 class="font-poppins font-bold text-5xl sm:text-[56px] main-heading h-16"><span>404</span></h1>
+                <h5 class="font-poppins text-xl text-slate-900 font-semibold dark:font-normal dark:text-style">OOPS!</h5>
+                <p class="font-poppins text-lg text-slate-700 dark:text-slate-300">Page Not Found</p>
+              <div class="rounded-3xl hover:bg-style hover:after:p-0 group after:rounded-3xl transition-all border-gradient-primary py-3 px-7 hover:scale-105 sm:max-w-44 text-center">
+                <a href="{{ site.BaseURL }}"
+                  class="text-black dark:text-white group-hover:text-black font-medium text-sm font-poppins relative z-10">
+                  <span class="flex justify-center items-center gap-2">
+                    Go Home
+                  <img src='{{ "images/dev/dark_right_arrow.png" | relURL  }}' alt="" class="dark:hidden group-hover:block">
+                  <img src='{{ "images/dev/light_right_arrow.png" | relURL  }}' alt="" class="hidden dark:block group-hover:hidden">
+                  </span>
+                </a>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{/* end hero */}}
+{{ end }}
