@@ -39,8 +39,8 @@
           </svg>
         </button>
       </div>
-      <div class="hidden justify-center items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-        <ul class="flex flex-col mt-4 lg:flex-row lg:space-x-8 lg:mt-0 justify-center items-center">
+      <div class="hidden justify-center items-center w-full lg:flex lg:w-auto lg:order-1 lg:grow" id="mobile-menu-2">
+        <ul class="flex flex-col mt-4 lg:flex-row lg:mt-0 justify-center items-center lg:w-3/4">
           {{ $current := . }}
           {{ range $index, $item := site.Menus.main }}
           {{ $menu := .URL | absURL }}
@@ -48,16 +48,16 @@
           {{ $active := eq $menu $page }}
 
           {{ if .HasChildren }}
-          <div class="group relative inline-block text-left w-full">
-            <button id="dropdown-button-{{ $index }}"
-              class="py-2 px-4 text-main font-normal dark:text-slate-100 hover:text-slate-950 dark:hover:text-white rounded lg:bg-transparent lg:text-primary-700 lg:p-0 font-poppins w-full flex gap-2 justify-between items-center text-start transition-transform duration-500 tracking-wider"
+          <div class="group relative inline-block text-left w-full px-4">
+            <a href="{{ .URL | absURL }}" id="dropdown-button-{{ $index }}"
+              class="py-2 text-main font-normal dark:text-slate-100 hover:text-slate-950 dark:hover:text-white rounded lg:bg-transparent lg:text-primary-700 lg:p-0 font-poppins w-full flex gap-2 justify-between lg:justify-normal items-center text-start transition-transform duration-500 tracking-wider"
               aria-haspopup="true" aria-expanded="false">
               {{ .Name }}
               {{ $light_arrow := "images/dev/light_arrow_down.png" | relURL }}
               {{ $dark_arrow := "images/dev/dark_arrow_down.png" | relURL }}
               <img src="{{ $light_arrow }}" alt="" class="dark:hidden">
               <img src="{{ $dark_arrow }}" alt="" class="hidden dark:block">
-            </button>
+            </a>
 
             <div id="dropdown-menu-{{ $index }}"
               class="origin-top lg:absolute lg:translate-y-3 lg:group-hover:translate-y-2 lg:opacity-0 lg:block lg:group-hover:opacity-100 lg:transition-all lg:duration-300 w-full lg:w-56 rounded-md shadow-lg bg-black border border-slate-800 ring-opacity-5 lg:left-1/2 lg:-translate-x-1/2 hidden">
@@ -74,7 +74,7 @@
             </div>
           </div>
           {{ else }}
-          <li class="w-full">
+          <li class="w-full lg:text-center">
             <a href="{{ .URL | absURL }}"
               class="{{ if $active }}font-bold{{ else }}font-normal{{ end }} block py-2 px-4 text-slate-950 hover:text-slate-800 dark:text-slate-100 dark:hover:text-slate-300 transition-colors rounded lg:bg-transparent lg:text-primary-700 lg:p-0 font-poppins tracking-wider">{{
               .Name }}</a>
@@ -123,14 +123,14 @@
           </script>
 
           {{ with .Site.Params.header_login_btn }}
-          <li class="w-full my-3">
+          <li class="w-full my-3 lg:hidden">
             <a href="{{ .url | relURL }}"
               class="lg:hidden text-black dark:text-white hover:bg-gradient-primary rounded-3xl after:rounded-3xl font-medium text-sm w-full block text-center py-3 hover:scale-105 transition-all border-gradient-primary font-poppins">{{
               .label }}</a>
           </li>
           {{ end }}
           {{ with .Site.Params.cta_btn }}
-          <li class="w-full">
+          <li class="w-full lg:hidden">
             <a href="{{ .url | relURL }}"
               class="lg:hidden rounded-3xl font-medium text-sm block text-center w-full py-3 hover:scale-105 transition-all font-poppins bg-style after-right-arrow after:relative after:top-[3px] after:left-[5px] hover:after:left-[7px]">{{
               .label }}</a>

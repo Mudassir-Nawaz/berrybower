@@ -97,6 +97,9 @@ services_section:
 ########### News Section ###########
 blog_section:
   enable: true
+  button:  
+    label: View all Blog posts
+    url: "docs/"
   cards:
     - image: "images/why_intellegence_is_must.png"
       label: "Article"

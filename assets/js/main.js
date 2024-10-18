@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
   menuToggle.addEventListener("click", function () {
     // Toggle the 'show' class on the mobile menu
     mobileMenu.classList.toggle("hidden");
+    // When the menu is open, we want to prevent the body from scrolling
+    document.body.classList.toggle('overflow-hidden');
+    document.body.classList.toggle('md:overflow-auto');
 
     // Toggle the SVG icons
     const openIcon = menuToggle.querySelector("svg:first-of-type"); // Open icon
@@ -78,6 +81,19 @@ document.addEventListener("DOMContentLoaded", function () {
     loop: true,
     autoplay: {
       delay: 5000,
+    },
+  });
+
+  var blogSwiper = new Swiper(".blogSwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    slidesPerView: 1,
+    spaceBetween: 10,
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
     },
   });
 

@@ -352,7 +352,7 @@ button.swiper-pagination-bullet {
 }
 .swiper-pagination-bullet-active {
   opacity: var(--swiper-pagination-bullet-opacity, 1);
-  background: linear-gradient(to right, #ffcf71, #2376dd);
+  background: #ffcf71;
 }
 .swiper-vertical > .swiper-pagination-bullets,
 .swiper-pagination-vertical.swiper-pagination-bullets {
