@@ -37,13 +37,16 @@
                 {{ .details | markdownify }}
               </p>
               {{ with .button }}
-              <div class="rounded-3xl hover:bg-style hover:after:p-0 group after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-44 text-center">
+              <div
+                class="rounded-3xl hover:bg-style hover:after:p-0 group after:rounded-3xl transition-all border-gradient-primary py-3 hover:scale-105 sm:max-w-44 text-center">
                 <a href="{{ .url | relURL }}"
                   class="text-black dark:text-white group-hover:text-black font-medium text-sm font-poppins relative z-10">
                   <span class="flex justify-center items-center gap-2">
-                  {{ .label }}
-                  <img src='{{ "images/dev/dark_right_arrow.png" | relURL  }}' alt="" class="dark:hidden group-hover:block">
-                  <img src='{{ "images/dev/light_right_arrow.png" | relURL  }}' alt="" class="hidden dark:block group-hover:hidden">
+                    {{ .label }}
+                    <img src='{{ "images/dev/dark_right_arrow.png" | relURL  }}' alt=""
+                      class="dark:hidden group-hover:block">
+                    <img src='{{ "images/dev/light_right_arrow.png" | relURL  }}' alt=""
+                      class="hidden dark:block group-hover:hidden">
                   </span>
                 </a>
               </div>
@@ -59,8 +62,7 @@
       {{ end }}
     </div>
     {{ with .mission }}
-    <div
-      style="background: linear-gradient(to bottom, transparent, #05101a 100%)"
+    <div style="background: linear-gradient(to bottom, transparent, #05101a 100%)"
       class="hidden dark:flex container relative z-10 mx-auto px-5 sm:px-10 lg:px-16 flex-col lg:flex-row justify-between gap-5 lg:gap-0 py-10 sm:pt-0 sm:pb-20 lg:py-20">
       <h3 class="font-poppins font-bold text-3xl lg:text-5xl text-black dark:text-white lg:w-1/3">
         {{ .title | safeHTML }}
@@ -72,8 +74,7 @@
         {{ .details | markdownify }}
       </p>
     </div>
-    <div
-      style="background: linear-gradient(to bottom, transparent, #f8fafc 100%)"
+    <div style="background: linear-gradient(to bottom, transparent, #f8fafc 100%)"
       class="dark:hidden container mx-auto px-5 sm:px-10 lg:px-16 flex flex-col lg:flex-row justify-between gap-5 lg:gap-0 py-20">
       <h3 class="font-poppins font-bold text-3xl lg:text-5xl text-black dark:text-white lg:w-1/3">
         {{ .title | safeHTML }}
@@ -115,18 +116,72 @@
           </div>
         </div>
       </div>
-      <div class="my-5 swiper-wrapper lg:gap-3">
-        <div class="hidden lg:block min-w-[calc(7%)] min-[1100px]:min-w-[calc(10%)] min-[1200px]:min-w-[calc(15%)] xl:min-w-[calc(5%)] min-[1400px]:min-w-[calc(10%)] min-[1500px]:min-w-[calc(12%)] 2xl:min-w-[calc(5%)] min-[1600px]:min-w-[calc(7%)] min-[1700px]:min-w-[calc(10%)] min-[1800px]:min-w-[calc(12%)] min-[1900px]:min-w-[calc(15%)] min-[2000px]:min-w-[calc(18%)] min-[2300px]:min-w-[calc(20%)] min-[2500px]:min-w-[calc(23%)]"></div>
+      <style>
+        .cards:hover > .card::after {
+          opacity: 1;
+        }
+        
+        .card:hover::before {
+          opacity: 1;
+        }
+        
+        .card::before,
+        .card::after {
+          border-radius: inherit;
+          content: "";
+          min-height: inherit;
+          left: 0px;
+          opacity: 0;
+          position: absolute;
+          top: 0px;
+          transition: opacity 500ms;
+          width: inherit;
+        }
+        
+        .card::before {
+          background: radial-gradient(
+            800px circle at var(--mouse-x) var(--mouse-y), 
+            rgba(255, 255, 255, 0.06),
+            transparent 20%
+          );
+          z-index: 3;
+        }
+        
+        .card::after {  
+          background: radial-gradient(
+            600px circle at var(--mouse-x) var(--mouse-y), 
+            rgba(35, 118, 221, 0.4),
+            rgba(255, 207, 113, 0.4),
+            transparent 40%
+          );
+          z-index: 1;
+        }
+        
+        .card > .card-content {
+          border-radius: inherit;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          inset: 1px;
+          padding: 10px;
+          position: absolute;
+          z-index: 2;
+        }
+      </style>
+      <div id="vulnerabilitiesCards" class="cards my-5 swiper-wrapper lg:gap-3">
+        <div
+          class="hidden lg:block min-w-[calc(7%)] min-[1100px]:min-w-[calc(10%)] min-[1200px]:min-w-[calc(15%)] xl:min-w-[calc(5%)] min-[1400px]:min-w-[calc(10%)] min-[1500px]:min-w-[calc(12%)] 2xl:min-w-[calc(5%)] min-[1600px]:min-w-[calc(7%)] min-[1700px]:min-w-[calc(10%)] min-[1800px]:min-w-[calc(12%)] min-[1900px]:min-w-[calc(15%)] min-[2000px]:min-w-[calc(18%)] min-[2300px]:min-w-[calc(20%)] min-[2500px]:min-w-[calc(23%)]">
+        </div>
         {{ with .cards }}
         {{ range $i, $p := . }}
         <div
-          class="rounded-3xl p-5 sm:p-10 bg-white dark:bg-blue border dark:border-slate-800 swiper-slide h-full lg:max-w-[calc(29%)] min-[1100]:max-w-[calc(27%)] xl:max-w-[calc(30%)] relative overflow-hidden animated">
+          class="rounded-3xl swiper-slide min-h-[22rem] lg:max-w-[calc(29%)] min-[1100]:max-w-[calc(27%)] xl:max-w-[calc(30%)] relative overflow-hidden animated card">
           <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
             class="w-full h-full absolute top-0 left-0 hidden dark:block"></div>
           <div style="background-image: url('{{ "images/dev/light_box_lines.png" | relURL }}');"
             class="w-full h-full absolute top-0 left-0 dark:block"></div>
-          <div class="space-y-5 relative z-20">
-            <div class="spacy-y-2">
+          <div class="space-y-5 h-full bg-white dark:bg-blue card-content">
+            <div class="spacy-y-2 px-5 sm:px-10 pt-5">
               <h4 class="text-black dark:text-off-white font-poppins font-semibold text-2xl">
                 {{ $p.title | markdownify }}
               </h4>
@@ -135,7 +190,7 @@
               </p>
             </div>
             {{ with $p.affecting }}
-            <div class="space-y-2">
+            <div class="space-y-2 px-5 sm:px-10">
               <p class="font-poppins text-slate-900 dark:text-style uppercase">AFFECTING</p>
               <ul class="space-y-2 text-slate-700 dark:text-off-white font-poppins text-[15px] list-disc list-inside">
                 {{ range . }}
@@ -144,7 +199,7 @@
               </ul>
             </div>
             {{ end }}
-            <div class="flex flex-wrap gap-y-2 justify-between">
+            <div class="flex flex-wrap gap-y-2 justify-between px-5 sm:px-10">
               <p class="text-slate-700 dark:text-white font-poppins">{{ $p.date }}</p>
               {{ if eq $p.type "high" }}
               <div class="border border-warning px-2 text-warning rounded-full font-poppins">
@@ -161,6 +216,19 @@
         </div>
         {{ end }}
         {{ end }}
+        <script>
+          // onmouse offect 
+          document.getElementById("vulnerabilitiesCards").onmousemove = e => {
+            for (const card of document.getElementsByClassName("card")) {
+              const rect = card.getBoundingClientRect(),
+                x = e.clientX - rect.left,
+                y = e.clientY - rect.top;
+  
+              card.style.setProperty("--mouse-x", `${x}px`);
+              card.style.setProperty("--mouse-y", `${y}px`);
+            };
+          };
+        </script>
       </div>
       <div class="mt-10 md:hidden">
         <div class="swiper-pagination"></div>
@@ -199,8 +267,8 @@
           <div
             class="lg:w-1/2 h-40 lg:h-[26rem] bg-contain lg:bg-cover bg-no-repeat filter grayscale {{ if not (modBool $i 2) }}bg-left{{ else }}bg-right{{ end }} lg:bg-none"
             style="background-image:url('{{ $p.image | relURL }}')">
-            {{/*  <img src='{{ $p.image  | relURL }}' alt="{{ $.Site.Title}} {{ .title | markdownify }}"  */}}
-              {{/*  class="hidden lg:inline-block filter grayscale" />  */}}
+            {{/* <img src='{{ $p.image  | relURL }}' alt="{{ $.Site.Title}} {{ .title | markdownify }}" */}} {{/*
+              class="hidden lg:inline-block filter grayscale" /> */}}
           </div>
         </div>
       </div>
@@ -219,7 +287,8 @@
       <h3 class="font-poppins font-semibold text-3xl lg:text-5xl text-black dark:text-slate-200">
         Our Blog
       </h3>
-      <div class="rounded-3xl flex justify-center items-center hover:bg-style group hover:text-black hover:after:p-0 after:rounded-3xl px-9 py-1 hover:scale-105 transition-all border-gradient-primary">
+      <div
+        class="rounded-3xl flex justify-center items-center hover:bg-style group hover:text-black hover:after:p-0 after:rounded-3xl px-9 py-1 hover:scale-105 transition-all border-gradient-primary">
         <a href="#"
           class="text-black dark:text-white font-medium group-hover:text-black text-sm font-poppins relative z-10">View
           all Blog posts</a>

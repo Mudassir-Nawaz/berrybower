@@ -9,7 +9,7 @@
   }}{{ end }}
 </title>
 
-{{/* styles */}} {{ partialCached "css.html" . }} {{/* theme toggle function
+{{/* theme toggle function
 */}}
 <script>
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -106,11 +106,56 @@
     content: url('{{ "images/dev/light_right_arrow.png" | relURL }}');
   }
 
-  .after-down-arrow::after {
-    content: url('{{ "images/dev/light_arrow_down.png" | relURL }}');
+  .cards:hover > .card::after {
+    opacity: 1;
   }
   
-  .after-down-arrow-dark:where(.dark, .dark *)::after {
-   content: url('{{ "images/dev/dark_arrow_down.png" | relURL }}');
+  .card:hover::before {
+    opacity: 1;
   }
+  
+  .card::before,
+  .card::after {
+    border-radius: inherit;
+    content: "";
+    min-height: inherit;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: inherit;
+  }
+  
+  .card::before {
+    background: radial-gradient(
+      800px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.06),
+      transparent 20%
+    );
+    z-index: 3;
+  }
+  
+  .card::after {
+    background: radial-gradient(
+      600px circle at var(--mouse-x) var(--mouse-y),
+      rgba(35, 118, 221, 0.4),
+      rgba(255, 207, 113, 0.4),
+      transparent 40%
+    );
+    z-index: 1;
+  }
+  
+  .card > .card-content {
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    inset: 1px;
+    padding: 10px;
+    position: absolute;
+    z-index: 2;
+  }  
 </style>
+
+{{/* styles */}} {{ partialCached "css.html" . }}

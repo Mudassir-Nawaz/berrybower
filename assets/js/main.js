@@ -85,8 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
   VanillaTilt.init(document.querySelectorAll(".animated"), {
     max: 5,
     speed: 50,
-    glare: true,
-    "max-glare": 0.2,
     reset: true,
   });
 
