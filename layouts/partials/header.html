@@ -2,9 +2,9 @@
   <nav class="px-2 py-3 lg:py-5 container mx-auto">
     <div class="flex flex-wrap justify-between items-center">
       <a href="{{ .Site.BaseURL | safeURL }}" class="flex items-center">
-        <img src='{{ .Site.Params.light_logo | relURL }}' class="mr-3 h-6 sm:h-8 dark:hidden"
+        <img src='{{ .Site.Params.light_logo | relURL }}' class="mr-3 h-6 sm:h-9 dark:hidden"
           alt="{{ .Site.Title }} Logo" />
-        <img src='{{ .Site.Params.dark_logo | relURL }}' class="mr-3 h-6 sm:h-8 hidden dark:block"
+        <img src='{{ .Site.Params.dark_logo | relURL }}' class="mr-3 h-6 sm:h-9 hidden dark:block"
           alt="{{ .Site.Title }} Logo" />
       </a>
       <div class="flex items-center lg:order-2">

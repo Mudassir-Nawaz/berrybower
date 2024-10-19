@@ -1,22 +1,21 @@
 {{ define "main" }}
 {{/* hero section */}}
 <section
-    class="h-full w-full bg-white dark:bg-main">
+    class="h-full w-full bg-slate-100 dark:bg-main">
     <div class="py-20 relative flex justify-center items-center">
         <div class="absolute w-full h-full">
+            <div style="mask-image: url('{{ "images/dev/dark_shadow.png" | relURL }}')"
+              class="w-full h-full bg-no-repeat bg-top-center absolute bg-slate-100 dark:bg-main"></div>
             {{ $dark_doted := "images/dev/dark_doted_layer.png" | relURL }}
-            <div style="background-image: linear-gradient(to bottom, transparent, transparent), url('{{ $dark_doted }}');"
-                class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block">
+            <div style="background-image: radial-gradient(at top, transparent 0%, #05101a 80%, #05101a 100%), url('{{ $dark_doted }}');"
+              class="w-3/4 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute hidden dark:block">
             </div>
-            <div style="background-image: url('{{ "images/dev/doted_layer.png" | relURL }}');"
-                class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 dark:hidden">
+            {{ $light_doted := "images/dev/light_doted_layer.png" | relURL }}
+            <div style="background-image: radial-gradient(at top, transparent 0%, #f1f5f9 80%, #f1f5f9 100%), url('{{ $light_doted }}');"
+              class="w-3/4 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute dark:hidden">
             </div>
-            <div style="background-image: url('{{ "images/dev/dark_shadow.png" | relURL }}')"
-                class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block"></div>
-            <div style="background-image: url('{{ "images/dev/light_shadow.png" | relURL }}')"
-                class="w-full h-full bg-no-repeat bg-top-center absolute opacity-20 dark:hidden"></div>
             <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
-                class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
+              class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
         </div>
         <div class="container z-40 mx-auto sm:mt-20 px-5 sm:px-10 lg:px-16">
             <div class="lg:max-w-4xl space-y-5 text-center mx-auto" data-aos="zoom-in">
@@ -95,7 +94,7 @@
                                 </div>
                             </div>
                             <div class="w-full border-gradient-primary after:rounded-full text-center py-3 mt-10 hover:scale-105 transition-transform">
-                                <a href='{{ "our-vision/" | relURL }}' class="text-black dark:text-white relative z-10 block">Contact Us</a>
+                                <a href='{{ "about-us/#form" | relURL }}' class="text-black dark:text-white relative z-10 block">Contact Us</a>
                             </div>
                         </div>
                         {{ end }}
@@ -157,7 +156,7 @@
                                 </div>
                             </div>
                             <div class="w-full border-gradient-primary after:rounded-full text-center py-3 mt-10 hover:scale-105 transition-transform">
-                                <a href='{{ "our-vision/" | relURL }}' class="text-black dark:text-white relative z-10 block">Contact Us</a>
+                                <a href='{{ "about-us/#form" | relURL }}' class="text-black dark:text-white relative z-10 block">Contact Us</a>
                             </div>
                         </div>
                         {{ end }}
@@ -173,7 +172,7 @@
 </section>
 {{/* end hero */}}
 <div 
-    class="-mt-10 sm:-mt-40 bg-white dark:bg-main">
+    class="-mt-10 sm:-mt-40 relative z-20 bg-slate-100 dark:bg-main">
     <img src='{{ "images/dev/bottom_layer.png" | relURL }}' alt="" class="container mx-auto w-full">
 </div>
 {{ end }}

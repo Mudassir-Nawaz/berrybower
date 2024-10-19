@@ -6,19 +6,18 @@
     class="h-full w-full bg-slate-100 dark:bg-main">
     <div class="relative flex justify-center items-center">
         <div class="absolute w-full h-full">
+            <div style="mask-image: url('{{ "images/dev/dark_shadow.png" | relURL }}')"
+              class="w-full h-full bg-no-repeat bg-top-center absolute bg-slate-100 dark:bg-main"></div>
             {{ $dark_doted := "images/dev/dark_doted_layer.png" | relURL }}
-            <div style="background-image: linear-gradient(to bottom, transparent, #05101a 100%), url('{{ $dark_doted }}');"
-                class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block">
+            <div style="background-image: radial-gradient(at top, transparent 0%, #05101a 80%, #05101a 100%), url('{{ $dark_doted }}');"
+              class="w-3/4 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute hidden dark:block">
             </div>
-            <div style="background-image: url('{{ "images/dev/doted_layer.png" | relURL }}');"
-                class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 dark:hidden">
+            {{ $light_doted := "images/dev/light_doted_layer.png" | relURL }}
+            <div style="background-image: radial-gradient(at top, transparent 0%, #f1f5f9 80%, #f1f5f9 100%), url('{{ $light_doted }}');"
+              class="w-3/4 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute dark:hidden">
             </div>
-            <div style="background-image: url('{{ "images/dev/dark_shadow.png" | relURL }}')"
-                class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block"></div>
-            <div style="background-image: url('{{ "images/dev/light_shadow.png" | relURL }}')"
-                class="w-full h-full bg-no-repeat bg-top-center absolute opacity-20 dark:hidden"></div>
             <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
-                class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
+              class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
         </div>
 
         <div class="container z-40 mx-auto mt-20 lg:mt-32">
@@ -26,9 +25,9 @@
                 class="flex flex-col justify-center items-center gap-7 lg:flex-row px-5 sm:px-10 lg:px-16 xl:px-0 xl:max-w-6xl 2xl:max-w-[90rem] xl:mx-auto">
                 <div class="lg:w-1/2 xl:max-w-[35rem]">
                     <div
-                        class="hidden lg:block rotate-45 size-60 bg-slate-100 dark:bg-main opacity-50 absolute top-40 left-36 -z-10">
+                        class="hidden lg:block rotate-45 size-60 bg-white dark:bg-main opacity-50 absolute top-40 left-36 -z-10">
                     </div>
-                    <div class="space-y-3 z-50" data-aos="zoom-in">
+                    <div class="space-y-5 z-50" data-aos="zoom-in">
                         <h1
                             class="font-poppins font-bold text-4xl lg:text-5xl text-slate-950 dark:text-white main-heading break-words">
                             {{ .title | safeHTML }}
@@ -55,22 +54,74 @@
                 </div>
                 {{ end }}
                 {{ end }}
-                <div class="w-full lg:w-1/2 mx-auto" data-aos="zoom-in">
-                    <div class="animated">
-                        <img src='{{ "images/dev/light_editor_header.png" | relURL }}' alt=""
+                <style>
+                    .cards:hover > .card::after {
+                      opacity: 1;
+                    }
+
+                    .card::after {
+                      border-radius: inherit;
+                      content: "";
+                      height: 100%;
+                      left: 0px;
+                      opacity: 0;
+                      position: absolute;
+                      top: 0px;
+                      transition: opacity 500ms;
+                      width: 100%;
+                    }
+                      
+                    .card::after {  
+                        background: radial-gradient(
+                          600px circle at var(--mouse-x) var(--mouse-y), 
+                          rgba(35, 118, 221, 0.4),
+                          rgba(255, 207, 113, 0.4),
+                          transparent 40%
+                        );
+                        z-index: 1;
+                    }
+                      
+                    .card > .card-content {
+                        border-radius: inherit;
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                        inset: 1px;
+                        padding: 0;
+                        z-index: 2;
+                    }
+                </style>
+                <div class="w-full lg:w-1/2 mx-auto cards relative" data-aos="zoom-in">
+                    <div id="codeCards" class="card flex justify-center items-center relative h-[24.1rem] rounded-xl animated">
+                        <div class="h-96 card-content">
+                            <img src='{{ "images/dev/light_editor_header.png" | relURL }}' alt=""
                             class="dark:hidden w-full">
-                        <img src='{{ "images/dev/dark_editor_header.png" | relURL }}' alt=""
+                            <img src='{{ "images/dev/dark_editor_header.png" | relURL }}' alt=""
                             class="hidden dark:block w-full">
-                        <div class="h-96 overflow-y-scroll bg-blue prose prose-code:my-0 prose-pre:my-0 font-roboto-mono">
-                            {{ .Content }}
+                            <div class="h-96 overflow-y-scroll rounded-b-xl lg:prose prose-code:my-0 prose-pre:my-0 font-roboto-mono prose-pre:bg-transparent">
+                                {{ .Content }}
+                            </div>
                         </div>
                     </div>
                 </div>
+                <script>
+                    // onmouse offect 
+                    document.getElementById("codeCards").onmousemove = e => {
+                        for (const card of document.getElementsByClassName("card")) {
+                            const rect = card.getBoundingClientRect(),
+                            x = e.clientX - rect.left,
+                            y = e.clientY - rect.top;
+            
+                        card.style.setProperty("--mouse-x", `${x}px`);
+                        card.style.setProperty("--mouse-y", `${y}px`);
+                      };
+                    };
+                </script>
             </div>
             {{ with .Params.hero_section.ev_intelligence }}
             <div
                 id='{{ .title | plainify | replaceRE " " "_" | lower }}'
-                class="pt-20 lg:pt-40 hidden dark:block bg-main px-5 sm:px-10 lg:px-16"
+                class="pt-20 lg:pt-44 hidden dark:block bg-main px-5 sm:px-10 lg:px-16"
                 style="background: linear-gradient(to bottom, transparent, #05101a 100%)"
                 data-aos="zoom-in">
                 <h2
@@ -155,7 +206,7 @@
 
 {{/* cards section */}}
 {{ with .Params.ev_intelligence_boxes }}
-<section class="py-20 bg-slate-100 dark:bg-main">
+<section class="pt-20 bg-slate-100 dark:bg-main">
     <div class="container mx-auto px-5 sm:px-10 lg:px-16">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-content-between" data-aos="zoom-in">
             {{ range . }}
@@ -180,9 +231,9 @@
 {{/* cv_priority section */}}
 {{ with .Params.cv_priority }}
 {{ if .enable }}
-<section class="bg-slate-100 dark:bg-main">
-    <div class="container mx-auto px-5 sm:px-10 lg:px-16 pt-10 lg:pt-20">
-        <div data-aos="zoom-in" id='{{ .title | plainify | replaceRE " " "_" | lower }}'>
+<section id='{{ .title | plainify | replaceRE " " "_" | lower }}' class="bg-slate-100 dark:bg-main pt-10 lg:pt-40">
+    <div class="container mx-auto px-5 sm:px-10 lg:px-16">
+        <div data-aos="zoom-in">
             <h2
                 class="font-poppins font-bold text-4xl lg:text-5xl text-black dark:text-white main-heading lg:text-center mb-5 lg:mb-10">
                 {{

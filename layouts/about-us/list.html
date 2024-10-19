@@ -1,26 +1,27 @@
 {{ define "main" }}
 {{/* hero section */}}
-<section class="h-full w-full bg-white dark:bg-slate-950">
+<section class="h-full w-full bg-slate-100 dark:bg-main">
     <div class="py-20 relative flex justify-center items-center">
         <div class="absolute w-full h-full">
+            <div style="mask-image: url('{{ "images/dev/dark_shadow.png" | relURL }}')"
+                class="w-full h-full bg-no-repeat bg-top-center absolute bg-slate-100 dark:bg-main"></div>
+            {{ $dark_doted := "images/dev/dark_doted_layer.png" | relURL }}
+            <div style="background-image: radial-gradient(at top, transparent 0%, #05101a 70%, #05101a 70%), url('{{ $dark_doted }}');"
+                class="w-full h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute hidden dark:block">
+            </div>
+            {{ $light_doted := "images/dev/light_doted_layer.png" | relURL }}
+            <div style="background-image: radial-gradient(at top, transparent 0%, #f1f5f9 70%, #f1f5f9 70%), url('{{ $light_doted }}');"
+                class="w-full h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute dark:hidden">
+            </div>
             <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
                 class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
-            <div style="background-image: url('{{ "images/dev/dark_doted_layer.png" | relURL }}');"
-                class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block">
-            </div>
-            <div style="background-image: url('{{ "images/dev/doted_layer.png" | relURL }}');"
-                class="w-1/2 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute opacity-50 dark:hidden">
-            </div>
-            <div style="background-image: url('{{ "images/dev/dark_shadow.png" | relURL }}')"
-                class="w-full h-full bg-no-repeat bg-top-center absolute opacity-50 hidden dark:block"></div>
-            <div style="background-image: url('{{ "images/dev/light_shadow.png" | relURL }}')"
-                class="w-full h-full bg-no-repeat bg-top-center absolute opacity-20 dark:hidden"></div>
         </div>
-        <div class="container z-40 mx-auto mt-20 px-5 sm:px-10 lg:px-16">
+        <div class="container mx-auto mt-20 px-5 sm:px-10 lg:px-16">
             <div class="lg:max-w-4xl space-y-5 text-center mx-auto" data-aos="zoom-in">
                 {{ with .Params.hero_section }}
                 {{ if .enable }}
-                <h1 class="font-poppins font-bold text-5xl sm:text-[56px] main-heading h-16">{{ .title | safeHTML }}</h1>
+                <h1 class="font-poppins font-bold text-5xl sm:text-[56px] main-heading h-16">{{ .title | safeHTML }}
+                </h1>
                 <p class="font-poppins text-lg text-slate-700 dark:text-slate-300">{{ .details | markdownify }}</p>
                 {{ end }}
                 {{ end }}
@@ -31,13 +32,15 @@
                 <h3 class="font-poppins font-medium text-3xl text-black dark:text-white mb-10">Our Values</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-content-between">
                     {{ range .boxes }}
-                    <div class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 relative overflow-hidden animated">
+                    <div
+                        class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 relative overflow-hidden animated">
                         <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
                             class="w-full h-full absolute top-0 left-0 z-0"></div>
                         <div class="space-y-3 z-30 relative">
                             <img src='{{ .icon | relURL }}' alt="">
                             <div class="space-y-2">
-                                <h3 class="text-white font-poppins font-semibold text-[26px]">{{ .title | markdownify }}</h3>
+                                <h3 class="text-white font-poppins font-semibold text-[26px]">{{ .title | markdownify }}
+                                </h3>
                                 <p class="text-slate-300 font-poppins text-lg">{{ .details | markdownify }}</p>
                             </div>
                         </div>
@@ -53,13 +56,14 @@
 
 {{ with .Params.form }}
 {{ if .enable }}
-<section class="bg-white dark:bg-slate-950">
-    <div class="container mx-auto px-5 sm:px-10 lg:px-16 pt-10">
+<section id="form" class="bg-slate-100 dark:bg-main">
+    <div class="container mx-auto px-5 sm:px-10 lg:px-16 pt-20">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-7">
             {{ with .content }}
             <div class="space-y-7" data-aos="zoom-in">
                 <div class="space-y-3">
-                    <h3 class="text-black dark:text-white font-poppins font-semibold text-3xl">{{ .title | markdownify }}</h3>
+                    <h3 class="text-black dark:text-white font-poppins font-semibold text-3xl">{{ .title | markdownify
+                        }}</h3>
                     <p class="text-slate-700 dark:text-slate-300 font-poppins text-lg">{{ .details | markdownify }}</p>
                 </div>
                 <div class="space-y-4">
@@ -90,7 +94,7 @@
 </section>
 {{ end }}
 {{ end }}
-<div class="sm:-mt-40 relative z-10 bg-white dark:bg-slate-950">
+<div class="sm:-mt-40 relative z-10 bg-slate-100 dark:bg-main">
     <img src='{{ "images/dev/bottom_layer.png" | relURL }}' alt="" class="container mx-auto w-full">
 </div>
 {{ end }}

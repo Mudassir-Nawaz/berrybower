@@ -113,6 +113,150 @@
   background-color: white !important;
 }
 
+@media (min-width: 1024px) {
+  .position {
+    min-width: calc(7%);
+  }
+}
+
+@media (min-width: 1100px) {
+  .position {
+    min-width: calc(9%);
+  }
+}
+
+@media (min-width: 1200px) {
+  .position {
+    min-width: calc(12%);
+  }
+}
+
+@media (min-width: 1280px) {
+  .position {
+    min-width: calc(7%);
+  }
+}
+
+@media (min-width: 1400px) {
+  .position {
+    min-width: calc(9%);
+  }
+}
+
+@media (min-width: 1500px) {
+  .position {
+    min-width: calc(12%);
+  }
+}
+
+@media (min-width: 1536px) {
+  .position {
+    min-width: calc(5%);
+  }
+}
+
+@media (min-width: 1700px) {
+  .position {
+    min-width: calc(10%);
+  }
+}
+
+@media (min-width: 1800px) {
+  .position {
+    min-width: calc(12%);
+  }
+}
+
+@media (min-width: 1924px) {
+  .position {
+    min-width: calc(14%);
+  }
+}
+
+@media (min-width: 2024px) {
+  .position {
+    min-width: calc(16%);
+  }
+}
+
+@media (min-width: 2124px) {
+  .position {
+    min-width: calc(18%);
+  }
+}
+
+@media (min-width: 2236px) {
+  .position {
+    min-width: calc(20%);
+  }
+}
+
+@media (min-width: 2424px) {
+  .position {
+    min-width: calc(22%);
+  }
+}
+
+@media (min-width: 2650px) {
+  .position {
+    min-width: calc(24%);
+  }
+}
+
+@media (min-width: 1024px) {
+  .slider-card {
+    max-width: calc(28.5%);
+  }
+}
+
+@media (min-width: 1200px) {
+  .slider-card {
+    max-width: calc(27%);
+  }
+}
+
+@media (min-width: 1280px) {
+  .slider-card {
+    max-width: calc(28.5%);
+  }
+}
+
+@media (min-width: 1500px) {
+  .slider-card {
+    max-width: calc(27.5%);
+  }
+}
+
+@media (min-width: 1536px) {
+  .slider-card {
+    max-width: calc(30%);
+  }
+}
+
+@media (min-width: 1700px) {
+  .slider-card {
+    max-width: calc(28%);
+  }
+}
+
+@media (min-width: 1924px) {
+  .slider-card {
+    max-width: calc(27%);
+  }
+}
+
+@media (min-width: 2124px) {
+  .slider-card {
+    max-width: calc(25%);
+  }
+}
+
+@media (min-width: 2648px) {
+  .slider-card {
+    max-width: calc(23%);
+  }
+}
+
 /* Background */
 .bg {
   color: #f9fafb;
@@ -447,7 +591,7 @@
 
 ::-webkit-scrollbar-track {
   background: #091826; /* Background of the scrollbar track */
-  border-radius: 10px; /* Rounded corners for track */
+  border-radius: inherit; /* Rounded corners for track */
 }
 
 ::-webkit-scrollbar-thumb {
