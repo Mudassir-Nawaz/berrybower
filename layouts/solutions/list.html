@@ -93,12 +93,12 @@
                 </style>
                 <div id="codeCards" class="w-full lg:w-1/2 mx-auto relative" data-aos="zoom-in">
                     <div class="card flex justify-center items-center relative h-[24.1rem] rounded-xl animated">
-                        <div class="h-96 card-content">
+                        <div class="h-96 card-content bg-blue">
                             <img src='{{ "images/dev/light_editor_header.png" | relURL }}' alt=""
                             class="dark:hidden w-full">
                             <img src='{{ "images/dev/dark_editor_header.png" | relURL }}' alt=""
                             class="hidden dark:block w-full">
-                            <div class="h-96 overflow-y-scroll rounded-b-xl lg:prose prose-code:my-0 prose-pre:my-0 font-roboto-mono prose-pre:bg-transparent">
+                            <div class="h-96 min-w-full overflow-y-scroll rounded-b-xl prose prose-code:my-0 prose-pre:my-0 font-roboto-mono prose-pre:bg-transparent prose-pre:w-full">
                                 {{ .Content }}
                             </div>
                         </div>
