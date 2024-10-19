@@ -66,7 +66,7 @@
           {{ .title | safeHTML }}
         </h3>
         {{ with .details }}
-        <div class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-[.5] lg:rotate-12 bg-slate-800 dark:bg-style hidden lg:block"></div>
+        <div class="hidden lg:block px-[1px] rotate-12 bg-slate-800 dark:bg-style h-[111.4px] m-auto"></div>
         {{ end }}
         <p class="text-slate-700 dark:text-slate-400 font-poppins text-lg leading-[36px] lg:w-1/2">
           {{ .details | markdownify }}
@@ -104,16 +104,16 @@
         </div>
       </div>
       <style>
-        .cards:hover > .card::after {
+        #vulnerabilitiesCards:hover > .card::after {
           opacity: 1;
         }
         
-        .card:hover::before {
+        #vulnerabilitiesCards > .card:hover::before {
           opacity: 1;
         }
         
-        .card::before,
-        .card::after {
+        #vulnerabilitiesCards > .card::before,
+        #vulnerabilitiesCards > .card::after {
           border-radius: inherit;
           content: "";
           min-height: inherit;
@@ -125,7 +125,7 @@
           width: inherit;
         }
         
-        .card::before {
+        #vulnerabilitiesCards > .card::before {
           background: radial-gradient(
             800px circle at var(--mouse-x) var(--mouse-y), 
             rgba(255, 255, 255, 0.06),
@@ -134,7 +134,7 @@
           z-index: 3;
         }
         
-        .card::after {  
+        #vulnerabilitiesCards > .card::after {  
           background: radial-gradient(
             600px circle at var(--mouse-x) var(--mouse-y), 
             rgba(35, 118, 221, 0.4),
@@ -144,7 +144,7 @@
           z-index: 1;
         }
         
-        .card > .card-content {
+        #vulnerabilitiesCards > .card > .card-content {
           border-radius: inherit;
           display: flex;
           flex-direction: column;

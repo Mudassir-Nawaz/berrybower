@@ -55,11 +55,11 @@
                 {{ end }}
                 {{ end }}
                 <style>
-                    .cards:hover > .card::after {
+                    #codeCards:hover > .card::after {
                       opacity: 1;
                     }
 
-                    .card::after {
+                    #codeCards > .card::after {
                       border-radius: inherit;
                       content: "";
                       height: 100%;
@@ -71,7 +71,7 @@
                       width: 100%;
                     }
                       
-                    .card::after {  
+                    #codeCards > .card::after {  
                         background: radial-gradient(
                           600px circle at var(--mouse-x) var(--mouse-y), 
                           rgba(35, 118, 221, 0.4),
@@ -81,7 +81,7 @@
                         z-index: 1;
                     }
                       
-                    .card > .card-content {
+                    #codeCards > .card > .card-content {
                         border-radius: inherit;
                         display: flex;
                         flex-direction: column;
@@ -91,8 +91,8 @@
                         z-index: 2;
                     }
                 </style>
-                <div class="w-full lg:w-1/2 mx-auto cards relative" data-aos="zoom-in">
-                    <div id="codeCards" class="card flex justify-center items-center relative h-[24.1rem] rounded-xl animated">
+                <div id="codeCards" class="w-full lg:w-1/2 mx-auto relative" data-aos="zoom-in">
+                    <div class="card flex justify-center items-center relative h-[24.1rem] rounded-xl animated">
                         <div class="h-96 card-content">
                             <img src='{{ "images/dev/light_editor_header.png" | relURL }}' alt=""
                             class="dark:hidden w-full">
@@ -125,12 +125,12 @@
                 style="background: linear-gradient(to bottom, transparent, #05101a 100%)"
                 data-aos="zoom-in">
                 <h2
-                    class="font-poppins font-bold text-4xl lg:text-5xl text-black dark:text-white main-heading lg:text-center mb-5 lg:mb-10">
+                    class="font-poppins font-bold text-4xl lg:text-[51px] leading-[57.6px] text-black dark:text-white main-heading lg:text-center mb-5 lg:mb-10">
                     {{
                     .title | safeHTML }}</h2>
                 <div class="flex flex-col lg:flex-row justify-between gap-5 lg:gap-0">
                     <div class="lg:w-1/3">
-                        <h3 class="font-poppins font-bold text-2xl lg:text-4xl text-black dark:text-white mb-7">
+                        <h3 class="font-poppins font-medium text-2xl lg:text-[32px] leading-[130%] text-black dark:text-white mb-7">
                             {{ .subtitle | markdownify }}
                         </h3>
                         {{ with .button }}
@@ -150,10 +150,10 @@
                         {{ end }}
                     </div>
                     {{ with .details }}
-                    <div class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-1 lg:rotate-12 lg:py-5 bg-slate-800 dark:bg-style">
+                    <div class="hidden lg:block px-[1px] rotate-12 bg-slate-800 dark:bg-style h-[111.4px] m-auto">
                     </div>
                     {{ end }}
-                    <p class="text-slate-700 dark:text-slate-400 font-poppins text-lg lg:w-1/2">
+                    <p class="text-slate-700 dark:text-slate-300 font-poppins text-lg leading-[34px] lg:w-1/2">
                         {{ .details | markdownify }}
                     </p>
                 </div>
@@ -206,18 +206,72 @@
 
 {{/* cards section */}}
 {{ with .Params.ev_intelligence_boxes }}
+<style>
+    #evCards:hover > .card::after {
+      opacity: 1;
+    }
+    
+    #evCards > .card:hover::before {
+      opacity: 1;
+    }
+    
+    #evCards > .card::before,
+    #evCards > .card::after {
+      border-radius: inherit;
+      content: "";
+      height: 100%;
+      left: 0px;
+      opacity: 0;
+      position: absolute;
+      top: 0px;
+      transition: opacity 500ms;
+      width: 100%;
+    }
+    
+    #evCards > .card::before {
+      background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 255, 255, 0.06),
+        transparent 20%
+      );
+      z-index: 3;
+    }
+    
+    #evCards > .card::after {  
+      background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(35, 118, 221, 0.4),
+        rgba(255, 207, 113, 0.4),
+        transparent 40%
+      );
+      z-index: 1;
+    }
+    
+    #evCards > .card > .card-content {
+      border-radius: inherit;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      inset: 1px;
+      padding: 10px;
+      position: absolute;
+      z-index: 2;
+    }
+  </style>
 <section class="pt-20 bg-slate-100 dark:bg-main">
     <div class="container mx-auto px-5 sm:px-10 lg:px-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-content-between" data-aos="zoom-in">
+        <div id="evCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 place-content-between" data-aos="zoom-in">
             {{ range . }}
-            <div class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 relative overflow-hidden animated">
-                <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
-                    class="w-full h-full absolute top-0 left-0 z-0"></div>
-                <div class="space-y-3 z-30 relative">
-                    <img src='{{ .icon | relURL }}' alt="">
-                    <div class="space-y-2">
-                        <h3 class="text-white font-poppins font-semibold text-[26px]">{{ .title | markdownify }}</h3>
-                        <p class="text-slate-300 font-poppins text-lg">{{ .details | markdownify }}</p>
+            <div class="rounded-3xl relative overflow-hidden animated card h-[414px]">
+                <div class="card-content bg-blue">
+                    <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
+                        class="w-full h-full absolute top-0 left-0 z-0"></div>
+                    <div class="space-y-7 z-30 relative px-5 pt-10">
+                        <img src='{{ .icon | relURL }}' alt="">
+                        <div class="space-y-2">
+                            <h3 class="text-white font-poppins font-semibold text-[26px]">{{ .title | markdownify }}</h3>
+                            <p class="text-slate-300 font-poppins text-lg">{{ .details | markdownify }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,6 +279,19 @@
         </div>
     </div>
 </section>
+<script>
+    // onmouse offect 
+    document.getElementById("evCards").onmousemove = e => {
+      for (const card of document.getElementsByClassName("card")) {
+        const rect = card.getBoundingClientRect(),
+          x = e.clientX - rect.left,
+          y = e.clientY - rect.top;
+
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+      };
+    };
+  </script>
 {{ end }}
 {{/* end cards */}}
 
@@ -240,7 +307,7 @@
                 .title | safeHTML }}</h2>
             <div class="flex flex-col lg:flex-row justify-between gap-5 lg:gap-0">
                 <div class="lg:w-1/3">
-                    <h3 class="font-poppins font-bold text-3xl lg:text-4xl text-black dark:text-white mb-7">
+                    <h3 class="font-poppins font-bold text-3xl lg:text-[32px] leading-[130%] text-black dark:text-white mb-7">
                         {{ .subtitle | markdownify }}
                     </h3>
                     {{ with .button }}
@@ -261,30 +328,97 @@
                 </div>
                 {{ with .details }}
                 <div
-                    class="py-[1px] w-full lg:w-auto lg:px-[1px] rotate-1 lg:rotate-12 lg:py-5 bg-slate-800 dark:bg-style">
+                    class="hidden lg:block px-[1px] rotate-12 bg-slate-800 dark:bg-style h-[111.4px] m-auto">
                 </div>
                 {{ end }}
-                <p class="text-slate-700 dark:text-slate-400 font-poppins text-lg lg:w-1/2">
+                <p class="text-slate-700 dark:text-slate-300 font-poppins text-lg leading-[32px] lg:w-1/2">
                     {{ .details | markdownify }}
                 </p>
             </div>
         </div>
         {{ with .boxes }}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 place-content-between mt-10 lg:mt-20" data-aos="zoom-in">
+        <style>
+            #cvCards:hover > .card::after {
+              opacity: 1;
+            }
+            
+            #cvCards > .card:hover::before {
+              opacity: 1;
+            }
+            
+            #cvCards > .card::before,
+            #cvCards > .card::after {
+              border-radius: inherit;
+              content: "";
+              height: 100%;
+              left: 0px;
+              opacity: 0;
+              position: absolute;
+              top: 0px;
+              transition: opacity 500ms;
+              width: 100%;
+            }
+            
+            #cvCards > .card::before {
+              background: radial-gradient(
+                800px circle at var(--mouse-x) var(--mouse-y), 
+                rgba(255, 255, 255, 0.06),
+                transparent 20%
+              );
+              z-index: 3;
+            }
+            
+            #cvCards > .card::after {  
+              background: radial-gradient(
+                600px circle at var(--mouse-x) var(--mouse-y), 
+                rgba(35, 118, 221, 0.4),
+                rgba(255, 207, 113, 0.4),
+                transparent 40%
+              );
+              z-index: 1;
+            }
+            
+            #cvCards > .card > .card-content {
+              border-radius: inherit;
+              display: flex;
+              flex-direction: column;
+              flex-grow: 1;
+              inset: 1px;
+              padding: 10px;
+              position: absolute;
+              z-index: 2;
+            }
+        </style>
+        <div id="cvCards" class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10 lg:mt-20" data-aos="zoom-in">
             {{ range . }}
-            <div class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 relative overflow-hidden animated">
-                <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
-                    class="w-full h-full absolute top-0 left-0 z-0"></div>
-                <div class="space-y-3 z-30 relative">
-                    <img src='{{ .icon | relURL }}' alt="">
-                    <div class="space-y-2">
-                        <h3 class="text-white font-poppins font-semibold text-[26px]">{{ .title | markdownify }}</h3>
-                        <p class="text-slate-300 font-poppins text-lg">{{ .details | markdownify }}</p>
+            <div class="rounded-3xl relative overflow-hidden animated card h-[414px] lg:h-[355px]">
+                <div class="card-content bg-blue">
+                    <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
+                        class="w-full h-full absolute top-0 left-0 z-0"></div>
+                    <div class="space-y-7 z-30 relative px-5 pt-7">
+                        <img src='{{ .icon | relURL }}' alt="">
+                        <div class="space-y-2">
+                            <h3 class="text-white font-poppins font-semibold text-[26px]">{{ .title | markdownify }}</h3>
+                            <p class="text-slate-300 font-poppins text-lg">{{ .details | markdownify }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
             {{ end }}
         </div>
+        <script>
+            // onmouse offect 
+            document.getElementById("cvCards").onmousemove = e => {
+              for (const card of document.getElementsByClassName("card")) {
+                const rect = card.getBoundingClientRect(),
+                  x = e.clientX - rect.left,
+                  y = e.clientY - rect.top;
+    
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+              };
+            };
+          </script>
         {{ end }}
     </div>
 </section>

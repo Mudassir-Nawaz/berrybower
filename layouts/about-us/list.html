@@ -28,26 +28,93 @@
             </div>
             {{ with .Params.our_values }}
             {{ if .enable }}
+            <style>
+                #valueCards:hover > .card::after {
+                  opacity: 1;
+                }
+                
+                #valueCards > .card:hover::before {
+                  opacity: 1;
+                }
+                
+                #valueCards > .card::before,
+                #valueCards > .card::after {
+                  border-radius: inherit;
+                  content: "";
+                  height: 100%;
+                  left: 0px;
+                  opacity: 0;
+                  position: absolute;
+                  top: 0px;
+                  transition: opacity 500ms;
+                  width: 100%;
+                }
+                
+                #valueCards > .card::before {
+                  background: radial-gradient(
+                    800px circle at var(--mouse-x) var(--mouse-y), 
+                    rgba(255, 255, 255, 0.06),
+                    transparent 20%
+                  );
+                  z-index: 3;
+                }
+                
+                #valueCards > .card::after {  
+                  background: radial-gradient(
+                    600px circle at var(--mouse-x) var(--mouse-y), 
+                    rgba(35, 118, 221, 0.4),
+                    rgba(255, 207, 113, 0.4),
+                    transparent 40%
+                  );
+                  z-index: 1;
+                }
+                
+                #valueCards > .card > .card-content {
+                  border-radius: inherit;
+                  display: flex;
+                  flex-direction: column;
+                  flex-grow: 1;
+                  inset: 1px;
+                  padding: 10px;
+                  position: absolute;
+                  z-index: 2;
+                }
+            </style>
             <div class="mt-20" data-aos="zoom-in">
                 <h3 class="font-poppins font-medium text-3xl text-black dark:text-white mb-10">Our Values</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-content-between">
+                <div id="valueCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 place-content-between">
                     {{ range .boxes }}
                     <div
-                        class="rounded-3xl p-5 sm:p-10 bg-blue border border-slate-800 relative overflow-hidden animated">
-                        <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
-                            class="w-full h-full absolute top-0 left-0 z-0"></div>
-                        <div class="space-y-3 z-30 relative">
-                            <img src='{{ .icon | relURL }}' alt="">
-                            <div class="space-y-2">
-                                <h3 class="text-white font-poppins font-semibold text-[26px]">{{ .title | markdownify }}
-                                </h3>
-                                <p class="text-slate-300 font-poppins text-lg">{{ .details | markdownify }}</p>
+                        class="rounded-3xl relative overflow-hidden animated card min-h-[414px]">
+                        <div class="card-content bg-blue">
+                            <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
+                                class="w-full h-full absolute top-0 left-0 z-0"></div>
+                            <div class="space-y-7 z-30 relative pt-10">
+                                <img src='{{ .icon | relURL }}' alt="">
+                                <div class="space-y-2 px-5">
+                                    <h3 class="text-white font-poppins font-semibold text-[26px]">{{ .title | markdownify }}
+                                    </h3>
+                                    <p class="text-slate-300 font-poppins text-lg">{{ .details | markdownify }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     {{ end }}
                 </div>
             </div>
+            <script>
+                // onmouse offect 
+                document.getElementById("valueCards").onmousemove = e => {
+                  for (const card of document.getElementsByClassName("card")) {
+                    const rect = card.getBoundingClientRect(),
+                      x = e.clientX - rect.left,
+                      y = e.clientY - rect.top;
+        
+                    card.style.setProperty("--mouse-x", `${x}px`);
+                    card.style.setProperty("--mouse-y", `${y}px`);
+                  };
+                };
+              </script>
             {{ end }}
             {{ end }}
         </div>
