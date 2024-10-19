@@ -237,11 +237,9 @@
       <div class="rounded-3xl flex justify-center items-center shadow-lg bg-white dark:bg-blue overflow-hidden">
         <div
           class="flex flex-col {{ if not (modBool $i 2) }}lg:flex-row-reverse{{ else }}lg:flex-row{{ end }} gap-5 lg:gap-0 justify-between relative">
-          <img src='{{ "images/dev/services-layer.png"  | relURL }}' alt=""
-            class="w-full h-full absolute {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
           <div class="lg:w-1/2 p-5 md:p-14 relative">
             <img src='{{ "images/dev/services-circles.png"  | relURL }}' alt=""
-              class="w-full h-full absolute top-0 left-0 {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
+            class="w-full h-full absolute top-0 left-0 {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
             <div class="space-y-5 relative z-20">
               <h3 class="font-poppins font-bold text-3xl lg:text-[42px] text-black dark:text-slate-400 main-heading">
                 {{ $p.title | safeHTML }}
@@ -251,11 +249,12 @@
               </p>
             </div>
           </div>
-          <div
-            class="lg:w-1/2 h-40 lg:h-[33rem] xl:h-[26rem] bg-contain lg:bg-cover bg-no-repeat filter grayscale {{ if not (modBool $i 2) }}bg-left{{ else }}bg-right{{ end }} lg:bg-none"
-            style="background-image:url('{{ $p.image | relURL }}')">
-            {{/* <img src='{{ $p.image  | relURL }}' alt="{{ $.Site.Title}} {{ .title | markdownify }}" */}} {{/*
-              class="hidden lg:inline-block filter grayscale" /> */}}
+          <div class="lg:w-1/2 relative">
+            <img src='{{ $p.image  | relURL }}' alt="{{ $.Site.Title}} {{ .title | markdownify }}" 
+              class="filter grayscale brightness-125 contrast-150" />
+
+            <img src='{{ "images/dev/home_box_layer.png"  | relURL }}' alt=""
+              class="w-full h-full right-0 bottom-0 absolute {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
           </div>
         </div>
       </div>
