@@ -13,23 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollSection = document.getElementById("codeSection");
   let scrollInterval;
 
-  if (scrollSection) {
-    function startAutoScroll() {
-      scrollInterval = setInterval(() => {
-        scrollSection.scrollTop += 1;
-        if (scrollSection.scrollTop >= scrollSection.scrollHeight - scrollSection.clientHeight) {
-          scrollSection.scrollTop = 0;
-        }
-      }, 70);
-    }
-    function stopAutoScroll() {
-      clearInterval(scrollInterval);
-    }
-    startAutoScroll();
-    scrollSection.addEventListener("mouseenter", stopAutoScroll);
-    scrollSection.addEventListener("mouseleave", startAutoScroll);
-  }
-
   // Menu function
   menuToggle.addEventListener("click", function () {
     // Toggle the 'show' class on the mobile menu
@@ -130,107 +113,134 @@ document.addEventListener("DOMContentLoaded", function () {
   // aos.js init
   AOS.init();
 
-  // docs page functions
-  scrollToActiveItem();
-  enableCollapsibles();
+  if (sidebarContainer) {
+    // docs page functions
+    scrollToActiveItem();
+    enableCollapsibles();
 
-  function enableCollapsibles() {
-    const buttons = document.querySelectorAll(
-      ".hextra-sidebar-collapsible-button"
-    );
-    buttons.forEach(function (button) {
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-        const list = button.parentElement.parentElement;
-        if (list) {
-          list.classList.toggle("open");
-        }
+    function enableCollapsibles() {
+      const buttons = document.querySelectorAll(
+        ".hextra-sidebar-collapsible-button"
+      );
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          const list = button.parentElement.parentElement;
+          if (list) {
+            list.classList.toggle("open");
+          }
+        });
       });
-    });
-  }
-
-  function scrollToActiveItem() {
-    const sidebarScrollbar = document.querySelector(
-      "aside.sidebar-container > .hextra-scrollbar"
-    );
-    const activeItems = document.querySelectorAll(".sidebar-active-item");
-    const visibleActiveItem = Array.from(activeItems).find(
-      function (activeItem) {
-        return activeItem.getBoundingClientRect().height > 0;
-      }
-    );
-
-    if (!visibleActiveItem) {
-      return;
     }
 
-    const yOffset = visibleActiveItem.clientHeight;
-    const yDistance =
-      visibleActiveItem.getBoundingClientRect().top -
-      sidebarScrollbar.getBoundingClientRect().top;
-    sidebarScrollbar.scrollTo({
-      behavior: "instant",
-      top: yDistance - yOffset,
+    function scrollToActiveItem() {
+      const sidebarScrollbar = document.querySelector(
+        "aside.sidebar-container > .hextra-scrollbar"
+      );
+      const activeItems = document.querySelectorAll(".sidebar-active-item");
+      const visibleActiveItem = Array.from(activeItems).find(
+        function (activeItem) {
+          return activeItem.getBoundingClientRect().height > 0;
+        }
+      );
+
+      if (!visibleActiveItem) {
+        return;
+      }
+
+      const yOffset = visibleActiveItem.clientHeight;
+      const yDistance =
+        visibleActiveItem.getBoundingClientRect().top -
+        sidebarScrollbar.getBoundingClientRect().top;
+      sidebarScrollbar.scrollTo({
+        behavior: "instant",
+        top: yDistance - yOffset,
+      });
+    }
+
+    const overlayClasses = [
+      "fixed",
+      "inset-0",
+      "z-10",
+      "bg-slate-50",
+      "dark:bg-main",
+      "opacity-50",
+    ];
+    overlay.classList.add("bg-transparent");
+    overlay.classList.remove("hidden", ...overlayClasses);
+
+    function toggleSidebar() {
+      sidebarContainer.classList.toggle(
+        "max-md:[transform:translate3d(-100%,0,0)]"
+      );
+      sidebarContainer.classList.toggle(
+        "max-md:[transform:translate3d(0,0,0)]"
+      );
+
+      // When the menu is open, we want to prevent the body from scrolling
+      document.body.classList.toggle("overflow-hidden");
+      document.body.classList.toggle("md:overflow-auto");
+    }
+
+    sidebarToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      toggleSidebar();
+
+      if (overlay.classList.contains("bg-transparent")) {
+        // Show the overlay
+        overlay.classList.add(...overlayClasses);
+        overlay.classList.remove("bg-transparent");
+      } else {
+        // Hide the overlay
+        overlay.classList.remove(...overlayClasses);
+        overlay.classList.add("bg-transparent");
+      }
     });
-  }
 
-  const overlayClasses = [
-    "fixed",
-    "inset-0",
-    "z-10",
-    "bg-slate-50",
-    "dark:bg-main",
-    "opacity-50",
-  ];
-  overlay.classList.add("bg-transparent");
-  overlay.classList.remove("hidden", ...overlayClasses);
+    overlay.addEventListener("click", (e) => {
+      e.preventDefault();
+      toggleSidebar();
 
-  function toggleSidebar() {
-    sidebarContainer.classList.toggle(
-      "max-md:[transform:translate3d(-100%,0,0)]"
-    );
-    sidebarContainer.classList.toggle("max-md:[transform:translate3d(0,0,0)]");
-
-    // When the menu is open, we want to prevent the body from scrolling
-    document.body.classList.toggle("overflow-hidden");
-    document.body.classList.toggle("md:overflow-auto");
-  }
-
-  sidebarToggle.addEventListener("click", (e) => {
-    e.preventDefault();
-    toggleSidebar();
-
-    if (overlay.classList.contains("bg-transparent")) {
-      // Show the overlay
-      overlay.classList.add(...overlayClasses);
-      overlay.classList.remove("bg-transparent");
-    } else {
       // Hide the overlay
       overlay.classList.remove(...overlayClasses);
       overlay.classList.add("bg-transparent");
-    }
-  });
-
-  overlay.addEventListener("click", (e) => {
-    e.preventDefault();
-    toggleSidebar();
-
-    // Hide the overlay
-    overlay.classList.remove(...overlayClasses);
-    overlay.classList.add("bg-transparent");
-  });
+    });
+  }
 
   // Cookies dialogue
-  dialogueOpener.addEventListener("click", () => {
-    dialogue.classList.remove("hidden");
-    dialogue.classList.add("flex");
-    dialogue.classList.remove("opacity-0");
-    dialogue.firstElementChild.classList.remove("scale-50");
-    dialogue.firstElementChild.classList.add("scale-100");
-  });
+  if (dialogue) {
+    dialogueOpener.addEventListener("click", () => {
+      dialogue.classList.remove("hidden");
+      dialogue.classList.add("flex");
+      dialogue.classList.remove("opacity-0");
+      dialogue.firstElementChild.classList.remove("scale-50");
+      dialogue.firstElementChild.classList.add("scale-100");
+    });
+  
+    dialogueCloser.addEventListener("click", () => {
+      dialogue.classList.remove("flex");
+      dialogue.classList.add("hidden");
+    });
+  }
 
-  dialogueCloser.addEventListener("click", () => {
-    dialogue.classList.remove("flex");
-    dialogue.classList.add("hidden");
-  });
+  // Code section function
+  if (scrollSection) {
+    function startAutoScroll() {
+      scrollInterval = setInterval(() => {
+        scrollSection.scrollTop += 1;
+        if (
+          scrollSection.scrollTop >=
+          scrollSection.scrollHeight - scrollSection.clientHeight
+        ) {
+          scrollSection.scrollTop = 0;
+        }
+      }, 70);
+    }
+    function stopAutoScroll() {
+      clearInterval(scrollInterval);
+    }
+    startAutoScroll();
+    scrollSection.addEventListener("mouseenter", stopAutoScroll);
+    scrollSection.addEventListener("mouseleave", startAutoScroll);
+  }
 });
