@@ -1,75 +1,211 @@
 ---
-title: API Overview
+title: Vulnerawize API Documentation 
 weight: 1
 ---
 
-# One morning, when Gregor Samsa woke from troubled dreams.
+## Overview
 
-One morning, when Gregor Samsa woke from troubled dreams, he found himself _transformed_ in his bed into a horrible [vermin](http://en.wikipedia.org/wiki/Vermin "Wikipedia Vermin"). He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover **strong** it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, link waved abouthelplessly as he looked. <cite>“What's happened to me?”</cite> he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.</p>
+The Vulnerawize API provides comprehensive information about software vulnerabilities, helping organizations prioritize vulnerability management. The API leverages the Vulnerawize Decision Trees framework to provide decisions based on exploitation, automation, exposure, and impact.
 
-## The bedding was hardly able to cover it.
+## Base URL
 
-It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer a solid fur muff into which her entire forearm disappeared..
 
-### Things we know about Gregor's sleeping habits.
+https://api.vulnerawize.ai
 
-- He always slept on his right side.
-- He has to get up early (to start another dreadful day).
-- He has a drawer and a alarm clock next to his bed.
-- His mother calls him when he gets up to late.
+## Endpoint
 
-<table>
-  <tr>
-    <th>Writer</th>
-    <th>Nationality</th>
-    <th>Genre</th>
-    <th>Most famous book</th>
-  </tr>
-  <tr>
-    <td>Franz Kafka</td>
-    <td>Leo Tolstoy</td>
-    <td>F. Scott Fitzgerald</td>
-    <td>H.G. Wells</td>
-  </tr>
-  <tr>
-    <td>Austrian</td>
-    <td>Russia</td>
-    <td>American</td>
-    <td>British</td>
-  </tr>
-  <tr>
-    <td>Literature & Fiction, Philosophy, Short Stories</td>
-    <td>Literature & Fiction, Philosophy</td>
-    <td>Literature & Fiction, Short Stories</td>
-    <td>Science Fiction</td>
-  </tr>
-    <tr>
-    <td>The Metamorphosis</td>
-    <td>War & Piece</td>
-    <td>The Great Gatsby</td>
-    <td>War of the Worlds</td>
-  </tr>
-  </table>
+### Get Vulnerability Information
 
-First he wanted to stand up quietly and undisturbed, get dressed, above all have breakfast, and only then consider further action, for (he noticed this clearly) by thinking things over in bed he would not reach a reasonable conclusion. He remembered that he had already often felt a light pain or other in bed, perhaps the result of an awkward lying position, which later turned out to be purely imaginary when he stood up, and he was eager to see how his present fantasies would gradually dissipate. That the change in his voice was nothing other than the onset of a real chill, an occupational illness of commercial travelers, of that he had not the slightest doubt.
+**Endpoint:** `/v1/vuln`
 
-```javascript
-    function metamorphose(protagonist,author){
-        if( protagonist.name.first === 'Gregor' && author.name.last === 'Kafka' ){
-            protagonist.species = 'insect';
-        }
-    }
+**Method:** `GET`
+
+**Description:** Retrieves detailed vulnerability information based on provided CVE IDs. Supports querying multiple CVE IDs at once, with a limit of 200.
+
+### Query Parameters
+
+- `vulnIds` (required): Comma-separated list of vulnerability IDs (e.g., `CVE-2021-44228,CVE-2021-45046`). Limit: 200.
+- `exposure` (optional): Exposure level (`open`, `small`, `controlled`). Default: `open`.
+- `impact` (optional): Impact level (`low`, `medium`, `high`, `critical`). Default: `high`.
+
+### Example Request
+
+**Request:**
+
+```bash
+GET /v1/vuln?vulnIds=CVE-2021-44228,CVE-2021-45046&exposure=small&impact=medium
 ```
-It was very easy to throw aside the blanket. He needed only to push himself up a little, and it fell by itself. But to continue was difficult, particularly because he was so unusually wide. He needed arms and hands to push himself upright. Instead of these, however, he had only many small limbs which were incessantly moving with very different motions and which, in addition, he was unable to control. If he wanted to bend one of them, then it was the first to extend itself, and if he finally succeeded doing with this limb what he wanted, in the meantime all the others, as if left free, moved around in an excessively painful agitation. "But I must not stay in bed uselessly," said Gregor to himself.
 
-> At first he wanted to get off the bed with the lower part of his body, but this lower part (which he incidentally had not yet looked at and which he also couldn't picture clearly) proved itself too difficult to move. The attempt went so slowly. When, having become almost frantic, he finally hurled himself forward with all his force and without thinking, he chose his direction incorrectly, and he hit the lower bedpost hard. The violent pain he felt revealed to him that the lower part of his body was at the moment probably the most sensitive.
+### Curl Example
 
-Thus, he tried to get his upper body out of the bed first and turned his head carefully toward the edge of the bed. He managed to do this easily, and in spite of its width and weight his body mass at last slowly followed the turning of his head. But as he finally raised his head outside the bed in the open air, he became anxious about moving forward any further in this manner, for if he allowed himself eventually to fall by this process, it would take a miracle to prevent his head from getting injured. And at all costs he must not lose consciousness right now. He preferred to remain in bed.
+```sh
+curl -X GET "https://api.vulnerawize.ai/v1/vuln?vulnIds=CVE-2021-44228,CVE-2021-45046&exposure=open&impact=medium"
+```
 
-#### First five selected publications in English
+### Python Example
 
-1. The Castle
-2. The Great Wall of China
-3. The Trial
-4. America
-5. The Diaries Of Franz Kafka
+```python
+import requests
+
+url = "https://api.vulnerawize.ai/v1/vuln"
+params = {
+    "vulnIds": "CVE-2021-44228,CVE-2021-45046",
+    "exposure": "small",
+    "impact": "medium"
+}
+
+response = requests.get(url, params=params)
+print(response.json())
+```
+
+### Go Example
+
+```go
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+    "net/http"
+    "net/url"
+)
+
+func main() {
+    baseURL := "https://api.vulnerawize.ai/v1/vuln"
+    params := url.Values{}
+    params.Add("vulnIds", "CVE-2021-44228,CVE-2021-45046")
+    params.Add("exposure", "small")
+    params.Add("impact", "medium")
+
+    queryURL := fmt.Sprintf("%s?%s", baseURL, params.Encode())
+    resp, err := http.Get(queryURL)
+    if err != nil {
+        log.Fatalf("Failed to make request: %v", err)
+    }
+    defer resp.Body.Close()
+
+    var result map[string]interface{}
+    if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+        log.Fatalf("Failed to parse response: %v", err)
+    }
+
+    resultJSON, err := json.MarshalIndent(result, "", "  ")
+    if err != nil {
+        log.Fatalf("Failed to marshal response: %v", err)
+    }
+
+    fmt.Println(string(resultJSON))
+}
+```
+
+## Response Structure
+
+The response from the API includes metadata about the request and an array of vulnerability data.
+
+### Response Example
+
+```json
+{
+  "metadata": {
+    "timestamp": "2024-06-14T12:02:22.341011+00:00"
+  },
+  "data": [
+    {
+      "id": "CVE-2021-44228",
+      "severity": "critical",
+      "automatable": "yes",
+      "cisaKEV": true,
+      "reported_exploited": true,
+      "exploit_maturity": "active",
+      "counts": {
+        "public_exploit_count": 410
+      },
+      "timeline": {
+        "nvd_published": "2021-12-10",
+        "cisaKEV_published": "2021-12-10"
+      },
+      "epss": {
+        "epss_score": "0.97547",
+        "epss_percentile": "0.99996"
+      },
+      "ssvc": {
+        "automatable": "yes",
+        "exposure": "open",
+        "impact": "high",
+        "decision": "immediate"
+      },
+      "exploits": [
+        {
+          "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+          "name": "Apache Log4j2 Remote Code Execution Vulnerability",
+          "source": "cisa_kev",
+          "date_added": "2021-12-10",
+          "exploit_maturity": "in_wild"
+        },
+        {
+          "url": "https://gitlab.com/exploit-database/exploitdb/-/blob/main/exploits/java/remote/51183.txt",
+          "name": "AD Manager Plus 7122 - Remote Code Execution (RCE)",
+          "source": "exploitdb",
+          "date_added": "2023-04-01",
+          "exploit_maturity": "poc"
+        },
+        {
+          "url": "https://gitlab.com/exploit-database/exploitdb/-/blob/main/exploits/java/remote/50592.py",
+          "name": "Apache Log4j 2 - Remote Code Execution (RCE)",
+          "source": "exploitdb",
+          "date_added": "2021-12-14",
+          "exploit_maturity": "poc"
+        },
+        ...
+        ...
+        ...
+      ]
+    }
+  ]
+}
+```
+
+## Rate Limiting
+
+The API enforces a rate limit to ensure fair usage for all clients.
+
+- **Rate Limit**: 30 requests per minute
+
+If the rate limit is exceeded, the API will return a `429 Too Many Requests` status code. Clients are advised to implement retry logic with exponential backoff to handle rate limiting gracefully.
+
+## Decision Trees
+
+The Vulnerawize Decision Trees framework helps in making informed decisions by considering multiple factors:
+
+- **Exploitation**: Whether the vulnerability is actively being exploited.
+- **Automation**: Whether the exploitation of the vulnerability can be automated.
+- **Exposure**: The level of exposure of the system to the vulnerability.
+- **Impact**: The potential impact on the system or business.
+
+### Decision Example
+
+```json
+{
+  "ssvc": {
+    "automatable": true,
+    "exposure": "small",
+    "impact": "medium",
+    "decision": "immediate"
+  }
+}
+```
+
+## Product Overview
+
+The Vulnerawize API provides exploit and vulnerability intelligence directly into the tools, processes, programs, and systems that need it to outpace adversaries. By integrating this API, organizations can prioritize vulnerabilities that matter based on the threat landscape and defer those that don't, using the Vulnerawize Decision Trees framework.
+
+### Key Benefits
+
+- **Vulnerability Prioritization**: Focus on vulnerabilities that pose the highest risk based on current threats and defer those with lower impact.
+- **Automation and Integration**: Seamlessly integrate with existing tools and processes to streamline vulnerability management.
+- **Comprehensive Insights**: Gain detailed information about vulnerabilities, including exploit availability and impact assessments.
+
+## Conclusion
+
+The Vulnerawize API provides crucial information for prioritizing vulnerability management within organizations. By incorporating the Vulnerawize Decision Trees framework, it offers a structured approach to making decisions based on exploitation, automation, exposure, and human impact.

@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // aos.js init
   AOS.init();
 
+  
   if (sidebarContainer) {
     // docs page functions
     scrollToActiveItem();
