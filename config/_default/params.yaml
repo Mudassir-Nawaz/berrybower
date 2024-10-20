@@ -16,3 +16,12 @@ copyright: "© 2024 All Rights Reserved VulneraWise." ##### Site copyright text
 github: "/" ##### Footer Github icon link
 twitter: "/" ##### Footer Twitter icon link
 linkedin: "/" ##### Footer LinkedIn icon link
+
+##### Site details for search engines
+title: My site
+description: Text about my site
+images:
+  - site-feature-image.jpg
+social:
+  facebook_admin: barrybower
+  twitter: barrybower

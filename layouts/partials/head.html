@@ -9,6 +9,12 @@
   }}{{ end }}
 </title>
 
+{{/*  external services  */}}
+{{ template "_internal/google_analytics.html" . }} <!--google analytics--> 
+{{ template "_internal/opengraph.html" . }} <!--open graph-->
+{{ template "_internal/schema.html" . }} <!--schema markup-->
+{{ template "_internal/twitter_cards.html" . }} <!--twitter cards-->
+
 {{/* theme toggle function
 */}}
 <script>

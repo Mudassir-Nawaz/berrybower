@@ -17,7 +17,7 @@
               class="w-3/4 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute dark:hidden">
             </div>
             <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
-              class="w-full h-full bg-no-repeat bg-top-center absolute"></div>
+              class="w-full h-full bg-no-repeat bg-top-center absolute filter brightness-150"></div>
         </div>
 
         <div class="container z-40 mx-auto mt-20 lg:mt-32">
@@ -61,7 +61,7 @@
                             class="dark:hidden w-full">
                             <img src='{{ "images/dev/dark_editor_header.png" | relURL }}' alt=""
                             class="hidden dark:block w-full">
-                            <div class="h-96 min-w-full overflow-y-scroll rounded-b-xl prose prose-code:my-0 prose-pre:my-0 font-roboto-mono prose-pre:bg-transparent prose-pre:w-full prose-pre:relative prose-pre:z-10">
+                            <div id="codeSection" class="h-96 relative min-w-full overflow-y-scroll rounded-b-xl prose prose-code:my-0 prose-pre:my-0 font-roboto-mono prose-pre:bg-transparent prose-pre:w-full prose-pre:relative prose-pre:z-10">
                                 {{ .Content }}
                             </div>
                         </div>
