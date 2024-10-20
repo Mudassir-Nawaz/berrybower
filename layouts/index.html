@@ -116,13 +116,13 @@
         #vulnerabilitiesCards > .card::after {
           border-radius: inherit;
           content: "";
-          min-height: inherit;
+          min-height: 100%;
           left: 0px;
           opacity: 0;
           position: absolute;
           top: 0px;
           transition: opacity 500ms;
-          width: inherit;
+          width: 100%;
         }
         
         #vulnerabilitiesCards > .card::before {
@@ -162,12 +162,12 @@
         {{ with .cards }}
         {{ range $i, $p := . }}
         <div
-          class="rounded-3xl swiper-slide min-h-[24rem] lg:min-h-[29rem] xl:min-h-[27rem] 2xl:min-h-[24rem] slider-card relative overflow-hidden animated card">
-          <div class="space-y-5 h-full bg-white dark:bg-blue card-content">
+          class="rounded-3xl swiper-slide min-h-[24rem] lg:min-h-[29rem] xl:min-h-[25rem] 2xl:min-h-[23rem] slider-card relative overflow-hidden animated card">
+          <div class="space-y-5 bg-white dark:bg-blue card-content">
             <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
               class="w-full h-full absolute top-0 left-0 hidden dark:block"></div>
             <div style="background-image: url('{{ "images/dev/light_box_lines.png" | relURL }}');"
-              class="w-full h-full absolute top-0 left-0 dark:block"></div>
+              class="w-full h-full absolute -top-5 left-0 dark:block"></div>
             <div class="spacy-y-2 px-5 sm:px-10 pt-5">
               <h4 class="text-black dark:text-off-white font-poppins font-semibold text-2xl">
                 {{ $p.title | markdownify }}
