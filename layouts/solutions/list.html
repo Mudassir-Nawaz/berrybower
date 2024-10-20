@@ -56,12 +56,12 @@
                 {{ end }}
                 <div class="w-full lg:w-1/2 mx-auto relative" data-aos="zoom-in">
                     <div class="flex justify-center items-center relative rounded-xl animated">
-                        <div class="bg-blue border-gradient-primary after:rounded-xl after:p-[1px]">
+                        <div class="bg-blue rounded-xl overflow-hidden border-gradient-primary after:rounded-xl">
                             <img src='{{ "images/dev/light_editor_header.png" | relURL }}' alt=""
                             class="dark:hidden w-full">
                             <img src='{{ "images/dev/dark_editor_header.png" | relURL }}' alt=""
                             class="hidden dark:block w-full">
-                            <div class="h-96 min-w-full overflow-y-scroll rounded-b-xl prose prose-code:my-0 prose-pre:my-0 font-roboto-mono prose-pre:bg-transparent prose-pre:w-full">
+                            <div class="h-96 min-w-full overflow-y-scroll rounded-b-xl prose prose-code:my-0 prose-pre:my-0 font-roboto-mono prose-pre:bg-transparent prose-pre:w-full prose-pre:relative prose-pre:z-10">
                                 {{ .Content }}
                             </div>
                         </div>
