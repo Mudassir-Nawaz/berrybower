@@ -253,7 +253,7 @@
             <div class="w-full relative z-10 lg:hidden">
               <div class="absolute inset-0 -top-8 {{ if not (modBool $i 2) }}-left-24{{ else }}-right-24{{ end }} bg-white dark:bg-blue blur-lg h-[70px]"></div>
             </div>
-            <div class="hidden lg:block absolute w-[70px] h-full top-0 bottom-0 bg-white dark:bg-blue blur-lg z-10 {{ if not (modBool $i 2) }}-right-7{{ else }}-left-7{{ end }}"></div>
+            <div class="hidden lg:block absolute w-[100px] h-[150%] -top-10 bottom-0 bg-white dark:bg-blue blur-lg z-10 {{ if not (modBool $i 2) }}-right-10{{ else }}-left-10{{ end }}"></div>
             <img src='{{ $p.image  | relURL }}' alt="{{ $.Site.Title}} {{ .title | markdownify }}" 
               class="filter grayscale brightness-105 contrast-150 relative top-0 lg:h-[500px] object-cover xl:h-auto {{ if not (modBool $i 2) }}object-left{{ else }}object-right{{ end }}" />
 
