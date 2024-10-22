@@ -3,7 +3,7 @@
 {{ with .Params.hero_section }}
 {{ if .enable }}
 <section class="h-full w-full bg-slate-100 dark:bg-main">
-  <div class="relative flex justify-center items-center swiper heroSwiper">
+  <div class="relative flex justify-center items-center swiper heroSwiper top-0">
     <div class="absolute w-full h-full">
       <div style="mask-image: url('{{ "images/dev/dark_shadow.png" | relURL }}')"
         class="w-full h-full bg-no-repeat bg-top-center absolute bg-slate-100 dark:bg-main"></div>
@@ -16,7 +16,7 @@
         class="w-3/4 h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute dark:hidden">
       </div>
       <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
-        class="w-full h-full bg-no-repeat bg-top-center absolute filter brightness-150"></div>
+        class="w-full h-full bg-no-repeat bg-top-center absolute blur-md brightness-150"></div>
     </div>
 
     <div class="swiper-wrapper relative z-10 lg:h-[610px] 2xl:h-[700px] ">
