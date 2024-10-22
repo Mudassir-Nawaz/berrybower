@@ -13,11 +13,3 @@ markup:
     style: rrt
     noClasses: false
     lineNos: true
-
-
-############################
-## EXTERNAL SERVICES
-############################
-services:
-  googleAnalytics:
-    ID: "G-MEASUREMENT_ID" ##### google analytics id

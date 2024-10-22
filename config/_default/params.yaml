@@ -17,6 +17,9 @@ github: "/" ##### Footer Github icon link
 twitter: "/" ##### Footer Twitter icon link
 linkedin: "/" ##### Footer LinkedIn icon link
 
+##### scripts
+ga_script: G-7JS41X41RX
+
 ##### Site details for search engines
 title: My site
 description: Text about my site
