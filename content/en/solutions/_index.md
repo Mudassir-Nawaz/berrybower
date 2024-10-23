@@ -39,7 +39,7 @@ cv_priority:
     subtitle: "Remediate What Matters Most"
     details: "Not all vulnerabilities are equal. With VulneraWise, you can identify which vulnerabilities require immediate attention based on both severity and the likelihood of exploitation mapped on your infrastructure. By focusing remediation efforts on high-risk vulnerabilities, we help you optimize your resources and improve your organization’s security posture. "
     button:
-        label: "Schedule Deom"
+        label: "Schedule Demo"
         url: "about-us/#form"
     boxes:
         - icon: "images/turn.png"
