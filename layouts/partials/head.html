@@ -9,6 +9,9 @@
   }}{{ end }}
 </title>
 
+{{/*  favicon  */}}
+<link rel="shortcut icon" href='{{ "images/favicon.png" | relURL }}' type="image/x-icon">
+
 {{/*  external services  */}}
 {{ template "_internal/google_analytics.html" . }} <!--google analytics--> 
 {{ template "_internal/opengraph.html" . }} <!--open graph-->
