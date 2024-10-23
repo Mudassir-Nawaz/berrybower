@@ -64,7 +64,7 @@
   background-color: white !important;
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .position {
     min-width: calc(7%);
   }
@@ -206,7 +206,7 @@
   .slider-card {
     max-width: calc(23%);
   }
-}
+} */
 
 /* Background */
 .bg {

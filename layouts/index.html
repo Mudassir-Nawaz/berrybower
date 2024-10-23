@@ -84,9 +84,9 @@
 {{ with .Params.news_section }}
 {{ if .enable }}
 <section class="w-full h-full bg-slate-100 dark:bg-main">
-  <div class="container lg:max-w-full mx-auto px-5 sm:px-10 lg:px-0 pb-10 sm:pb-20 lg:py-20">
+  <div class="container mx-auto px-5 sm:px-10 lg:px-16 pb-10 sm:pb-20 lg:py-20">
     <div class="swiper mySwiper">
-      <div class="lg:container lg:mx-auto lg:px-16 md:flex md:justify-between">
+      <div class="md:flex md:justify-between">
         <h3 class="font-poppins font-semibold text-3xl lg:text-[46px] text-black dark:text-slate-200 main-heading">
           Latest Vulnerabilities
         </h3>
@@ -156,19 +156,16 @@
         }
       </style>
       <div id="vulnerabilitiesCards" class="cards my-5 swiper-wrapper lg:gap-3">
-        <div
-          class="hidden lg:block position">
-        </div>
         {{ with .cards }}
         {{ range $i, $p := . }}
         <div
-          class="rounded-3xl swiper-slide min-h-[24rem] sm:min-h-[25rem] lg:min-h-[29rem] xl:min-h-[25rem] 2xl:min-h-[23rem] slider-card relative overflow-hidden animated card">
+          class="rounded-3xl swiper-slide min-h-[24rem] sm:min-h-[20rem] md:min-h-[24rem] lg:min-h-[27rem] xl:min-h-[25rem] 2xl:min-h-[23rem] lg:max-w-[30%] relative overflow-hidden animated card">
           <div class="space-y-5 bg-white dark:bg-blue card-content">
             <div style="background-image: url('{{ "images/dev/dark_box_lines.png" | relURL }}');"
               class="w-full h-full absolute top-0 left-0 hidden dark:block"></div>
             <div style="background-image: url('{{ "images/dev/light_box_lines.png" | relURL }}');"
               class="w-full h-full absolute -top-5 left-0 dark:block"></div>
-            <div class="spacy-y-2 px-5 sm:px-10">
+            <div class="spacy-y-2 px-5">
               <h4 class="text-black dark:text-off-white font-poppins font-semibold text-2xl">
                 {{ $p.title | markdownify }}
               </h4>
@@ -177,7 +174,7 @@
               </p>
             </div>
             {{ with $p.affecting }}
-            <div class="space-y-2 px-5 sm:px-10">
+            <div class="space-y-2 px-5">
               <p class="font-poppins text-slate-900 dark:text-style uppercase">AFFECTING</p>
               <ul class="space-y-2 text-slate-700 dark:text-off-white font-poppins text-[15px] list-disc list-inside">
                 {{ range . }}
@@ -186,7 +183,7 @@
               </ul>
             </div>
             {{ end }}
-            <div class="flex flex-wrap gap-y-2 justify-between px-5 sm:px-10">
+            <div class="flex flex-wrap gap-y-2 justify-between px-5">
               <p class="text-slate-700 dark:text-white font-poppins">{{ $p.date }}</p>
               {{ if eq $p.type "high" }}
               <div class="border border-warning px-2 text-warning rounded-full font-poppins">
