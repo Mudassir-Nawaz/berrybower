@@ -69,7 +69,7 @@
 
             <div id="dropdown-menu-{{ $index }}"
               class="relative origin-top lg:absolute lg:translate-y-3 lg:group-hover:translate-y-2 lg:opacity-0 lg:block lg:group-hover:opacity-100 lg:transition-all lg:duration-300 w-full lg:w-64 rounded-md shadow-lg bg-main border border-slate-800 ring-opacity-5 lg:left-1/2 lg:-translate-x-1/2 hidden">
-              <div class="w-7 overflow-hidden fixed inline left-1/2 -translate-x-1/2 -mt-4">
+              <div class="w-7 overflow-hidden fixed left-1/2 -translate-x-1/2 -mt-4 hidden lg:inline">
                 <div class=" h-4 w-4 bg-main rotate-45 transform origin-bottom-left"></div>
                </div>
               <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button-{{ $index }}">
@@ -152,3 +152,57 @@
     </div>
   </nav>
 </header>
+
+<script>
+  const menuToggle = document.querySelector(
+    '[data-collapse-toggle="mobile-menu-2"]'
+  );
+  const mobileMenu = document.getElementById("mobile-menu-2");
+  const header = document.getElementById("header");
+
+  // Menu function
+  menuToggle.addEventListener("click", function () {
+    // Toggle the 'show' class on the mobile menu
+    mobileMenu.classList.toggle("hidden");
+    // When the menu is open, we want to prevent the body from scrolling
+    document.body.classList.toggle("overflow-hidden");
+    document.body.classList.toggle("md:overflow-auto");
+
+    // Toggle the SVG icons
+    const openIcon = menuToggle.querySelector("svg:first-of-type"); // Open icon
+    const closeIcon = menuToggle.querySelector("svg:last-of-type"); // Close icon
+    openIcon.classList.toggle("hidden");
+    closeIcon.classList.toggle("hidden");
+
+    // Check the display of the mobile menu and update header style
+    if (window.getComputedStyle(mobileMenu).display === "block") {
+      header.classList.add('backdrop-blur-lg');
+    } else {
+      // Only remove the backdrop filter if the scroll position is not greater than 50
+      if (window.scrollY <= 50) {
+        header.classList.remove('backdrop-blur-lg');
+      } else {
+        // Keep the blur if scrolled more than 50
+        updateHeaderStyle();
+      }
+    }
+  });
+
+  // Function to update the header style based on scroll position
+  function updateHeaderStyle() {
+    const header = document.querySelector("header");
+
+    // Apply blur if scrolled more than 50 pixels
+    if (window.scrollY > 50) {
+      header.classList.add('backdrop-blur-lg');
+    } else {
+      header.classList.remove('backdrop-blur-lg');
+    }
+  }
+
+  // Event listener for scroll
+  window.addEventListener("scroll", updateHeaderStyle);
+
+  // Check scroll position on page load
+  window.addEventListener("load", updateHeaderStyle);
+</script>

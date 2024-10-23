@@ -1,9 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const menuToggle = document.querySelector(
-    '[data-collapse-toggle="mobile-menu-2"]'
-  );
-  const mobileMenu = document.getElementById("mobile-menu-2");
-  const header = document.getElementById("header");
   const sidebarContainer = document.querySelector(".sidebar-container");
   const sidebarToggle = document.querySelector(".open-sidebar");
   const overlay = document.querySelector(".mobile-menu-overlay");
@@ -12,52 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dialogueCloser = document.getElementById("closeDialogue");
   const scrollSection = document.getElementById("codeSection");
   let scrollInterval;
-
-  // Menu function
-  menuToggle.addEventListener("click", function () {
-    // Toggle the 'show' class on the mobile menu
-    mobileMenu.classList.toggle("hidden");
-    // When the menu is open, we want to prevent the body from scrolling
-    document.body.classList.toggle("overflow-hidden");
-    document.body.classList.toggle("md:overflow-auto");
-
-    // Toggle the SVG icons
-    const openIcon = menuToggle.querySelector("svg:first-of-type"); // Open icon
-    const closeIcon = menuToggle.querySelector("svg:last-of-type"); // Close icon
-    openIcon.classList.toggle("hidden");
-    closeIcon.classList.toggle("hidden");
-
-    // Check the display of the mobile menu and update header style
-    if (window.getComputedStyle(mobileMenu).display === "block") {
-      header.classList.add('backdrop-blur-lg');
-    } else {
-      // Only remove the backdrop filter if the scroll position is not greater than 50
-      if (window.scrollY <= 50) {
-        header.classList.remove('backdrop-blur-lg');
-      } else {
-        // Keep the blur if scrolled more than 50
-        updateHeaderStyle();
-      }
-    }
-  });
-
-  // Function to update the header style based on scroll position
-  function updateHeaderStyle() {
-    const header = document.querySelector("header");
-
-    // Apply blur if scrolled more than 50 pixels
-    if (window.scrollY > 50) {
-      header.classList.add('backdrop-blur-lg');
-    } else {
-      header.classList.remove('backdrop-blur-lg');
-    }
-  }
-
-  // Event listener for scroll
-  window.addEventListener("scroll", updateHeaderStyle);
-
-  // Check scroll position on page load
-  window.addEventListener("load", updateHeaderStyle);
+  
 
   // swiper config
   var swiper = new Swiper(".mySwiper", {
