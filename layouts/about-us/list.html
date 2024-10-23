@@ -13,8 +13,9 @@
             <div style="background-image: radial-gradient(at top, transparent 0%, #f1f5f9 70%, #f1f5f9 70%), url('{{ $light_doted }}');"
                 class="w-full h-full left-1/2 -translate-x-1/2 bg-no-repeat bg-top-center absolute dark:hidden">
             </div>
-            <div style="background-image: url('{{ "images/dev/top_shadow.png" | relURL }}');"
-                class="w-full h-full bg-no-repeat bg-top-center absolute blur-md brightness-150"></div>
+            <div class="relative z-10 container mx-auto">
+                {{ partial "header_smoke.html" . }}
+            </div>
         </div>
         <div class="container mx-auto mt-20 px-5 sm:px-10 lg:px-16">
             <div class="lg:max-w-4xl space-y-5 text-center mx-auto" data-aos="zoom-in">
