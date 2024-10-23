@@ -2,16 +2,16 @@
   class="fixed max-w-96 z-50 bg-main border-slate-700 dark:bg-slate-100 dark:border-slate-200 rounded-lg shadow-sm border px-5 py-3 -right-96 opacity-0 bottom-5 transition-all duration-500"
   id="cookieBox">
   <div class="space-y-5">
-    <h3 class="text-white dark:text-black font-poppins text-2xl font-semibold">We use cookies</h3>
-    <p class="text-slate-300 dark:text-slate-700 font-poppins">Hi this website uses essential cookies to ensure its
+    <h3 class="text-white dark:text-black font-poppins text-xl font-semibold">We use cookies</h3>
+    <p class="text-slate-300 dark:text-slate-700 font-poppins text-sm">Hi this website uses essential cookies to ensure its
       proper operation and tracking cookies to understand how you interact with it. The latter will be set only upon
       approval. Learn more about <a class="underline underline-offset-4" href='{{ "policies/" | relURL }}'>our
         policies.</a></p>
     <div class="flex gap-2 flex-wrap">
       <button
-        class="acceptCookies px-7 py-2 bg-style rounded-full hover:scale-105 transition-transform text-black font-poppins text-lg">Accept</button>
+        class="acceptCookies px-5 py-1 bg-style rounded-full hover:scale-105 transition-transform text-black font-poppins">Accept</button>
       <button
-        class="px-7 py-2 border-gradient-primary font-poppins after:rounded-full rounded-full hover:after:p-0 hover:bg-style hover:text-black hover:scale-105 transition-transform text-white dark:text-black"
+        class="px-5 py-1 border-gradient-primary font-poppins after:rounded-full rounded-full hover:after:p-0 hover:bg-style hover:text-black hover:scale-105 transition-transform text-white dark:text-black"
         data-dialog-target="dialog-lg">
         Settings
       </button>
@@ -32,7 +32,7 @@
   class="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
   <div data-dialog="dialog-lg" class="relative m-4 px-5 py-3 w-3/5 rounded-lg bg-slate-100 dark:bg-main shadow-sm">
     <div class="flex shrink-0 justify-between items-center pb-4 text-black dark:text-white">
-      <h3 class="font-poppins text-2xl font-semibold">We use cookies</h3>
+      <h3 class="font-poppins text-xl font-semibold">We use cookies</h3>
       <svg fill="currentColor" data-dialog-close="true" class="size-7 cursor-pointer" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512">
         <path
@@ -40,7 +40,7 @@
       </svg>
     </div>
     <div class="relative border-t border-slate-200 py-4 leading-normal text-slate-600">
-      <p class="text-slate-700 dark:text-slate-300 font-poppins">Hi this website uses essential cookies to ensure its
+      <p class="text-slate-700 dark:text-slate-300 font-poppins text-sm">Hi this website uses essential cookies to ensure its
         proper operation and tracking cookies to understand how you interact with it. The latter will be set only upon
         approval. Learn more about <a class="underline underline-offset-4" href='{{ "policies/" | relURL }}'>our
           policies.</a></p>
@@ -56,15 +56,15 @@
         </label>
       </div>
     </div>
-    <div class="flex shrink-0 flex-wrap items-center pt-4 justify-between">
+    <div class="flex gap-3 shrink-0 flex-wrap items-center pt-4 justify-between">
       <button
-        class="acceptCookies px-7 py-2 bg-style rounded-full hover:scale-105 transition-transform text-black font-poppins"
+        class="acceptCookies px-5 py-1 bg-style rounded-full hover:scale-105 transition-transform text-black font-poppins"
         data-dialog-close="true">
         Accept All
       </button>
 
       <button
-        class="px-7 py-2 border-gradient-primary font-poppins after:rounded-full rounded-full hover:after:p-0 hover:bg-style hover:text-black hover:scale-105 transition-transform text-black dark:text-white"
+        class="px-5 py-1 border-gradient-primary font-poppins after:rounded-full rounded-full hover:after:p-0 hover:bg-style hover:text-black hover:scale-105 transition-transform text-black dark:text-white"
         data-dialog-close="true">
         Save Settings
       </button>
