@@ -255,7 +255,7 @@
             </div>
             <div class="hidden lg:block absolute w-[100px] h-[150%] -top-10 bottom-0 bg-white dark:bg-blue blur-lg z-10 {{ if not (modBool $i 2) }}-right-10{{ else }}-left-10{{ end }}"></div>
             <img src='{{ $p.image  | relURL }}' alt="{{ $.Site.Title}} {{ .title | markdownify }}" 
-              class="filter grayscale brightness-105 contrast-150 relative top-0 lg:h-[500px] object-cover xl:h-auto {{ if not (modBool $i 2) }}object-left{{ else }}object-right{{ end }}" />
+              class="filter grayscale brightness-105 contrast-150 relative top-0 sm:h-60 sm:w-full lg:h-[500px] object-cover xl:h-auto {{ if not (modBool $i 2) }}object-left{{ else }}object-right{{ end }}" />
 
             <img src='{{ "images/dev/home_box_layer.png"  | relURL }}' alt=""
               class="w-full h-full right-0 bottom-0 absolute {{ if not (modBool $i 2) }}transform scale-x-[-1]{{ end }}" />
